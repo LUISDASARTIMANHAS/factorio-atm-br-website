@@ -1,0 +1,137 @@
+body {
+  text-transform: capitalize;
+  text-align: center;
+  box-sizing: border-box;
+  color: gray;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  text-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+  transition: all 0.3s ease-out;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 7px;
+}
+
+/* Division */
+.control-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: visible;
+  min-width: 80%;
+  gap: 15px;
+  /*   background:red; */
+}
+.control-container .control-item {
+  display: block;
+  color: orange;
+  margin: 10px;
+  padding: 5px;
+  font-size: 20px;
+  width: 100%;
+}
+
+label {
+  color: orange;
+  font-size: 25px;
+}
+
+.IP {
+  font-family: monospace;
+  font-size: 1.7em;
+  padding-left: 8px;
+  resize: none;
+  width: 50%;
+  min-height: 50px;
+}
+
+.input-area {
+  width: 100%;
+  display: block;
+  height: 50px;
+}
+
+.logs {
+  box-sizing: border-box;
+  font-size: 0.8em;
+  height: auto;
+  margin: 0;
+  padding: 12px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 18px;
+  color: orange;
+  font-style: italic;
+}
+
+.boxbar {
+  width: 720px;
+  background-color: grey;
+}
+
+.bar {
+  width: 50%;
+  height: 30px;
+  background: green;
+  text-align: center;
+  /* To center it horizontally (if you want) */
+  line-height: 30px;
+  /* To center it vertically */
+  color: white;
+}
+
+.p-title {
+  font-style: italic;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: red;
+}
+ul {
+  margin: 0px;
+  list-style-position: inside;
+  padding: 0px;
+}
+li {
+  padding: 0px;
+  margin: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.lista-mods-prioridade {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: red;
+  flex-wrap: wrap;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  align-self: flex-start;
+  min-width: 25%;
+  max-width: 25%;
+  height: 100vh;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.menu-itens {
+  align-self: flex-start;
+  min-width: 75%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 100vh;
+}

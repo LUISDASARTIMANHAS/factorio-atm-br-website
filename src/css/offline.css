@@ -1,0 +1,67 @@
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  background: white;
+  color: black;
+  padding:15px
+}
+html,code{
+  font-size:15px/22px; 
+  font: arial,sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  min-height:180px;
+  padding:30px 0 15px;
+}
+
+/* images and videos max out at full width */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+p{
+      margin:11px 0 22px;
+      overflow:hidden
+    }
+ins{
+      color:#777777;
+      text-decoration:none;
+    }
+a img{
+      border:0;
+    }
+@media screen and (max-width:772px){
+      body{
+        background:none;
+        margin-top:0;
+        max-width:none;
+        padding-right:0}
+    }
+@media only screen and (min-resolution:192dpi){
+      #logo{
+        background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;
+        -moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0}
+    }
+@media only screen and (-webkit-min-device-pixel-ratio:2){
+#logo{
+    background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;
+    -webkit-background-size:100% 100%;
+  }
+    }
+#logo{
+      background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;
+      margin-left:-5px;
+      display:inline-block;
+      height:54px;
+      width:150px;
+    }
