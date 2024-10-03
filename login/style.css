@@ -1,0 +1,52 @@
+.title-login {
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-style: italic;
+  text-shadow: rgb(255, 255, 255) 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
+    rgb(255, 255, 255) 0px 0px 6px, rgb(255, 119, 255) 0px 0px 8px,
+    rgb(255, 0, 255) 0px 0px 12px, rgb(255, 0, 255) 0px 0px 16px,
+    rgb(255, 0, 255) 0px 0px 20px, rgb(255, 0, 255) 0px 0px 24px;
+  border-bottom: 3px solid purple;
+  margin: 10px;
+  font-size:25px;
+}
+p{
+  margin: 5px;
+}
+@import url("//fonts.googleapis.com/css2?family=TimesNewRoman:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 7px solid white;
+  font-size: 18px;
+  border-image: url("https://cdn.glitch.global/59df7246-3def-4799-baad-d67e2fa48607/sub_background_painel.png?v=sub_background_painel")
+    16/8px repeat;
+  border-image-outset: 4px;
+  background-color: #242324;
+  padding: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0px 0px 3px 0px #201815;
+}
+
+/* login */
+.form-group {
+  margin-bottom: 20px;
+  width: 75%;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
