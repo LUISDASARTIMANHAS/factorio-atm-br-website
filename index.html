@@ -21,10 +21,7 @@
       <meta property="og:title" content="FACTORIO ATM TRANSLATED BR" />
       <meta property="og:type" content="game" />
       <meta property="og:url" content="https://factorio-atm-br.glitch.me/" />
-      <meta
-        property="og:description"
-        content=" FACTORIO ATM TRANSLATED BR"
-      />
+      <meta property="og:description" content=" FACTORIO ATM TRANSLATED BR" />
       <meta
         property="og:image"
         content="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
@@ -34,15 +31,13 @@
 
     <title>FACTORIO ATM TRANSLATED BR</title>
   </head>
-  <body style="display: none">
+  <body>
     <header>
-      <button
-        class="button flex-space-between"
-        onclick="window.open('regras.html')"
-      >
-        REGRAS &amp DUVIDAS?
+      <button class="button button-yellow" 
+              onclick="redirectUrl('/mod-toolkit')">
+        Mod Tool Kit
       </button>
-
+      
       <button
         class="button flex-space-between"
         onclick="window.open('/discord')"
@@ -50,40 +45,48 @@
         Discord
       </button>
 
-      <button
-        class="button button-yellow flex-space-between"
-        onclick="window.open('requisitos.html')"
-      >
-        REQUISITOS PARA JOGAR
+      <button class="button button-yellow" 
+              onclick="redirectUrl('/login')">
+        Login
       </button>
 
-      <a href="/login" class="button button-yellow flex-space-between">
-        Login
-      </a>
+      <button
+        class="button flex-space-between"
+        onclick="redirectUrl('/downloads')"
+      >
+        Transferencias (Factorio, DLCs, MODS)
+      </button>
 
-      <a href="/cadastro" class="button button-yellow flex-space-between">
-        Cadastro
-      </a>
+      <button class="button button-yellow" onclick="redirectUrl('/upload')">
+        Upload (Saves, Mods)
+      </button>
     </header>
     <section class="control-container">
-   
-
       <div class="control-item">
         <label for="mods">ALL THE MODS TRANSLATED BR</label>
         <iframe
           src="https://mods.factorio.com/mods/LUIS_DAS_ARTIMANHAS/All-The-Mods-Translated-BR"
           allowtransparency="true"
-          marginheight="0"
-          marginwidth="0"
           sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
           rgb
         >
           <p>Your browser does not support iframes.</p>
         </iframe>
+
         <iframe
           src="https://discord.com/widget?id=1063117115864907797&theme=dark"
           allowtransparency="true"
-          frameborder="0"
+          rgb
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+        >
+          <p>Your browser does not support iframes.</p>
+        </iframe>
+        
+        <h2> Outros Mods!</h2>
+        <iframe
+          src="https://mods.factorio.com/mod/Quantum-Teleporter"
+          allowtransparency="true"
+          rgb
           sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
         >
           <p>Your browser does not support iframes.</p>
@@ -92,7 +95,6 @@
     </section>
 
     <footer>
-
       <div>
         <p class="p-title">Legenda:</p>
         <a class="button button-red">Indisponivel</a>
@@ -101,19 +103,34 @@
         <a class="button flex-space-between">Normal</a>
       </div>
     </footer>
-    
+
     <scripts>
-    <script src="/src/js/offline.js" defer></script>
-    <script src="/src/js/load-scripts.js" defer></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  </scripts>
-  <autoscripts>
-    <script src="https://pingobras.glitch.me/src/js/ip-info.js" defer></script>
-    <script src="https://pingobras.glitch.me/src/js/load-scripts.js" defer></script>   
-  </autoscripts>
+      <script src="/src/js/offline.js" defer></script>
+      <script src="/src/js/load-scripts.js" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+    </scripts>
+    <autoscripts>
+      <script
+        src="https://pingobras.glitch.me/src/js/ip-info.js"
+        defer
+      ></script>
+      <script
+        src="https://pingobras.glitch.me/src/js/load-scripts.js"
+        defer
+      ></script>
+    </autoscripts>
     <host>
-    <script src="https://pingobras.glitch.me/src/js/load-host.js" defer></script>
+      <script
+        src="https://pingobras.glitch.me/src/js/load-host.js"
+        defer
+      ></script>
     </host>
   </body>
 </html>

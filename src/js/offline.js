@@ -1,4 +1,5 @@
 (() => {
+  const body = document.querySelector("body");
   const url = "https://pingobras-sg.glitch.me/status";
   const options = {
     method: "GET",
@@ -7,11 +8,15 @@
       "content-type": "application/json;charset=utf-8",
     },
   };
+  
+  body.style.cursor = "wait";
   fetch(url, options)
     .then((response) => {
       if (response.status == 200) {
+        body.style.cursor = "default";
         redirectOffline(false);
       } else {
+        console.log("SERVER STATUS OFFLINE");
         redirectOffline(true);
       }
     })

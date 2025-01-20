@@ -5,7 +5,8 @@
     "manutencao-redirect",
     "functions",
     "offline",
-    "message"
+    "message",
+    "config"
   ];
 
   for (let i = 0; i < srcsUser.length; i++) {

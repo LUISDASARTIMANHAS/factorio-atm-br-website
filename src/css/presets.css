@@ -46,10 +46,11 @@ main {
 }
 
 tela {
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  margin: 50px auto;
-  display: block;
   padding: 15px;
+  gap: 15px;
   padding-top: 15px;
   justify-content: center;
   align-items: center;
@@ -61,11 +62,15 @@ tela {
   background-color: #313031;
   border-image: url(https://cdn.glitch.global/59df7246-3def-4799-baad-d67e2fa48607/background_painel.png?v=background_painel)
     8/4px repeat;
+      margin-top: 50px;
+    margin-bottom: 50px;
 }
 subtela {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
   align-items: center;
   overflow: hidden;
@@ -76,9 +81,22 @@ subtela {
   border-image-outset: 4px;
   background-color: #242324;
   padding: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   box-shadow: 0px 0px 3px 0px #201815;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 7px solid white;
+  font-size: 18px;
+  width: 100%;
+}
+
 
 input {
   vertical-align: baseline;
@@ -110,6 +128,10 @@ input:focus {
 input:valid {
   color: green;
   border-bottom: 3px solid green;
+}
+
+p{
+  margin: 10px
 }
 
 .loading .roda {
@@ -265,6 +287,10 @@ select {
   }
 }
 
+.mod-toolkit{
+ text-transform: lowercase; 
+}
+
 .discord-blue {
   width: 224px;
   padding-top: 0;
@@ -283,7 +309,7 @@ select {
 }
 
 .new-h1.font-white {
-  color: #ffFFFf;
+  color: #ffffff;
   margin-bottom: 24px;
   font-family: "Abcgintonord 800", sans-serif;
   font-size: 50px;
@@ -300,19 +326,42 @@ select {
 }
 
 .paragraph-20px-white-height.max-780px {
-    max-width: 780px;
-    margin: 0 auto;
-    line-height: 1.625;
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.625;
 }
 
 .paragraph-20px-white-height {
-    text-align: center;
-    margin-top: 24px;
-    margin-bottom: 8px;
-    font-size: 20px;
-    line-height: 24px;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 24px;
 }
-iframe{
+iframe {
   width: 100%;
   min-height: 420px;
+  margin: 10px;
+}
+
+a.download {
+  display: inline-flex;
+  flex-flow: column;
+  justify-content: center;
+  font-size: 17px;
+  vertical-align: baseline;
+  padding: 10px 12px 10px 12px;
+  min-width: 52px;
+  height: 52px;
+  text-align: center;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  margin-left: 8px;
+}
+
+a.download i {
+  font-size: 32px;
+  vertical-align: middle;
+  font-weight: normal;
+  margin-right: 4px;
 }
