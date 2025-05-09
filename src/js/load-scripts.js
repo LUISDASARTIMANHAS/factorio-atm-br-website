@@ -6,7 +6,8 @@
     "functions",
     "offline",
     "message",
-    "config"
+    "config",
+    "ip-info"
   ];
 
   for (let i = 0; i < srcsUser.length; i++) {

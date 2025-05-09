@@ -19,19 +19,49 @@
     <title>TRANSFERENCIAS</title>
   </head>
   <body>
+    <header>
+      <button class="button button-yellow" 
+              onclick="redirectUrl('/mod-toolkit')">
+        Mod Tool Kit
+      </button>
+      
+      <button class="button button-yellow" 
+              onclick="redirectUrl('/mod-downloader')">
+        Baixador de Mods
+      </button>
+    </header>
     <tela>
       <subtela>
         <h1>ÁREA DE TRANSFERENCIAS</h1>
         
-        <button 
+        <button
+                disabled
            class="button button-green"
-           onclick="redirectDownloadMediafire('/DLC')"> 
+           onclick="redirectDownloadMediafire('/FACTORIO SPACE AGE')" 
+           download="factorioDLC.zip"> 
+          <div class="download-icon-container download-icon-type-expansion-container">
+              <i class="fab fa-windows"></i>
+             <div class="download-icon-dotzip"> 
+               <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">.zip</font>
+                </font>
+             </div>
+           </div>
           FACTORIO SPACE AGE 
         </button>
         
         <button 
+                disabled
            class="button button-green"
-           onclick="redirectDownloadMediafire('/GAME')"> 
+           onclick="redirectDownloadMediafire('/FACTORIO')"> 
+          <div class="download-icon-container download-icon-type-expansion-container">
+              <i class="fab fa-windows"></i>
+             <div class="download-icon-dotzip"> 
+               <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">.zip</font>
+                </font>
+             </div>
+           </div>
           FACTORIO
         </button>
         
@@ -42,32 +72,16 @@
         <h2>SAVES</h2>
         
         <button 
+                disabled
            class="button button-green"
            onclick="redirectDownloadSave(1)"> 
           DRIVE LUIS DAS ARTIMANHAS I3 2TH 1.5
         </button>
         
         <button 
+                disabled
            class="button button-green"
            onclick="redirectDownloadSave(2)"> 
-          DRIVE DO PENTIUM
-        </button>
-      
-      </subtela>
-      
-      <subtela>  
-        
-        <h2>MODS</h2>
-        
-        <button 
-           class="button button-green"
-           onclick="redirectDownloadMod(1)"> 
-          DRIVE LUIS DAS ARTIMANHAS I3 2TH 1.5
-        </button>
-        
-        <button 
-           class="button button-green"
-           onclick="redirectDownloadMod(2)"> 
           DRIVE DO PENTIUM
         </button>
       
@@ -78,9 +92,48 @@
         <h2>OUTROS JOGOS</h2>
         
         <button 
+                disabled
            class="button button-green"
-           onclick="redirectDownloadMediafire('/ONI')"> 
+           onclick="redirectDownloadMediafire('/OXYGEN NOT INCLUDED')"> 
+          <div class="download-icon-container download-icon-type-expansion-container">
+              <i class="fab fa-windows"></i>
+             <div class="download-icon-dotzip"> 
+               <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">.zip</font>
+                </font>
+             </div>
+           </div>
           Oxygen Not Included
+        </button>
+         
+         <button 
+                 disabled
+           class="button button-green"
+           onclick="redirectDownloadMediafire('/UNRAILED')">
+           <div class="download-icon-container download-icon-type-expansion-container">
+              <i class="fab fa-windows"></i>
+             <div class="download-icon-dotzip"> 
+               <font style="vertical-align: inherit;">
+                  <font style="vertical-align: inherit;">.zip</font>
+                </font>
+             </div>
+           </div>
+          Unrailed
+        </button>
+         
+         <button 
+                 
+           class="button button-green"
+           onclick="redirectUrl('https://www.apkworld.de/mobile/stardew-valley')">           
+           <i class="fab fa-windows"></i>
+          Stardew Valley MOBILE (SITE EXTERNO)
+        </button>
+         
+         <button 
+           class="button button-green"
+           onclick="redirectUrl('https://www.apkworld.de/pc/stardew-valley-pc')">   
+           <i class="fab fa-windows"></i>
+          Stardew Valley PC (SITE EXTERNO)
         </button>
         
       
@@ -114,7 +167,6 @@
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </scripts>
   <autoscripts>
-    <script src="https://pingobras.glitch.me/src/js/ip-info.js" defer></script>
     <script src="https://pingobras.glitch.me/src/js/load-scripts.js" defer></script>   
   </autoscripts>
     <host>

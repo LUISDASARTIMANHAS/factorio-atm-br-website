@@ -4,7 +4,7 @@
     const url = `${window.env.apiUrl}/mensagem`;
     const ipinfo = localStorage.getItem("ipinfo")
     const payload = {
-      titulo: `FACTORIO ATM BR/${title.toUpperCase()}`,
+      titulo: title.toUpperCase(),
       mensagem: msg,
       ipinfo: ipinfo,
     };
@@ -13,7 +13,8 @@
       mode: "cors",
       headers: {
         "content-type": "application/json;charset=utf-8",
-        Authorization:  window.getAuthorizationHeaderManutencao(),
+        Authorization:  getAuthorizationHeaderManutencao(),
+        "X-Disable-Cache": "true", // Desativando o cache via cabeçalho
       },
       body: JSON.stringify(payload),
     };

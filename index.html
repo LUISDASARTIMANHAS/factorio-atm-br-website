@@ -33,11 +33,6 @@
   </head>
   <body>
     <header>
-      <button class="button button-yellow" 
-              onclick="redirectUrl('/mod-toolkit')">
-        Mod Tool Kit
-      </button>
-      
       <button
         class="button flex-space-between"
         onclick="window.open('/discord')"
@@ -45,8 +40,7 @@
         Discord
       </button>
 
-      <button class="button button-yellow" 
-              onclick="redirectUrl('/login')">
+      <button class="button button-yellow" onclick="redirectUrl('/login')">
         Login
       </button>
 
@@ -60,7 +54,12 @@
       <button class="button button-yellow" onclick="redirectUrl('/upload')">
         Upload (Saves, Mods)
       </button>
+      
+      <button class="button flex-space-between" onclick="redirectUrl('/contato')">
+        Contato
+      </button>
     </header>
+
     <section class="control-container">
       <div class="control-item">
         <label for="mods">ALL THE MODS TRANSLATED BR</label>
@@ -81,8 +80,8 @@
         >
           <p>Your browser does not support iframes.</p>
         </iframe>
-        
-        <h2> Outros Mods!</h2>
+
+        <!--         <h2>Outros Mods!</h2>
         <iframe
           src="https://mods.factorio.com/mod/Quantum-Teleporter"
           allowtransparency="true"
@@ -90,7 +89,66 @@
           sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
         >
           <p>Your browser does not support iframes.</p>
-        </iframe>
+        </iframe> -->
+      </div>
+
+      <h2>Recomendados:</h2>
+
+      <div class="videos-container">
+        <div class="video-item">
+          <a
+            href="https://www.youtube.com/@promptdark"
+            target="_blank"
+            class="channel-link"
+          >
+            🔗 Acesse o canal do Prompt Dark
+          </a>
+          <iframe
+            width="300"
+            height="169"
+            src="https://www.youtube.com/embed/vupx0LN66RI"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="video-item">
+          <a
+            href="https://www.youtube.com/@FactorioBrasil"
+            target="_blank"
+            class="channel-link"
+          >
+            🔗 Acesse o canal do Factorio Brasil
+          </a>
+          <iframe
+            width="300"
+            height="169"
+            src="https://www.youtube.com/embed/-GyAfWIYcx0"
+            frameborder="0"
+            muted
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="video-item">
+          <a
+            href="https://www.youtube.com/@nytromancegames"
+            target="_blank"
+            class="channel-link"
+          >
+            🔗 Acesse o canal do NYTROMANCE GAMES
+          </a>
+          <iframe
+            width="300"
+            height="169"
+            src="https://www.youtube.com/embed/lIl3VtWp9C8?si=WKkKXl_uikp4bWc0"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </section>
 
@@ -101,6 +159,13 @@
         <a class="button button-yellow">Prioridade</a>
         <a class="button button-green">Disponível </a>
         <a class="button flex-space-between">Normal</a>
+        <p>
+          Copyright © 2015 -
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Wube Software &amp Luis Das Artimanhas - all rights reserved.
+        </p>
       </div>
     </footer>
 
@@ -117,10 +182,6 @@
       ></script>
     </scripts>
     <autoscripts>
-      <script
-        src="https://pingobras.glitch.me/src/js/ip-info.js"
-        defer
-      ></script>
       <script
         src="https://pingobras.glitch.me/src/js/load-scripts.js"
         defer

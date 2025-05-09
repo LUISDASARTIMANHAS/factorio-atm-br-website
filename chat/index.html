@@ -1,8 +1,6 @@
-<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="Refresh" content="60" />
     <meta name="viewport" content="width=device-width, initial-scale=0.7" />
 
     <link
@@ -16,43 +14,44 @@
     />
     <link rel="stylesheet" href="/src/css/style.css" />
     <link rel="stylesheet" href="/src/css/presets.css" />
+    <link rel="stylesheet" href="/chat/chat.css" />
 
-    <title>PINGOBRAS FACTORIO MOD CREATOR</title>
+
+    <title>FACTORIO ATM TRANSLATED BR CHAT</title>
   </head>
   <body>
     <header>
-        <button 
-           class="button flex flex-space-between" 
-           onclick="redirectUrl('/mod-toolkit/user=configs.html')">
-          Configurações do usuário 
-        </button>
-        <a class="button flex flex-space-between" 
-           href="https://github.com/LUISDASARTIMANHAS/factorio-dev-wiki/wiki/Factorio-Dev-Wiki">
-          Factorio Wiki Dev
-        </a>
-        <a class="button button-green" 
-           href="https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir">
-          Factorio Wiki Oficial
-        </a>
+
+      <button
+        class="button flex-space-between"
+        onclick="redirectUrl('/')"
+      >
+        Voltar
+      </button>
     </header>
-    
-    <a class="button flex flex-space-between" 
-       href="criar-info-json.html">
-      Criar novo info.json
-    </a>
-    
-    <a class="button flex flex-space-between" 
-       href="criar-item.html">
-      Criar novo item
-    </a>
-    
-    <a class="button flex flex-space-between" 
-       href="criar-receita.html">
-      Criar nova receita
-    </a>
-    
-    
-     <footer>
+    <main>
+        
+      <h1>ALPHA TEST</h1>
+      <tela class="chat-container">  
+        <subtela class="select-chat">
+            <h2>Usuários Online</h2>
+            <ul id="user-list">
+                <li onclick="selectUser('Chat Geral')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4083/4083225.png" alt="Chat Geral">
+                    Chat Geral
+                </li>
+            </ul>
+        </subtela>
+        <subtela class="chat">      
+          <div class="chat-header">
+                <h3 id="chat-title">Chat Geral</h3>
+          </div>
+          <div id="chat-messages" class="chat-messages"></div>
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+        </subtela>
+      </tela>
+    </main>
+    <footer>
       <div>
         <p class="p-title">Legenda:</p>
         <a class="button button-red">Indisponivel</a>
@@ -73,12 +72,9 @@
         nomodule
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
       ></script>
+       <script src="/chat/chat.js" defer></script>
     </scripts>
     <autoscripts>
-      <script
-        src="https://pingobras.glitch.me/src/js/load-scripts.js"
-        defer
-      ></script>
     </autoscripts>
     <host>
       <script

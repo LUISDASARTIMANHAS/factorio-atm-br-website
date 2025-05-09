@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Mods do Factorio</title>
+    <link
+      rel="stylesheet"
+      href="/mod-downloader/style.css"
+    />
+</head>
+<body>
+
+<div class="container">
+    <h1>Pesquisa de Mods do Factorio</h1>
+
+    <div>
+        <input type="text" id="searchInput" placeholder="Pesquisar por nome de mod..." />
+        <button onclick="searchMods()">Pesquisar</button>
+        <button onclick="loadMods()">Carregar Todos os Mods</button>
+    </div>
+
+    <div id="modList" class="mod-list"></div>
+</div>
+
+<script src="./mod-downloader/download.js"></script>
+
+</body>
+</html>
