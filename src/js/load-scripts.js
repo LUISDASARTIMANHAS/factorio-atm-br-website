@@ -1,6 +1,6 @@
 (() => {
   const autoscripts = document.querySelector("autoscripts");
-  const fonteUser = "/src/js/";
+  const fonteUser = "./src/js/";
   const srcsUser = [
     "manutencao-redirect",
     "functions",
