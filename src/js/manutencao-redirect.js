@@ -19,8 +19,6 @@
       }
     })
     .then((data) => {
-      console.log("DATA RESPONSE: ");
-      console.log(data);
       redirectManutencao(data);
     })
     .catch((error) => {
@@ -45,5 +43,5 @@
       }, 3000);
     }
   }
-  // redirectManutencao(true);
+  redirectManutencao(true);
 })();

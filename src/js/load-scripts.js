@@ -14,6 +14,6 @@
     newScript.setAttribute("src", fonteUser + srcsUser[i] + ".js");
     autoscripts.appendChild(newScript);
 
-    console.log(" Novo Script Num: " + srcsUser[i]);
+    console.log(`%c [SISTEMA ATM BR]: Novo script: ${srcsHost[i]}`,"#ffaa00")
   }
 })();
