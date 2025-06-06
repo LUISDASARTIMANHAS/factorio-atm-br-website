@@ -1,5 +1,5 @@
 (() => {
-  const url = "https://pingobras-sg.glitch.me/status";
+  const url = `${window.env.apiUrl}/status`;
   const options = {
     method: "GET",
     mode: "cors",
@@ -30,7 +30,7 @@
       }
 
       setTimeout(() => {
-        window.location.href = "/sys/offline.html";
+        window.location.href = "./sys/offline.html";
       }, 5000);
     }
   }

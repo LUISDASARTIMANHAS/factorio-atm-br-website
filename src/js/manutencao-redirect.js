@@ -1,5 +1,6 @@
-(() => {
-  const url = "https://pingobras-sg.glitch.me/api/manutencao";
+import config from './config.js';
+window.addEventListener("load", () => {
+  const url = `${config.apiUrl}/manutencao`;
   const options = {
     method: "GET",
     mode: "cors",
@@ -39,7 +40,7 @@
       }
 
       setTimeout(() => {
-        window.location.href = "/sys/manutencao.html";
+        window.location.href = "./sys/manutencao.html";
       }, 3000);
     }
   }
