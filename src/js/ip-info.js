@@ -27,6 +27,6 @@ window.addEventListener("load", () => {
 
       })
       .catch((error) => {
-        console.debug(`%c [SISTEMA] ${error}`, "color: #ff0000");
+        console.debug(`%c [SISTEMA IP] ${error}`, "color: #ff0000");
       });
-})();
+});

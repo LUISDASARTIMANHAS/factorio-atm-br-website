@@ -2,9 +2,7 @@
   const autoscripts = document.querySelector("autoscripts");
   const fonteUser = "./src/js/";
   const src = [
-    "config",
     "manutencao-redirect",
-    "functions",
     "offline",
     "message",
     "ip-info"
