@@ -5,7 +5,8 @@
     "manutencao-redirect",
     "offline",
     "message",
-    "ip-info"
+    "ip-info",
+    "functions",
   ];
 
   for (let i = 0; i < src.length; i++) {
