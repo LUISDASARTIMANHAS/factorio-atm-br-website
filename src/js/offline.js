@@ -1,7 +1,7 @@
 import config from "./config.js";
 (() => {
   try {
-    const url = `${config.apiUrl}/status`;
+    const url = `${config.serverUrl}/status`;
     const options = {
       method: "GET",
       mode: "cors",

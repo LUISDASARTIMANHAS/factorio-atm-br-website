@@ -1,0 +1,44 @@
+.title-login {
+  width: 100%;
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-style: italic;
+  text-shadow: rgb(255, 255, 255) 0px 0px 2px, rgb(255, 255, 255) 0px 0px 4px,
+    rgb(255, 255, 255) 0px 0px 6px, rgb(255 239 119) 0px 0px 8px,
+    rgb(255 238 0) 0px 0px 12px, rgb(255 167 0) 0px 0px 16px,
+    rgb(255 179 0) 0px 0px 20px, rgb(255 143 0) 0px 0px 24px;
+  border-bottom: 3px solid orange;
+  margin: 10px;
+}
+.input-login {
+  margin: 10px auto;
+  min-width: 50%;
+  width: 70%;
+  padding: 10px;
+  border-bottom: 3px solid purple;
+  border-top: 3px solid blue;
+  outline: none;
+  font-size: 12px;
+  transition: all 0.3s ease-out;
+  border-radius: 25px;
+  text-align: center;
+}
+.input-login:focus {
+  border-bottom: 3px solid orange;
+  font-size: 18px;
+}
+.input-login:valid {
+  color: green;
+  border-bottom: 3px solid green;
+}
+
+form label {
+  color: red;
+  cursor: help;
+  transition: all 0.3s ease-out;
+  display: block;
+  text-decoration: underline;
+  font-size: 18px;
+}
+p {
+  margin: 5px;
+}

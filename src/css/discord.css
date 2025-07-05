@@ -1,0 +1,48 @@
+
+.paragraph-20px-white-height.max-780px {
+  max-width: 780px;
+  margin: 0 auto;
+  line-height: 1.625;
+}
+
+.paragraph-20px-white-height {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.discord-blue {
+  width: 224px;
+  padding-top: 0;
+}
+
+.new-h1.font-white.is-text-center.left-mobile.home {
+  font-family: "Abcgintonord 800", sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.new-h1.font-white.is-text-center {
+  text-align: center;
+  font-family: "Abcgintonord 800", sans-serif;
+  font-weight: 800;
+}
+
+.new-h1.font-white {
+  color: #ffffff;
+  margin-bottom: 24px;
+  font-family: "Abcgintonord 800", sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.new-h1 {
+  color: var(--not-quite-black);
+  text-transform: uppercase;
+  font-family: "Abcgintonord 800", sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 100%;
+}

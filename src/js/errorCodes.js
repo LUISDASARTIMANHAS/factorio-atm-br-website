@@ -1,6 +1,6 @@
 const codeLabel = document.getElementById("codeError");
 const body = document.querySelector("html");
-const code = 701;
+const code = 501;
 
 if (code == 404) {
   codeLabel.innerHTML = "404 NOT_FOUND";

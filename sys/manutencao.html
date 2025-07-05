@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <!-- <meta http-equiv="Refresh" content="120"> -->
+    <meta http-equiv="Refresh" content="120">
 
     <link
       rel="icon"
-      href="./../src/assets/logo.png"
+      href="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
     />
     <seo>
       <meta name="robots" content="index,follow" />
@@ -26,7 +26,7 @@
       />
       <meta
         property="og:image"
-        content="./src/assets/404.jpeg"
+        content="https://cdn.glitch.global/5817ad45-950e-4225-9b84-8f4348004350/404.jpeg?v=1644163589896"
       />
       <meta name="twitter:card" content="summary" />
     </seo>
@@ -38,9 +38,9 @@
         font-family: Arial, sans-serif;
         background-image: URL("https://cdn.factorio.com/assets/img/artwork/factorio-cover.png") ;
         background-repeat: no-repeat;
-        background-attachment: fixed;
         background-size: cover;
-        animation: gradientAnimation 5s ease infinite;
+/*         animation: gradientAnimation 7s ease-in-out infinite; */
+        background-position: center;
         color: #ffffff;
         display: flex;
         justify-content: center;
@@ -48,17 +48,33 @@
         height: 100vh;
       }
 
-      @keyframes gradientAnimation {
+/*       @keyframes gradientAnimation {
         0% {
-          background-position: 0% 50%;
+          background-position: top;
+        }
+        25% {
+          background-position: center;
         }
         50% {
-          background-position: 100% 50%;
+          background-position: bottom;
+        }
+        75% {
+          background-position: center;
         }
         100% {
-          background-position: 0% 50%;
+          background-position: top;
         }
-      }
+      } */
+      
+/*       @keyframes gradientAnimation {
+       from {
+          background-position: top;
+        }
+        
+        to{
+          background-position: bottom;
+        }
+      } */
 
       .container {
         text-align: center;

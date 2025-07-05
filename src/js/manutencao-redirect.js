@@ -1,7 +1,7 @@
 import config from "./config.js";
 window.addEventListener("load", () => {
   try {
-    const url = `${config.apiUrl}/manutencao`;
+    const url = `${config.serverUrl}/manutencao`;
     const options = {
       method: "GET",
       mode: "cors",
@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
         }, 3000);
       }
     }
-    redirectManutencao(true);
+    redirectManutencao(false);
   } catch (error) {
     alert(`ERRO FATAL: ${error}`);
   }

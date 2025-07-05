@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Refresh" content="120" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+
+    <link
+      href="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.factorio.com/assets/fonts/titillium-web.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.factorio.com/assets/vendor/fontawesome/css/all.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://www.factorio.com/static/css/main.css?v=a67ff980"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="/src/css/presets.css" />
+
+    <title>TRANSFERENCIAS</title>
+  </head>
+  <body>
+    <header>
+      <button
+        class="button button-yellow"
+        onclick="redirectUrl('/mod-toolkit')"
+      >
+        Mod Tool Kit
+      </button>
+
+      <button
+        class="button button-yellow"
+        onclick="redirectUrl('/mod-downloader')"
+      >
+        Baixador de Mods
+      </button>
+    </header>
+    <tela>
+      <subtela>
+        <h1>ÁREA DE TRANSFERENCIAS</h1>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadMediafire('/FACTORIO SPACE AGE')"
+          download="factorioDLC.zip"
+        >
+          <div
+            class="download-icon-container download-icon-type-expansion-container"
+          >
+            <i class="fab fa-windows"></i>
+            <div class="download-icon-dotzip">
+              <font style="vertical-align: inherit">
+                <font style="vertical-align: inherit">.zip</font>
+              </font>
+            </div>
+          </div>
+          FACTORIO SPACE AGE
+        </button>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadMediafire('/FACTORIO')"
+        >
+          <div
+            class="download-icon-container download-icon-type-expansion-container"
+          >
+            <i class="fab fa-windows"></i>
+            <div class="download-icon-dotzip">
+              <font style="vertical-align: inherit">
+                <font style="vertical-align: inherit">.zip</font>
+              </font>
+            </div>
+          </div>
+          FACTORIO
+        </button>
+      </subtela>
+
+      <subtela>
+        <h2>SAVES</h2>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadSave(1)"
+        >
+          DRIVE LUIS DAS ARTIMANHAS I3 2TH 1.5
+        </button>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadSave(2)"
+        >
+          DRIVE DO PENTIUM
+        </button>
+      </subtela>
+
+      <subtela>
+        <h2>OUTROS JOGOS</h2>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadMediafire('/OXYGEN NOT INCLUDED')"
+        >
+          <div
+            class="download-icon-container download-icon-type-expansion-container"
+          >
+            <i class="fab fa-windows"></i>
+            <div class="download-icon-dotzip">
+              <font style="vertical-align: inherit">
+                <font style="vertical-align: inherit">.zip</font>
+              </font>
+            </div>
+          </div>
+          Oxygen Not Included
+        </button>
+
+        <button
+          disabled
+          class="button button-green"
+          onclick="redirectDownloadMediafire('/UNRAILED')"
+        >
+          <div
+            class="download-icon-container download-icon-type-expansion-container"
+          >
+            <i class="fab fa-windows"></i>
+            <div class="download-icon-dotzip">
+              <font style="vertical-align: inherit">
+                <font style="vertical-align: inherit">.zip</font>
+              </font>
+            </div>
+          </div>
+          Unrailed
+        </button>
+
+        <button
+          class="button button-green"
+          onclick="redirectUrl('https://www.apkworld.de/mobile/stardew-valley')"
+        >
+          <i class="fab fa-windows"></i>
+          Stardew Valley MOBILE (SITE EXTERNO)
+        </button>
+
+        <button
+          class="button button-green"
+          onclick="redirectUrl('https://www.apkworld.de/pc/stardew-valley-pc')"
+        >
+          <i class="fab fa-windows"></i>
+          Stardew Valley PC (SITE EXTERNO)
+        </button>
+      </subtela>
+
+      <button class="button flex-space-between" onclick="redirectUrl('/')">
+        Home
+      </button>
+    </tela>
+
+    <footer>
+      <div>
+        <p class="p-title">Legenda:</p>
+        <a class="button button-red">Indisponivel</a>
+        <a class="button button-yellow">Prioridade</a>
+        <a class="button button-green">Disponível </a>
+        <a class="button flex-space-between">Normal</a>
+      </div>
+    </footer>
+
+    <scripts>
+      <script src="/downloads/downloads.js" type="module" defer></script>
+      <script src="/src/js/offline.js" type="module"  defer></script>
+      <script src="/src/js/load-scripts.js" type="module" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+    </scripts>
+    <autoscripts>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-scripts.js"
+        defer
+      ></script>
+    </autoscripts>
+    <host>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-host.js"
+        defer
+      ></script>
+    </host>
+  </body>
+</html>

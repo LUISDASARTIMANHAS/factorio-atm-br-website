@@ -1,0 +1,36 @@
+/* Main */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  flex-direction: column;
+  align-content: center;
+}
+
+.chat-container {
+  position: relative;
+  display: flex;
+  min-width: 75%;
+  width: 100%;
+  min-height: 75%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.select-chat {
+  min-width: 25%;
+  min-height: 100%;
+  height: 100%;
+}
+
+.chat {
+  min-width: 75%;
+  min-height: 100%;
+  height: 100%;
+}

@@ -1,0 +1,86 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+
+    <link
+      href="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.factorio.com/static/css/main.css?v=87e4eb56"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="/src/css/presets.css" />
+    <link rel="stylesheet" href="/chat/chat.css" />
+
+
+    <title>FACTORIO ATM TRANSLATED BR CHAT</title>
+  </head>
+  <body>
+    <header>
+
+      <button
+        class="button flex-space-between"
+        onclick="redirectUrl('/')"
+      >
+        Voltar
+      </button>
+    </header>
+    <main>
+        
+      <h1>ALPHA TEST</h1>
+      <tela class="chat-container">  
+        <subtela class="select-chat">
+            <h2>Usuários Online</h2>
+            <ul id="user-list">
+                <li onclick="selectUser('Chat Geral')">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4083/4083225.png" alt="Chat Geral">
+                    Chat Geral
+                </li>
+            </ul>
+        </subtela>
+        <subtela class="chat">      
+          <div class="chat-header">
+                <h3 id="chat-title">Chat Geral</h3>
+          </div>
+          <div id="chat-messages" class="chat-messages"></div>
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+        </subtela>
+      </tela>
+    </main>
+    <footer>
+      <div>
+        <p class="p-title">Legenda:</p>
+        <a class="button button-red">Indisponivel</a>
+        <a class="button button-yellow">Prioridade</a>
+        <a class="button button-green">Disponível </a>
+        <a class="button flex-space-between">Normal</a>
+      </div>
+    </footer>
+
+    <scripts>
+      <script src="/src/js/offline.js" defer></script>
+      <script src="/src/js/load-scripts.js" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+       <script src="/chat/chat.js" defer></script>
+    </scripts>
+    <autoscripts>
+    </autoscripts>
+    <host>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-host.js"
+        defer
+      ></script>
+    </host>
+  </body>
+</html>

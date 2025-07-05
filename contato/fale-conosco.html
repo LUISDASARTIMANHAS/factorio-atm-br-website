@@ -1,0 +1,121 @@
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Refresh" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+
+    <link
+      href="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.factorio.com/static/css/main.css?v=87e4eb56"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="/src/css/presets.css" />
+
+    <seo>
+      <meta name="robots" content="index,follow" />
+      <meta
+        property="og:title"
+        content="Fale Conosco | FACTORIO ATM TRANSLATED BR"
+      />
+      <meta property="og:type" content="contact" />
+      <meta
+        property="og:url"
+        content="https://factorio-atm-br.glitch.me/contato/fale-conosco.html"
+      />
+      <meta
+        property="og:description"
+        content="Fale Conosco | FACTORIO ATM TRANSLATED BR"
+      />
+      <meta
+        property="og:image"
+        content="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
+      />
+      <meta name="twitter:card" content="summary" />
+    </seo>
+
+    <title>FACTORIO ATM TRANSLATED BR</title>
+  </head>
+  <body>
+    <header>
+      <button class="button button-yellow" onclick="redirectUrl('/contato')">
+        Voltar
+      </button>
+    </header>
+
+    <tela>
+      <h2>Fale Conosco</h2>
+      <subtela>
+        <form id="form">
+          <p vermelho>indica campos obrigatórios (*)</p>
+          
+          <label required for="email">Email para retorno</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Insira o seu e-mail"
+            required
+          />
+          
+          <label required for="select">Selecione o tipo do contato</label>
+          <select required name="select">
+            <option value="default">Selecione uma opçao</option>
+            <option value="sugetao">Sugestão</option>
+            <option value="geral">Geral</option>
+            <option value="bug">Bug</option>
+            <option value="remocao">Remoçao de Conteudo</option>
+          </select>
+
+          <button class="button button-green" type="submit">Enviar</button>
+        </form>
+      </subtela>
+    </tela>
+
+    <footer>
+      <div>
+        <p class="p-title">Legenda:</p>
+        <a class="button button-red">Indisponivel</a>
+        <a class="button button-yellow">Prioridade</a>
+        <a class="button button-green">Disponível </a>
+        <a class="button flex-space-between">Normal</a>
+        <p>
+          Copyright © 2015 -
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Wube Software &amp Luis Das Artimanhas - all rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <scripts>
+      <script src="/src/js/offline.js" defer></script>
+      <script src="/src/js/load-scripts.js" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+    </scripts>
+    <autoscripts>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-scripts.js"
+        defer
+      ></script>
+    </autoscripts>
+    <host>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-host.js"
+        defer
+      ></script>
+    </host>
+  </body>
+</html>

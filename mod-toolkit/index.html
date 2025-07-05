@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Refresh" content="60" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+
+    <link
+      href="https://assets-mod.factorio.com/assets/086afd2a3fc08b60e4af3a054500f64f278a6946.png"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://www.factorio.com/static/css/main.css?v=87e4eb56"
+    />
+    <link rel="stylesheet" href="/src/css/style.css" />
+    <link rel="stylesheet" href="/src/css/presets.css" />
+
+    <title>PINGOBRAS FACTORIO MOD CREATOR</title>
+  </head>
+  <body>
+    <header>
+        <button 
+           class="button flex flex-space-between" 
+           onclick="redirectUrl('/mod-toolkit/user=configs.html')">
+          Configurações do usuário 
+        </button>
+        <a class="button flex flex-space-between" 
+           href="https://github.com/LUISDASARTIMANHAS/factorio-dev-wiki/wiki/Factorio-Dev-Wiki">
+          Factorio Wiki Dev
+        </a>
+        <a class="button button-green" 
+           href="https://wiki.factorio.com/Tutorial:Modding_tutorial/Gangsir">
+          Factorio Wiki Oficial
+        </a>
+    </header>
+    
+    <a class="button flex flex-space-between" 
+       href="criar-info-json.html">
+      Criar novo info.json
+    </a>
+    
+    <a class="button flex flex-space-between" 
+       href="criar-item.html">
+      Criar novo item
+    </a>
+    
+    <a class="button flex flex-space-between" 
+       href="criar-receita.html">
+      Criar nova receita
+    </a>
+    
+    
+     <footer>
+      <div>
+        <p class="p-title">Legenda:</p>
+        <a class="button button-red">Indisponivel</a>
+        <a class="button button-yellow">Prioridade</a>
+        <a class="button button-green">Disponível </a>
+        <a class="button flex-space-between">Normal</a>
+      </div>
+    </footer>
+
+    <scripts>
+      <script src="/src/js/offline.js" defer></script>
+      <script src="/src/js/load-scripts.js" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+    </scripts>
+    <autoscripts>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-scripts.js"
+        defer
+      ></script>
+    </autoscripts>
+    <host>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-host.js"
+        defer
+      ></script>
+    </host>
+  </body>
+</html>
