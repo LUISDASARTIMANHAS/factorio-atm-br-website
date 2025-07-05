@@ -1,4 +1,4 @@
-import config from "https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/config.js";
+import config from "../src/js/config.js";
 export async function redirectDownloadMediafire(type) {
   const url = `${config.apiUrl}/download/mediafire/${type}`;
   const id = Math.floor(Math.random() * 20242002);
