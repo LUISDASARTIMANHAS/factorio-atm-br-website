@@ -1,6 +1,6 @@
 (() => {
   const autoscripts = document.querySelector("autoscripts");
-  const fonteUser = "./src/js/";
+  const fonteUser = "https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/";
   const src = [
     "manutencao-redirect",
     "offline",
