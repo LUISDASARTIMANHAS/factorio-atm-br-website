@@ -50,9 +50,9 @@
         <h1>ÁREA DE TRANSFERENCIAS</h1>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadMediafire('/FACTORIO SPACE AGE')"
+          data-action="redirectDownloadMediafire"
+          data-arg="/FACTORIO SPACE AGE"
           download="factorioDLC.zip"
         >
           <div
@@ -69,9 +69,8 @@
         </button>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadMediafire('/FACTORIO')"
+          data-action="redirectDownloadMediafire" data-arg="/FACTORIO"
         >
           <div
             class="download-icon-container download-icon-type-expansion-container"
@@ -91,17 +90,17 @@
         <h2>SAVES</h2>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadSave(1)"
+          data-action="redirectDownloadSave"
+          data-arg="1"
         >
           DRIVE LUIS DAS ARTIMANHAS I3 2TH 1.5
         </button>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadSave(2)"
+          data-action="redirectDownloadSave"
+          data-arg="2"
         >
           DRIVE DO PENTIUM
         </button>
@@ -111,9 +110,8 @@
         <h2>OUTROS JOGOS</h2>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadMediafire('/OXYGEN NOT INCLUDED')"
+          data-action="redirectDownloadMediafire" data-arg="/OXYGEN NOT INCLUDED"
         >
           <div
             class="download-icon-container download-icon-type-expansion-container"
@@ -129,9 +127,8 @@
         </button>
 
         <button
-          disabled
           class="button button-green"
-          onclick="redirectDownloadMediafire('/UNRAILED')"
+          data-action="redirectDownloadMediafire" data-arg="/UNRAILED"
         >
           <div
             class="download-icon-container download-icon-type-expansion-container"
@@ -180,7 +177,7 @@
 
     <scripts>
       <script src="/downloads/downloads.js" type="module" defer></script>
-      <script src="/src/js/offline.js" type="module"  defer></script>
+      <script src="/src/js/offline.js" type="module" defer></script>
       <script src="/src/js/load-scripts.js" type="module" defer></script>
       <script
         type="module"
@@ -193,13 +190,13 @@
     </scripts>
     <autoscripts>
       <script
-        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-scripts.js"
+        src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-scripts.js"
         defer
       ></script>
     </autoscripts>
     <host>
       <script
-        src="https://luisdasartimanhas.github.io/PINGOBRAS//src/js/load-host.js"
+        src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-host.js"
         defer
       ></script>
     </host>
