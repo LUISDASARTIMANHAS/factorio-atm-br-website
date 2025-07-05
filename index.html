@@ -35,27 +35,27 @@
     <header>
       <button
         class="button flex-space-between"
-        onclick="window.open('/discord')"
+        onclick="window.open('./discord')"
       >
         Discord
       </button>
 
-      <button class="button button-yellow" onclick="redirectUrl('/login')">
+      <button class="button button-yellow" onclick="redirectUrl('./login')">
         Login
       </button>
 
       <button
         class="button flex-space-between"
-        onclick="redirectUrl('/downloads')"
+        onclick="redirectUrl('./downloads')"
       >
         Transferencias (Factorio, DLCs, MODS)
       </button>
 
-      <button class="button button-yellow" onclick="redirectUrl('/upload')">
+      <button class="button button-yellow" onclick="redirectUrl('./upload')">
         Upload (Saves, Mods)
       </button>
       
-      <button class="button flex-space-between" onclick="redirectUrl('/contato')">
+      <button class="button flex-space-between" onclick="redirectUrl('./contato')">
         Contato
       </button>
     </header>
@@ -170,7 +170,6 @@
     </footer>
 
     <scripts>
-      <script type="module" src=""></script>
       <script src="./src/js/offline.js" defer></script>
       <script src="./src/js/load-scripts.js" defer></script>
       <script
