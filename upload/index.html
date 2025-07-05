@@ -10,71 +10,73 @@
       rel="icon"
       type="image/x-icon"
     />
-    <link href="https://cdn.factorio.com/assets/fonts/titillium-web.css" rel="stylesheet">
-    <link href="https://cdn.factorio.com/assets/vendor/fontawesome/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://www.factorio.com/static/css/main.css?v=a67ff980" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="../src/css/style.css" />
-    <link rel="stylesheet" href="../src/css/presets.css" />
-    
+    <link
+      href="https://cdn.factorio.com/assets/fonts/titillium-web.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.factorio.com/assets/vendor/fontawesome/css/all.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://www.factorio.com/static/css/main.css?v=a67ff980"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <links></links>
+
     <title>ENVIAR PARA NUVEM</title>
   </head>
   <body>
     <tela>
       <subtela>
         <h1>ÁREA DE UPLOAD</h1>
-        <form id="formUpload"
-              method="post" 
-              enctype="multipart/form-data">
-          
-          <label>Tempo Restante antes de perder o Upload: <js id="timeRefresh">06:00</js></label>
-        <div>
-            <label class="button flex-space-between"
-                   for="inputUpload">
+        <form id="formUpload" method="post" enctype="multipart/form-data">
+          <label
+            >Tempo Restante antes de perder o Upload:
+            <js id="timeRefresh">06:00</js></label
+          >
+          <div>
+            <label class="button flex-space-between" for="inputUpload">
               Escolha um arquivo para enviar Save ou Mod (ZIP/JSON/TXT)
-          </label>
-            <input hidden
-              style="opacity:0;"
+            </label>
+            <input
+              hidden
+              style="opacity: 0"
               type="file"
               id="inputUpload"
               name="inputUpload"
               accept=".zip,.json,.txt"
-              multiple />
-        </div>
-          
+              multiple
+            />
+          </div>
+
           <p>Tamanho Total: <js id="totalSize"></js></p>
-        <div class="preview" id="previewUpload">
-          <p>Nenhum Arquivo Selecionado Para Envio</p>
-        </div>
-          <button hidden
-                  id="btnUpload"
-                  class="button button-green">
+          <div class="preview" id="previewUpload">
+            <p>Nenhum Arquivo Selecionado Para Envio</p>
+          </div>
+          <button hidden id="btnUpload" class="button button-green">
             Enviar
           </button>
-          
-          <br>
-          
+
+          <br />
+
           <div hidden id="progresso">
             <progress id="progressBar" value="0" max="100"></progress>
             <p id="statusUP">0%</p>
           </div>
-          
-          <p id="response"></p>
-      </form>
 
-        
+          <p id="response"></p>
+        </form>
       </subtela>
 
-        <button 
-           class="button flex-space-between"
-           onclick="redirectUrl('./')"> 
-          Home
-        </button>
-        
+      <button class="button flex-space-between" onclick="redirectUrl('./')">
+        Home
+      </button>
     </tela>
-   
 
     <footer>
-
       <div>
         <p class="p-title">Legenda:</p>
         <a class="button button-red">Indisponivel</a>
@@ -83,20 +85,33 @@
         <a class="button flex-space-between">Normal</a>
       </div>
     </footer>
-    
+
     <scripts>
-      <script src="/upload/upload.js" defer></script>
-      <script src="/upload/preview.js" defer></script>
+      <script src="../src/js/links.js"></script>
+      <script src="./upload.js" defer></script>
+      <script src="./preview.js" defer></script>
       <script src="../src/js/offline.js" defer></script>
-  </scripts>
-  <autoscripts>
-    <script src="../src/js/load-scripts.js" defer></script> 
-      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-scripts.js" defer></script>   
-  </autoscripts>
+    </scripts>
+    <autoscripts>
+      <script src="../src/js/load-scripts.js" defer></script>
+      <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      ></script>
+      <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      ></script>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-scripts.js"
+        defer
+      ></script>
+    </autoscripts>
     <host>
-    <script src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-host.js" defer></script>
+      <script
+        src="https://luisdasartimanhas.github.io/PINGOBRAS/src/js/load-host.js"
+        defer
+      ></script>
     </host>
   </body>
 </html>

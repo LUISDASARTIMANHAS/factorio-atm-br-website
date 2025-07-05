@@ -14,93 +14,101 @@
       rel="stylesheet"
       href="https://www.factorio.com/static/css/main.css?v=87e4eb56"
     />
-    <link rel="stylesheet" href="../src/css/style.css" />
-    <link rel="stylesheet" href="../src/css/presets.css" />
+    <links></links>
 
     <title>PINGOBRAS FACTORIO MOD CREATOR</title>
   </head>
   <body>
-    
-    <p>Aqui você pode Configurar estilos padrão para facilitar na criação do mod.</p>
-    
+    <p>
+      Aqui você pode Configurar estilos padrão para facilitar na criação do mod.
+    </p>
+
     <tela>
       <subtela>
-    <form id="form" class="mod-toolkit">
-      <label for="author">Author do mod padrão:</label>
-      <input class="mod-toolkit"
-             type="text" 
-             id="author" 
-             name="author" 
-             required 
-             placeholder="Seu usuario padrão">
-      <p>Definido como: <js id="previewAuthor">Não definido</js></p>
-      
-      <label for="PastaPDGraficos">Caminho da pasta padrão de Graficos:</label>
-      <input class="mod-toolkit"
-             type="text" 
-             id="PastaPDGraficos" 
-             name="PastaPDGraficos"
-             required 
-             placeholder="data/graficos/">
-      <p>Definido como: <js id="previewPastaPDGraficos" >Não definido</js></p>
-      
-      <label for="pastaPDEntidades">Caminho da pasta padrão de entidades:</label>
-      <input class="mod-toolkit"
-             type="text" 
-             id="pastaPDEntidades" 
-             name="pastaPDEntidades"
-             required 
-             placeholder="data/prototype/">
-      <p>Definido como: <js id="previewPastaPDEntidades" >Não definido</js></p>
-      
+        <form id="form" class="mod-toolkit">
+          <label for="author">Author do mod padrão:</label>
+          <input
+            class="mod-toolkit"
+            type="text"
+            id="author"
+            name="author"
+            required
+            placeholder="Seu usuario padrão"
+          />
+          <p>Definido como: <js id="previewAuthor">Não definido</js></p>
 
-      <label for="imgSize">tamanho das imagens padrão:</label>
-      <input class="mod-toolkit"
-             type="number" 
-             id="imgSize" 
-             name="imgSize" 
-             max="520"
-             min="126"
-             value="128"
-             required 
-             placeholder="128">
-      <p>Definido como: <js id="previewImgSize" >Não definido</js></p>
-      
-      <label for="stackSize">Tamanho padrão pilha:</label>
-      <input class="mod-toolkit"
-             type="number" 
-             id="stackSize" 
-             name="stackSize"
-             min="10"
-             value="50"
-             placeholder="Tamanho maximo da pilha de itens que cabe por slot de inventário ">
-      <p>Definido como: <js id="previewStackSize" >Não definido</js></p>
-      
-      
-      <utton type="submit" 
-             class="button button-green">
-        Salvar
-      </utton>
+          <label for="PastaPDGraficos"
+            >Caminho da pasta padrão de Graficos:</label
+          >
+          <input
+            class="mod-toolkit"
+            type="text"
+            id="PastaPDGraficos"
+            name="PastaPDGraficos"
+            required
+            placeholder="data/graficos/"
+          />
+          <p>
+            Definido como: <js id="previewPastaPDGraficos">Não definido</js>
+          </p>
 
-<!-- 
+          <label for="pastaPDEntidades"
+            >Caminho da pasta padrão de entidades:</label
+          >
+          <input
+            class="mod-toolkit"
+            type="text"
+            id="pastaPDEntidades"
+            name="pastaPDEntidades"
+            required
+            placeholder="data/prototype/"
+          />
+          <p>
+            Definido como: <js id="previewPastaPDEntidades">Não definido</js>
+          </p>
+
+          <label for="imgSize">tamanho das imagens padrão:</label>
+          <input
+            class="mod-toolkit"
+            type="number"
+            id="imgSize"
+            name="imgSize"
+            max="520"
+            min="126"
+            value="128"
+            required
+            placeholder="128"
+          />
+          <p>Definido como: <js id="previewImgSize">Não definido</js></p>
+
+          <label for="stackSize">Tamanho padrão pilha:</label>
+          <input
+            class="mod-toolkit"
+            type="number"
+            id="stackSize"
+            name="stackSize"
+            min="10"
+            value="50"
+            placeholder="Tamanho maximo da pilha de itens que cabe por slot de inventário "
+          />
+          <p>Definido como: <js id="previewStackSize">Não definido</js></p>
+
+          <utton type="submit" class="button button-green"> Salvar </utton>
+
+          <!-- 
       <label for="order">Ordem:</label>
       <input id="order" 
                 name="order" 
                 type="text"
                 required 
                 placeholder="Categoria do seu mod que aparece no menu EX(AE2-data-terminal[nome-do-item])"> -->
-    </form>
+        </form>
       </subtela>
-    
-    
-    <a class="button flex flex-space-between"
-       href="./">
-      Voltar
-    </a>
 
+      <a class="button flex flex-space-between" href="./"> Voltar </a>
     </tela>
-    
-     <footer>
+
+    <footer>
       <div>
         <p class="p-title">Legenda:</p>
         <a class="button button-red">Indisponivel</a>
@@ -111,10 +119,11 @@
     </footer>
 
     <scripts>
+      <script src="../src/js/links.js"></script>
       <script src="../src/js/offline.js" defer></script>
       <script src="../src/js/load-scripts.js" defer></script>
-      <script src="/mod-toolkit/user-configs.js" defer></script>
-      <script src="/mod-toolkit/user-configs-preview.js" defer></script>
+      <script src="./user-configs.js" defer></script>
+      <script src="./user-configs-preview.js" defer></script>
       <script
         type="module"
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
