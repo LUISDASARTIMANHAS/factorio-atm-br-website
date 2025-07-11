@@ -2,7 +2,9 @@ import config from "../src/js/config.js";
 
 export async function fetchInitialMods() {
 	const res = await fetch(`${config.serverUrl}/mods`);
-	return (await res.json()).data.results;
+	const data = await res.json();
+	console.log("Mods retornados: ",data.results);
+	return data.results;
 }
 
 export async function fetchModByName(name) {

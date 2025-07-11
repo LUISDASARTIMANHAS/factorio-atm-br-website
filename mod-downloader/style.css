@@ -1,8 +1,135 @@
-.mod-card img {
-	height: 150px;
-	object-fit: cover;
+/* Fundo geral escuro com gradiente sutil */
+body {
+	background: linear-gradient(145deg, #1f1f2b, #29293d);
+	color: #f0f0f0;
+	font-family: 'Segoe UI', sans-serif;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
 }
 
+/* Container principal */
+.container {
+	padding-top: 30px;
+}
+
+.mod-card ul,
+.mod-card li {
+	color: #f0f0f0;
+}
+.mod-card p {
+	color: #f0f0f0;
+}
+
+/* Cards com estilo moderno e efeito vidro */
+.mod-card {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(8px);
+	animation: fadeInUp 0.6s ease forwards;
+	transform: translateY(20px);
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+}
+
+.mod-card:hover {
+	transform: translateY(0) scale(1.02);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Imagem do mod */
+.mod-card img {
+	height: 160px;
+	object-fit: cover;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	background-color: #eee;
+	filter: brightness(95%) saturate(110%);
+	transition: filter 0.3s ease;
+}
+
+.mod-card img:hover {
+	filter: brightness(100%) saturate(130%);
+}
+
+/* Corpo do card */
+.mod-card .card-body {
+	padding: 1rem;
+}
+
+.card-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.card-text {
+	color: #d0d0d0;
+	font-size: 0.95rem;
+}
+
+/* Botão moderno */
+.btn-primary {
+	background: #00c3ff;
+	border: none;
+	color: black;
+	font-size: 0.9rem;
+	transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn-primary:hover {
+	background: #00a3cc;
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 195, 255, 0.6);
+}
+
+/* Campo de pesquisa */
 .search-bar {
 	margin: 20px 0;
+}
+
+input#searchInput {
+	width: 100%;
+	padding: 10px 14px;
+	border-radius: 12px;
+	border: none;
+	background: #2e2e42;
+	color: white;
+	box-shadow: 0 0 8px rgba(0, 195, 255, 0.2);
+	transition: box-shadow 0.2s ease;
+}
+
+input#searchInput:focus {
+	outline: none;
+	box-shadow: 0 0 12px rgba(0, 195, 255, 0.5);
+}
+
+/* Animação suave para os cards */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+	.mod-card img {
+		height: 140px;
+	}
+}
+
+@media (max-width: 576px) {
+	.card-title {
+		font-size: 1rem;
+	}
+	.card-text {
+		font-size: 0.85rem;
+	}
 }

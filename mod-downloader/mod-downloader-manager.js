@@ -2,7 +2,7 @@
 // https://pingobras-factorio-server.onrender.com/mods/mod a pesquisar
 
 import { fetchInitialMods, fetchModByName } from "./mod-downloader.js";
-
+import config from "../src/js/config.js";
 // baixar mod
 // https://pingobras-factorio-server.onrender.com/download/mod/nome do mod
 const modsContainer = document.getElementById("modsContainer");
@@ -30,25 +30,34 @@ function renderMods(mods) {
     if (!release) return;
 
     const imgUrl = mod.thumbnail;
-
-    const downloadUrl = mod.downloadUrl;
+    const downloadUrl = `${config.serverUrl}/download/mod/${encodeURIComponent(mod.name)}`;
+    const releasedAt = new Date(release.released_at).toLocaleDateString("pt-BR");
+    const factorioVersion = release.info_json?.factorio_version || "N/A";
 
     const card = document.createElement("div");
     card.className = "col-md-4 mb-4";
     card.innerHTML = `
-					<div class="card mod-card h-100">
-						<img src="${imgUrl}" class="card-img-top" alt="${mod.title || mod.name}">
-						<div class="card-body d-flex flex-column">
-							<h5 class="card-title">${mod.title || mod.name}</h5>
-							<p class="card-text">${mod.summary || mod.description || "Sem descrição"}</p>
-							<p class="card-text"><strong>Versão:</strong> ${release.version}</p>
-							<a href="${downloadUrl}" class="btn btn-primary mt-auto" target="_blank">Download</a>
-						</div>
-					</div>
-				`;
+      <div class="card mod-card h-100 shadow">
+        <img src="${imgUrl}" class="card-img-top" alt="${mod.title || mod.name}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${mod.title || mod.name}</h5>
+          <p class="card-text">${mod.summary || mod.description || "Sem descrição"}</p>
+          <ul class="list-unstyled small mb-3">
+            <li><strong>Categoria:</strong> ${mod.category}</li>
+            <li><strong>Downloads:</strong> ${mod.downloads_count.toLocaleString("pt-BR")}</li>
+            <li><strong>Score:</strong> ${mod.score}</li>
+            <li><strong>Versão:</strong> ${release.version}</li>
+            <li><strong>Factorio:</strong> ${factorioVersion}</li>
+            <li><strong>Lançado em:</strong> ${releasedAt}</li>
+          </ul>
+          <a href="${downloadUrl}" class="btn btn-primary mt-auto" target="_blank">Download</a>
+        </div>
+      </div>
+    `;
     modsContainer.appendChild(card);
   });
 }
+
 
 function sortMods(mods) {
   return mods.sort((a, b) => {
@@ -78,7 +87,6 @@ searchInput.addEventListener("keyup", async (e) => {
 
 async function init() {
   modsData = await fetchInitialMods();
-  console.log(modsData);
   renderMods(sortMods(modsData));
 }
 
