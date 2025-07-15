@@ -1,6 +1,6 @@
+import { renderLinkCss } from "../src/lib/render.js";
 (() => {
-  const url =
-    "../src/data/info.json";
+  const url = "../src/data/info.json";
   const options = {
     method: "GET",
     mode: "cors",
@@ -30,46 +30,30 @@
 })();
 
 function importarCss(data) {
-  const links = document.querySelector("links");
+  const linksContainer = document.querySelector("links");
+  const head = document.querySelector("head");
   const hostname =
     data.hostname ||
-    "luisdasartimanhas.github.io/PINGOBRAS"||
+    "luisdasartimanhas.github.io/PINGOBRAS" ||
     "betapingobras.onrender.me";
   const fonte = `https://${hostname}/src/css/`;
-  const srcs = [
-    "style",
-    "presets",
-    "animations",
-    "scrollbar",
-  ];
-  const srcsLinksFonts = ["4.7.0/css/font-awesome.min.css"];
+  const srcs = ["style", "presets", "animations", "scrollbar"];
+  const srcsLinksFonts = ["4.7.0/css/font-awesome.min"];
 
-  for (let i = 0; i < srcs.length; i++) {
-    const src = srcs[i];
+  srcs.forEach((src) => {
     const link = fonte + src + ".css";
-    var newLink = document.createElement("link");
-
-    newLink.setAttribute("href", link);
-    newLink.rel = "stylesheet";
-    links.appendChild(newLink);
+    renderLinkCss(linksContainer, link);
 
     console.log(`%c [SISTEMA]: Carregando css: ${link}`, "color: #ff00ff");
-  }
+  });
 
-  for (let i = 0; i < srcsLinksFonts.length; i++) {
-    const head = document.querySelector("head");
-    var newLink = document.createElement("link");
+  srcsLinksFonts.forEach((src) => {
+    const link = `https://stackpath.bootstrapcdn.com/font-awesome/${src}.css`;
 
-    newLink.setAttribute(
-      "href",
-      "https://stackpath.bootstrapcdn.com/font-awesome/" + srcsLinksFonts[i]
-    );
-    newLink.rel = "stylesheet";
-    head.appendChild(newLink);
-
+    renderLinkCss(head, link);
     console.log(
-      `%c [SISTEMA]: Novo Link de fonte css Num: " + srcsLinksFonts[i]`,
+      `%c [SISTEMA]: Novo Link de fonte css Num: ${link}`,
       "color: #ff00ff"
     );
-  }
+  });
 }

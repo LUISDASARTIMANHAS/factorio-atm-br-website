@@ -1,34 +1,22 @@
+import { renderScript } from "../src/lib/render.js";
 (() => {
   const autoscripts = document.querySelector("autoscripts");
-  const fonteUser = "/factorio-atm-br-website/src/js/";
-  const srcModule = [
-    "manutencao-redirect",
-    "offline",
-    "message",
-    "ip-info",
-  ];
-  const srcCJS = [
-    "functions",
-  ];
+  const fonteUser = "../src/js/";
+  const srcsModule = ["manutencao-redirect", "offline", "message", "ip-info"];
+  const srcsCJS = ["functions"];
 
-  for (let i = 0; i < srcModule.length; i++) {
-    var newScript = document.createElement("script");
-    var url = fonteUser + srcModule[i] + ".js";
+  srcsModule.forEach((srcModule) => {
+    var url = fonteUser + srcModule + ".js";
+    renderScript(autoscripts, url, true);
 
-    newScript.setAttribute("src",url );
-    newScript.setAttribute("type", "module"); // ESSENCIAL para usar export/import
-    autoscripts.appendChild(newScript);
+    console.log(`%c [SISTEMA ATM BR]: Novo script ESM: ${url}`, "#ffaa00");
+  });
 
-    console.log(`%c [SISTEMA ATM BR]: Novo script ESM: ${url}`,"#ffaa00")
-  }
+  srcsCJS.forEach((srcCJS) => {
+    var url = fonteUser + srcCJS + ".js";
 
-  for (let i = 0; i < srcCJS.length; i++) {
-    var newScript = document.createElement("script");
-    var url = fonteUser + srcCJS[i] + ".js";
+    renderScript(autoscripts, url);
 
-    newScript.setAttribute("src",url );
-    autoscripts.appendChild(newScript);
-
-    console.log(`%c [SISTEMA ATM BR]: Novo script: ${url}`,"#ffaa00")
-  }
+    console.log(`%c [SISTEMA ATM BR]: Novo script: ${url}`, "#ffaa00");
+  });
 })();

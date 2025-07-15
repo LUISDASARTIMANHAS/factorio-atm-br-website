@@ -19,6 +19,7 @@ import config from "./config.js";
       })
       .catch((error) => {
         console.debug(`%c [SISTEMA DE STATUS] ${error}`, "color: #ff0000");
+        redirectOffline(true);
       });
 
     function redirectOffline(offline) {
@@ -32,7 +33,7 @@ import config from "./config.js";
         }
 
         setTimeout(() => {
-          window.location.href = "./sys/offline.html";
+          window.location.href = "../sys/offline.html";
         }, 5000);
       }
     }
