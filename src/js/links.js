@@ -1,4 +1,4 @@
-import { renderLinkCss } from "../src/lib/render.js";
+import { renderLinkCss } from "../lib/render.js";
 (() => {
   const url = "../src/data/info.json";
   const options = {
@@ -36,12 +36,11 @@ function importarCss(data) {
     data.hostname ||
     "luisdasartimanhas.github.io/PINGOBRAS" ||
     "betapingobras.onrender.me";
-  const fonte = `https://${hostname}/src/css/`;
   const srcs = ["style", "presets", "animations", "scrollbar"];
   const srcsLinksFonts = ["5.3.3/css/font-awesome.min"];
 
   srcs.forEach((src) => {
-    const link = fonte + src + ".css";
+    const link = `$https://${hostname}/src/css/${src}.css`;
     renderLinkCss(linksContainer, link);
 
     console.log(`%c [SISTEMA]: Carregando css: ${link}`, "color: #ff00ff");
