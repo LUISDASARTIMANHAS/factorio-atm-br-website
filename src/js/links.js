@@ -38,7 +38,7 @@ function importarCss(data) {
     "betapingobras.onrender.me";
   const fonte = `https://${hostname}/src/css/`;
   const srcs = ["style", "presets", "animations", "scrollbar"];
-  const srcsLinksFonts = ["4.7.0/css/font-awesome.min"];
+  const srcsLinksFonts = ["5.3.3/css/font-awesome.min"];
 
   srcs.forEach((src) => {
     const link = fonte + src + ".css";
