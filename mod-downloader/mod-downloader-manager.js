@@ -6,9 +6,9 @@ import config from "../src/js/config.js";
 // baixar mod
 // https://pingobras-factorio-server.onrender.com/download/mod/nome do mod
 const modsContainer = document.getElementById("modsContainer");
+const labelModsCarregados = document.getElementById("modsCarregados");
 const searchInput = document.getElementById("searchInput");
 let modsData = [];
-
 
 function getLatestRelease(mod) {
   if (mod.releases && Array.isArray(mod.releases)) {
@@ -25,31 +25,40 @@ function getLatestRelease(mod) {
 
 function renderMods(mods) {
   modsContainer.innerHTML = "";
+  labelModsCarregados.textContent = mods.length;
   mods.forEach((mod) => {
     renderMod(mod);
   });
 }
 
-function renderMod(mod){
+function renderMod(mod) {
   const release = getLatestRelease(mod);
-    if (!release) return;
+  if (!release) return;
 
-    const imgUrl = mod.thumbnail;
-    const downloadUrl = `${config.serverUrl}/download/mod/${encodeURIComponent(mod.name)}`;
-    const releasedAt = new Date(release.released_at).toLocaleDateString("pt-BR");
-    const factorioVersion = release.info_json?.factorio_version || "N/A";
+  const imgUrl = mod.thumbnail;
+  const downloadUrl = `${config.serverUrl}/download/mod/${encodeURIComponent(
+    mod.name
+  )}`;
+  const releasedAt = new Date(release.released_at).toLocaleDateString("pt-BR");
+  const factorioVersion = release.info_json?.factorio_version || "N/A";
 
-    const card = document.createElement("div");
-    card.className = "col-md-4 mb-4";
-    card.innerHTML = `
+  const card = document.createElement("div");
+  card.className = "col-md-4 mb-4";
+  card.innerHTML = `
       <div class="card mod-card h-100 shadow">
-        <img src="${imgUrl}" class="card-img-top" alt="${mod.title || mod.name}">
+        <img src="${imgUrl}" class="card-img-top" alt="${
+    mod.title || mod.name
+  }">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${mod.title || mod.name}</h5>
-          <p class="card-text">${mod.summary || mod.description || "Sem descrição"}</p>
+          <p class="card-text">${
+            mod.summary || mod.description || "Sem descrição"
+          }</p>
           <ul class="list-unstyled small mb-3">
             <li><strong>Categoria:</strong> ${mod.category}</li>
-            <li><strong>Downloads:</strong> ${mod.downloads_count.toLocaleString("pt-BR")}</li>
+            <li><strong>Downloads:</strong> ${mod.downloads_count.toLocaleString(
+              "pt-BR"
+            )}</li>
             <li><strong>Score:</strong> ${mod.score}</li>
             <li><strong>Versão:</strong> ${release.version}</li>
             <li><strong>Factorio:</strong> ${factorioVersion}</li>
@@ -59,9 +68,8 @@ function renderMod(mod){
         </div>
       </div>
     `;
-    modsContainer.appendChild(card);
+  modsContainer.appendChild(card);
 }
-
 
 function sortMods(mods) {
   return mods.sort((a, b) => {
@@ -82,16 +90,31 @@ searchInput.addEventListener("keyup", async (e) => {
     try {
       const mod = await fetchModByName(query);
       modsContainer.innerHTML = "";
+      labelModsCarregados.textContent = mod.length;
       renderMod(mod);
     } catch (error) {
-      modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods.</p>`;
+      modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods. ${error}</p>`;
     }
   }
 });
 
 async function init() {
-  modsData = await fetchInitialMods();
-  renderMods(sortMods(modsData));
+  try {
+    modsData = await fetchInitialMods();
+    renderMods(sortMods(modsData));
+  } catch (error) {
+    modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods. ${error}</p>`;
+
+    setTimeout(() => {
+      modsContainer.innerHTML =  `<div id="loading" class="text-center my-4">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p>Carregando mods...</p>
+        </div>`
+    }, 3000);
+    setTimeout(() => {
+      init();
+    }, 7000);
+  }
 }
 
 init();
