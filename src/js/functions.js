@@ -5,7 +5,9 @@ const AreasDeTextos = document.getElementsByTagName("textarea");
 const inputsFiles = document.querySelectorAll("#fileInput");
 
 // inicialização de variaveis em cache global LOCAL STORAGE
-localStorage.setItem("debugMode", false);
+if (localStorage.getItem("debugMode") == null) {
+    localStorage.setItem("debugMode", false);
+}
 
 const alarm = new Audio(
   "https://github.com/LUISDASARTIMANHAS/LUISDASARTIMANHAS/raw/refs/heads/main/SFX/Shop%20empire%202%20-%20Alarm.mp3"
