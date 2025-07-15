@@ -48,19 +48,19 @@ function montarFile(event) {
 
 // addEventListener
 // se os btns existirem
-if (btnALL) {
+if (btnALL[0]) {
   btnALL.forEach((btn) => {
     console.log(btn);
     addSoundClicker(btn);
   });
 }
-if (inputsFiles) {
+if (inputsFiles[0]) {
   inputsFiles.forEach((inpFile) => {
     inpFile.addEventListener("change", montarFile);
   });
 }
 
-if (AreasDeTextos) {
+if (AreasDeTextos[0]) {
   AreasDeTextos.forEach((AreaDeTexto) => {
     AreaDeTexto.style.height = AreaDeTexto.scrollHeight;
     AreaDeTexto.addEventListener("input", AoDigitar, false);
