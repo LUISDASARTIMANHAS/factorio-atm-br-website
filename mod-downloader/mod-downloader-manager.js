@@ -26,7 +26,12 @@ function getLatestRelease(mod) {
 function renderMods(mods) {
   modsContainer.innerHTML = "";
   mods.forEach((mod) => {
-    const release = getLatestRelease(mod);
+    renderMod(mod);
+  });
+}
+
+function renderMod(mod){
+  const release = getLatestRelease(mod);
     if (!release) return;
 
     const imgUrl = mod.thumbnail;
@@ -55,7 +60,6 @@ function renderMods(mods) {
       </div>
     `;
     modsContainer.appendChild(card);
-  });
 }
 
 
@@ -77,8 +81,8 @@ searchInput.addEventListener("keyup", async (e) => {
   } else {
     try {
       const mod = await fetchModByName(query);
-      console.log("Mod Encontrado: ", mod);
-      renderMods(mod);
+      modsContainer.innerHTML = "";
+      renderMod(mod);
     } catch (error) {
       modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods.</p>`;
     }
