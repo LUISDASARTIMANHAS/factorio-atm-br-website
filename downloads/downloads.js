@@ -1,20 +1,44 @@
 import config from "../src/js/config.js";
 
-export function downloadFactorioGame(game,type){
-  
-// space age
-// https://pingobras-factorio-server.onrender.com/download/factorio/zip/space-age/
+export function downloadFactorioGame(game, type) {
+  const baseUrl = `${config.serverUrl}/download/factorio`;
+  let build = null;
+  let distro = null;
 
-// original
-// https://pingobras-factorio-server.onrender.com/download/factorio/exe/alpha
+  console.log("Tipo recebido:", type);
+  console.log("Jogo recebido:", game);
 
-// demo
-// https://pingobras-factorio-server.onrender.com/download/factorio/exe/demo
+  switch (type) {
+    case "ORIGINAL":
+      build = "alpha";
+      break;
+    case "SPACE AGE":
+      build = "space-age";
+      break;
+    case "DEMO":
+      build = "demo";
+      break;
+    case "SERVER":
+      build = "server";
+      break;
+    default:
+      console.warn(`Jogo ${type} INDISPONÍVEL!`);
+      break;
+  }
 
-// servidor
-// https://pingobras-factorio-server.onrender.com/download/factorio/zip/server 
+  if (game == "exe") {
+    distro = "exe";
+  } else if (game == "zip") {
+    distro = "zip";
+  } else {
+    console.warn(`Tipo ${game} do arquivo INDISPONÍVEL!`);
+  }
 
+  console.log("BaseUrl:", baseUrl);
+  console.log("Build:", build);
+  console.log("Distro:", distro);
   alert(game+type);
+  // window.open(`${baseUrl}/${distro}/${build}`);
 }
 export async function redirectDownloadSave(serverID) {
   const urlSource = "https://drive.google.com/drive/folders";
@@ -38,22 +62,4 @@ async function downloadMessage(msg) {
   await window.factorio_message("DOWNLOAD", msg);
 }
 
-// Tornar funções acessíveis internamente
-const actions = {
-  redirectDownloadSave,
-};
 
-// Delegação de eventos para todos os botões com data-action
-document.addEventListener("click", (event) => {
-  const button = event.target.closest("button[data-action]");
-  if (!button) return;
-
-  const action = button.getAttribute("data-action");
-  const arg = button.getAttribute("data-arg");
-
-  if (actions[action]) {
-    actions[action](arg);
-  } else {
-    console.warn(`Ação desconhecida: ${action}`);
-  }
-});

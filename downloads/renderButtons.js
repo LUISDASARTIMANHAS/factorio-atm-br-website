@@ -6,22 +6,22 @@ window.addEventListener("load", () => {
     const transferContainer = document.getElementById("transferencias");
     const btns = [
       {
-        game: "FACTORIO SPACE AGE",
+        game: "SPACE AGE",
         types: ["zip", "exe"],
         disponivel: false,
       },
       {
-        game: "FACTORIO",
+        game: "ORIGINAL",
         types: ["zip", "exe"],
         disponivel: true,
       },
       {
-        game: "FACTORIO DEMO",
+        game: "DEMO",
         types: ["zip", "exe"],
         disponivel: true,
       },
       {
-        game: "FACTORIO SERVER",
+        game: "SERVER",
         types: ["zip", "exe"],
         disponivel: true,
       },
@@ -45,10 +45,9 @@ window.addEventListener("load", () => {
         createFont(divDownloadIcon, type);
         renderIcon(divIconContainer, "fab fa-windows");
         divIconContainer.appendChild(divDownloadIcon);
-        createButton(divIconContainer, game,type, disponivel);
+        createButton(divIconContainer, game, type, disponivel);
       });
     });
-
 
     // funcoes úteis
     function createFont(element, type) {
@@ -70,11 +69,11 @@ window.addEventListener("load", () => {
         btn.disabled = true;
       }
 
-      btn.textContent = game;
+      btn.textContent = `FACTORIO ${game}`;
       btn.appendChild(addElement);
-      btn.addEventListener("click", ()=>{
-        downloadFactorioGame(game,type);
-      })
+      btn.addEventListener("click", () => {
+        downloadFactorioGame(game, type);
+      });
       transferContainer.appendChild(btn);
     }
   } catch (err) {
