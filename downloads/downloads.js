@@ -1,5 +1,21 @@
 import config from "../src/js/config.js";
 
+export function downloadFactorioGame(game,type){
+  
+// space age
+// https://pingobras-factorio-server.onrender.com/download/factorio/zip/space-age/
+
+// original
+// https://pingobras-factorio-server.onrender.com/download/factorio/exe/alpha
+
+// demo
+// https://pingobras-factorio-server.onrender.com/download/factorio/exe/demo
+
+// servidor
+// https://pingobras-factorio-server.onrender.com/download/factorio/zip/server 
+
+  alert(game+type);
+}
 export async function redirectDownloadSave(serverID) {
   const urlSource = "https://drive.google.com/drive/folders";
   let id = null;

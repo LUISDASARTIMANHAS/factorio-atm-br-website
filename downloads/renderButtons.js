@@ -1,4 +1,5 @@
-import { renderButton, renderIcon } from "../src/lib/render.js";
+import { renderIcon } from "../src/lib/render.js";
+import { downloadFactorioGame } from "./downloads.js";
 
 window.addEventListener("load", () => {
   try {
@@ -7,10 +8,20 @@ window.addEventListener("load", () => {
       {
         game: "FACTORIO SPACE AGE",
         types: ["zip", "exe"],
-        disponivel: false
+        disponivel: false,
       },
       {
         game: "FACTORIO",
+        types: ["zip", "exe"],
+        disponivel: true,
+      },
+      {
+        game: "FACTORIO DEMO",
+        types: ["zip", "exe"],
+        disponivel: true,
+      },
+      {
+        game: "FACTORIO SERVER",
         types: ["zip", "exe"],
         disponivel: true,
       },
@@ -34,10 +45,12 @@ window.addEventListener("load", () => {
         createFont(divDownloadIcon, type);
         renderIcon(divIconContainer, "fab fa-windows");
         divIconContainer.appendChild(divDownloadIcon);
-        createButton(divIconContainer, game, disponivel);
+        createButton(divIconContainer, game,type, disponivel);
       });
     });
 
+
+    // funcoes úteis
     function createFont(element, type) {
       const font = document.createElement("font");
       const subFont = document.createElement("font");
@@ -47,7 +60,7 @@ window.addEventListener("load", () => {
       element.appendChild(font);
     }
 
-    function createButton(addElement, game, disponivel) {
+    function createButton(addElement, game, type, disponivel) {
       const btn = document.createElement("button");
       // configurações do btn
       if (disponivel) {
@@ -59,7 +72,9 @@ window.addEventListener("load", () => {
 
       btn.textContent = game;
       btn.appendChild(addElement);
-      // btn.addEventListener("click", downloadGame)
+      btn.addEventListener("click", ()=>{
+        downloadFactorioGame(game,type);
+      })
       transferContainer.appendChild(btn);
     }
   } catch (err) {
