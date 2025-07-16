@@ -13,6 +13,14 @@ export function renderLinkCss(element, href) {
   return link;
 }
 
+export function renderIcon(element, classe) {
+  var i = document.createElement("i");
+
+  i.setAttribute("class", classe);
+  element.appendChild(i);
+  return i;
+}
+
 export function renderScript(element, src, isModule) {
   var script = document.createElement("script");
 
@@ -22,6 +30,14 @@ export function renderScript(element, src, isModule) {
   script.setAttribute("src", src);
   element.appendChild(script);
   return script;
+}
+
+export function renderFont(element, classe) {
+  var font = document.createElement("font");
+
+  i.setAttribute("class", classe);
+  element.appendChild(font);
+  return i;
 }
 
 export function renderA(element, classe, href, text, target) {
@@ -34,9 +50,13 @@ export function renderA(element, classe, href, text, target) {
   element.appendChild(a);
 }
 
-export function renderButton(element, classe, text) {
+export function renderButton(element, classe, text,onclick) {
   var button = document.createElement("button");
   // configuracoes do span Categoria
+
+  if (onclick) {
+    button.addEventListener("click", onclick);
+  }
   button.setAttribute("class", classe);
   button.textContent = text;
   element.appendChild(button);

@@ -1,38 +1,4 @@
 import config from "../src/js/config.js";
-export async function redirectDownloadMediafire(type) {
-  const url = `${config.apiUrl}/download/mediafire/${type}`;
-  const id = Math.floor(Math.random() * 20242002);
-  const options = {
-    method: "GET",
-    mode: "cors",
-    headers: {
-      "content-type": "application/json;charset=utf-8",
-      "X-Disable-Cache": "true", // Desativando o cache via cabeçalho
-      "id": id,
-    },
-  };
-
-  fetch(url, options)
-    .then((response) => {
-      if (response.ok) {
-        return response.text();
-      } else {
-        return response.text().then((errorText) => {
-          throw new Error("Erro ao obter analytics: " + errorText);
-        });
-      }
-    })
-    .then((data) => {
-      console.log("DATA RESPONSE: ");
-      console.log(data);
-      window.open(data);
-    })
-    .catch((error) => {
-      downloadMessage(`[FACTORIO SISTEMA] ${error}`);
-      console.debug(`%c [FACTORIO SISTEMA] ${error}`, "color: #ff0000");
-      alert(error);
-    });
-}
 
 export async function redirectDownloadSave(serverID) {
   const urlSource = "https://drive.google.com/drive/folders";
@@ -58,7 +24,6 @@ async function downloadMessage(msg) {
 
 // Tornar funções acessíveis internamente
 const actions = {
-  redirectDownloadMediafire,
   redirectDownloadSave,
 };
 

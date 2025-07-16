@@ -46,44 +46,12 @@
       </button>
     </header>
     <tela>
-      <subtela>
+      <subtela id="transferencias">
         <h1>ÁREA DE TRANSFERENCIAS</h1>
-
-        <button
-          class="button button-green"
-          data-action="redirectDownloadMediafire"
-          data-arg="/FACTORIO SPACE AGE"
-          download="factorioDLC.zip"
-        >
-          <div
-            class="download-icon-container download-icon-type-expansion-container"
-          >
-            <i class="fab fa-windows"></i>
-            <div class="download-icon-dotzip">
-              <font style="vertical-align: inherit">
-                <font style="vertical-align: inherit">.zip</font>
-              </font>
-            </div>
-          </div>
-          FACTORIO SPACE AGE
-        </button>
-
-        <button
-          class="button button-green"
-          data-action="redirectDownloadMediafire" data-arg="/FACTORIO"
-        >
-          <div
-            class="download-icon-container download-icon-type-expansion-container"
-          >
-            <i class="fab fa-windows"></i>
-            <div class="download-icon-dotzip">
-              <font style="vertical-align: inherit">
-                <font style="vertical-align: inherit">.zip</font>
-              </font>
-            </div>
-          </div>
-          FACTORIO
-        </button>
+        <div id="loading" class="text-center my-4">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p>Carregando Transferencias...</p>
+        </div>
       </subtela>
 
       <subtela>
@@ -111,7 +79,8 @@
 
         <button
           class="button button-green"
-          data-action="redirectDownloadMediafire" data-arg="/OXYGEN NOT INCLUDED"
+          data-action="redirectDownloadMediafire"
+          data-arg="/OXYGEN NOT INCLUDED"
         >
           <div
             class="download-icon-container download-icon-type-expansion-container"
@@ -128,7 +97,8 @@
 
         <button
           class="button button-green"
-          data-action="redirectDownloadMediafire" data-arg="/UNRAILED"
+          data-action="redirectDownloadMediafire"
+          data-arg="/UNRAILED"
         >
           <div
             class="download-icon-container download-icon-type-expansion-container"
@@ -176,6 +146,7 @@
     </footer>
 
     <scripts>
+      <script type="module" src="./renderButtons.js"></script>
       <script src="./downloads.js" type="module" defer></script>
       <script src="../src/js/offline.js" type="module" defer></script>
       <script src="../src/js/load-scripts.js" type="module" defer></script>
