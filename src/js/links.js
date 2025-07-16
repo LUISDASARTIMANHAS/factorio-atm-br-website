@@ -6,7 +6,7 @@ import { renderLinkCss } from "../lib/render.js";
     ? `${window.location.origin}/factorio-atm-br-website/src/js`
     : "/src";
   const srcs = ["style", "presets", "animations", "scrollbar"];
-  const srcsLinksFonts = ["5.3.3/css/font-awesome.min"];
+  const srcsLinksFonts = ["bootstrap@5.3.3"];
   const fonts = ["fontawesome","titillium-web"];
 
   if (!head) {
@@ -28,13 +28,4 @@ import { renderLinkCss } from "../lib/render.js";
     console.log(`%c [SISTEMA]: Carregando Fontes css: ${link}`, "color: #ffaa00");
   });
 
-  srcsLinksFonts.forEach((src) => {
-    const link = `https://stackpath.bootstrapcdn.com/font-awesome/${src}.css`;
-
-    renderLinkCss(head, link);
-    console.log(
-      `%c [SISTEMA]: Novo Link de fonte css Num: ${link}`,
-      "color: #ff00ff"
-    );
-  });
 })();
