@@ -50,7 +50,11 @@ function renderMod(mod) {
     mod.title || mod.name
   }">
         <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${mod.title || mod.name}</h5>
+          <h5 class="card-title">
+            <a target="_blank" href="https://mods.factorio.com/mod/${mod.name}">
+            ${mod.title || mod.name}
+            </a>
+          </h5>
           <p class="card-text">${
             mod.summary || mod.description || "Sem descrição"
           }</p>
