@@ -3,7 +3,7 @@ import { renderLinkCss } from "../lib/render.js";
   const head = document.querySelector("head");
   const isGithubPages = location.hostname.includes("github.io");
   const fonteUser = isGithubPages
-    ? `${window.location.origin}/factorio-atm-br-website/src/js`
+    ? `${window.location.origin}/factorio-atm-br-website/src`
     : "/src";
   const srcs = ["style", "presets", "animations", "scrollbar"];
   const srcsLinksFonts = ["bootstrap@5.3.3"];

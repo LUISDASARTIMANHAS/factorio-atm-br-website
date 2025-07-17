@@ -4,7 +4,7 @@ import { renderScript } from "../lib/render.js";
   const autoscripts = document.querySelector("autoscripts");
   const isGithubPages = location.hostname.includes("github.io");
   const fonteUser = isGithubPages
-    ? `${window.location.origin}/factorio-atm-br-website/src/js`
+    ? `${window.location.origin}/factorio-atm-br-website/src`
     : "/src";
 
   const srcsModule = ["links","manutencao-redirect", "offline", "message", "ip-info"];
