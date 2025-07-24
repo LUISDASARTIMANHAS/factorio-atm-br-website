@@ -23,6 +23,7 @@ body {
 
 /* Cards com estilo moderno e efeito vidro */
 .mod-card {
+	color: white;
 	background: rgba(255, 255, 255, 0.05);
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 16px;
@@ -88,6 +89,7 @@ body {
 /* Campo de pesquisa */
 .search-bar {
 	margin: 20px 0;
+	color: white;
 }
 
 input#searchInput {

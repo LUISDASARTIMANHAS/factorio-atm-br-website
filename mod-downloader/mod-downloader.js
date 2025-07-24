@@ -8,8 +8,8 @@ export async function fetchInitialMods() {
 }
 
 export async function fetchModByName(name) {
-	const res = await fetch(`${config.serverUrl}/mods/${encodeURIComponent(name)}`);
-	const data = await res.json();
-	console.log("Mod Encontrado: ", data);
+	const res = await fetch(`${config.serverUrl}/mods/search/mod?mod=${encodeURIComponent(name)}`);
+	const data = (await res.json()).mods;
+	console.log("Mods Encontrado: ", data);
 	return data;
 }

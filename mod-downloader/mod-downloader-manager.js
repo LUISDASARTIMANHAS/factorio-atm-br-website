@@ -92,10 +92,10 @@ searchInput.addEventListener("keyup", async (e) => {
     renderMods(sortMods(modsData));
   } else {
     try {
-      const mod = await fetchModByName(query);
+      const mods = await fetchModByName(query);
       modsContainer.innerHTML = "";
-      labelModsCarregados.textContent = mod.length;
-      renderMod(mod);
+      labelModsCarregados.textContent = mods.length;
+      renderMods(mods);
     } catch (error) {
       modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods. ${error}</p>`;
     }
