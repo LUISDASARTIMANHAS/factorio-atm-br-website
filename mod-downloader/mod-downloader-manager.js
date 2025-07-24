@@ -35,12 +35,23 @@ function renderMod(mod) {
   const release = getLatestRelease(mod);
   if (!release) return;
 
+  const infoJson = release.info_json;
   const imgUrl = mod.thumbnail;
   const downloadUrl = `${config.serverUrl}/download/mod/${encodeURIComponent(
     mod.name
   )}`;
   const releasedAt = new Date(release.released_at).toLocaleDateString("pt-BR");
-  const factorioVersion = release.info_json?.factorio_version || "N/A";
+  const factorioVersion = infoJson?.factorio_version || "N/A";
+  const dependencies = infoJson.dependencies;
+  let listDependencies = "N/A";
+
+  if (dependencies) {
+    listDependencies = ""
+    dependencies.forEach((dependencie) => {
+      console.log("Encontrado dependencia: ", dependencie)
+      listDependencies += `<li><strong>${dependencie}</strong> </li>`;
+    });
+  }
 
   const card = document.createElement("div");
   card.className = "col-md-4 mb-4";
@@ -67,6 +78,9 @@ function renderMod(mod) {
             <li><strong>Versão:</strong> ${release.version}</li>
             <li><strong>Factorio:</strong> ${factorioVersion}</li>
             <li><strong>Lançado em:</strong> ${releasedAt}</li>
+            <ul><strong>Dependencias:</strong>
+            ${listDependencies}
+            </ul>
           </ul>
           <a href="${downloadUrl}" class="btn btn-primary mt-auto" target="_blank">Download</a>
         </div>
@@ -110,10 +124,10 @@ async function init() {
     modsContainer.innerHTML = `<p class="text-danger">Erro ao buscar mods. ${error}</p>`;
 
     setTimeout(() => {
-      modsContainer.innerHTML =  `<div id="loading" class="text-center my-4">
+      modsContainer.innerHTML = `<div id="loading" class="text-center my-4">
           <div class="spinner-border text-primary" role="status"></div>
           <p>Carregando mods...</p>
-        </div>`
+        </div>`;
     }, 3000);
     setTimeout(() => {
       init();
