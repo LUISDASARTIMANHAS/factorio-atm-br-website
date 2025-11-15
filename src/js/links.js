@@ -6,12 +6,20 @@ import { renderLinkCss } from "../lib/render.js";
     ? `${window.location.origin}/factorio-atm-br-website/src`
     : "/src";
   const srcs = ["style", "presets", "animations", "scrollbar"];
-  const srcsLinksFonts = ["bootstrap@5.3.3"];
+  const srcsLinksFonts = ["bootstrap@5.3.8"];
   const fonts = ["fontawesome","titillium-web"];
 
   if (!head) {
     return;
   }
+
+  // carregar bootstrap para o site
+  srcsLinksFonts.forEach((src) => {
+    const link = `${fonteUser}/lib/${src}.css`;
+    renderLinkCss(head, link);
+
+    console.log(`%c [SISTEMA]: Carregando Bootstrap css: ${link}`, "color: #ffaa00");
+  });
 
   srcs.forEach((src) => {
     const link = `${fonteUser}/css/${src}.css`;
