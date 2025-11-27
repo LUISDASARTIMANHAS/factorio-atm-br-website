@@ -46,10 +46,16 @@ function renderMod(mod) {
   let listDependencies = "N/A";
 
   if (dependencies) {
-    listDependencies = ""
+    listDependencies = "";
     dependencies.forEach((dependencie) => {
-      console.log("Encontrado dependencia: ", dependencie)
-      listDependencies += `<li><strong>${dependencie}</strong> </li>`;
+      console.log("Encontrado dependencia: ", dependencie);
+      if (dependencie.includes("!")) {
+        listDependencies += `<li class='text-danger'><strong>${dependencie}</strong> </li>`;
+      } else if (dependencie.includes("?")) {
+        listDependencies += `<li class='text-primary'><strong>${dependencie}</strong> </li>`;
+      } else {
+        listDependencies += `<li class='text-warning'><strong>${dependencie}</strong> </li>`;
+      }
     });
   }
 
