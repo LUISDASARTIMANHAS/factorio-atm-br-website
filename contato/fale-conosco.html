@@ -9,10 +9,8 @@
       rel="icon"
       type="image/x-icon"
     />
-    <link
-      rel="stylesheet"
-      href="./src/css/factorio-main-87e4eb56.css"
-    />
+    <link rel="stylesheet" href="./src/css/factorio-main-87e4eb56.css" />
+    <link rel="stylesheet" href="/src/css/factorio-main-87e4eb56.css" />
     <links></links>
 
     <seo>
@@ -41,7 +39,7 @@
   </head>
   <body>
     <header>
-      <button class="button button-yellow" onclick="redirectUrl('./contato')">
+      <button class="button button-yellow" onclick="redirectUrl('../contato')">
         Voltar
       </button>
     </header>
@@ -51,7 +49,7 @@
       <subtela>
         <form id="form">
           <p vermelho>indica campos obrigatórios (*)</p>
-          
+
           <label required for="email">Email para retorno</label>
           <input
             type="email"
@@ -60,7 +58,7 @@
             placeholder="Insira o seu e-mail"
             required
           />
-          
+
           <label required for="select">Selecione o tipo do contato</label>
           <select required name="select">
             <option value="default">Selecione uma opçao</option>
@@ -94,8 +92,14 @@
 
     <scripts>
       <script src="../src/js/links.js"></script>
-      <script src="../src/js/offline.js" defer></script>
-      <script src="../src/js/load-scripts.js" defer></script>
+      <script
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/offline.js"
+        type="module"
+      ></script>
+      <script
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/load-scripts.js"
+        type="module"
+      ></script>
       <script
         type="module"
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

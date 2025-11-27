@@ -13,6 +13,10 @@
       rel="stylesheet"
       href="./src/css/factorio-main-87e4eb56.css"
     />
+    <link
+      rel="stylesheet"
+      href="/src/css/factorio-main-87e4eb56.css"
+    />
     <links></links>
 
     <seo>
@@ -56,13 +60,13 @@
   </head>
   <body>
     <header>
-      <button class="button button-yellow" onclick="redirectUrl('./')">
+      <button class="button button-yellow" onclick="redirectUrl('/')">
         Voltar
       </button>
 
       <button
         class="button button-yellow"
-        onclick="redirectUrl('./contato/fale-conosco.html')"
+        onclick="redirectUrl('./fale-conosco.html')"
       >
         Fale Conosco
       </button>
@@ -375,8 +379,14 @@
 
     <scripts>
       <script src="../src/js/links.js"></script>
-      <script src="../src/js/offline.js" defer></script>
-      <script src="../src/js/load-scripts.js" defer></script>
+      <script
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/offline.js"
+        type="module"
+      ></script>
+      <script
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/load-scripts.js"
+        type="module"
+      ></script>
       <script
         type="module"
         src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
