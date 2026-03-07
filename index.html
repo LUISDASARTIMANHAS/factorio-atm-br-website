@@ -4,11 +4,7 @@
     <meta http-equiv="Refresh" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=0.7" />
 
-    <link
-      href="./src/assets/logo.png"
-      rel="icon"
-      type="image/x-icon"
-    />
+    <link href="./src/assets/logo.png" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="./src/css/factorio-main-87e4eb56.css" />
 
     <seo>
@@ -21,111 +17,116 @@
         content="Tradução brasileira do mod All The Mods para Factorio. Inclui downloads, uploads e vídeos recomendados dos criadores Prompt Dark, Factorio Brasil e NYTROMANCE Games. Créditos completos aos autores dos vídeos."
       />
 
-      <meta
-        property="og:image"
-        content="./src/assets/logo.png"
-      />
+      <meta property="og:image" content="./src/assets/logo.png" />
       <meta name="twitter:card" content="summary" />
     </seo>
 
     <title>FACTORIO ATM TRANSLATED BR</title>
   </head>
- <body>
-  <!-- HEADER -->
-  <header class="container py-3">
-    <div class="d-flex flex-wrap gap-2 justify-content-center">
-
-      <button class="button flex-space-between" onclick="window.open('./discord')">
-        Discord
-      </button>
-
-      <button class="button button-yellow" onclick="redirectUrl('./login')">
-        Login
-      </button>
-
-      <button class="button flex-space-between" onclick="redirectUrl('./downloads')">
-        Transferencias (Factorio, DLCs, MODS)
-      </button>
-
-      <button class="button button-yellow" onclick="redirectUrl('./upload')">
-        Upload (Saves, Mods)
-      </button>
-
-      <button class="button flex-space-between" onclick="redirectUrl('./contato')">
-        Contato
-      </button>
-
-    </div>
-  </header>
-
-  <!-- CONTEÚDO PRINCIPAL -->
-  <section class="container my-4">
-    <div class="row g-4">
-
-  <!-- Coluna esquerda: Mod -->
-  <div class="col-12 col-lg-8">
-
-    <label for="mods">ALL THE MODS TRANSLATED BR</label>
-
-    <div class="ratio ratio-16x9 mb-3">
-      <iframe
-        src="https://mods.factorio.com/mods/LUIS_DAS_ARTIMANHAS/All-The-Mods-Translated-BR"
-        allowtransparency="true"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
-
-  </div>
-
-  <!-- Coluna direita: Discord como ASIDE -->
-  <aside class="col-12 col-lg-4">
-
-    <div class="ratio ratio-1x1">
-      <iframe
-        src="https://discord.com/widget?id=1063117115864907797&theme=dark"
-        allowtransparency="true"
-        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
-
-  </aside>
-
-</div>
-
-
-    <h2 class="mt-4">Recomendados:</h2>
-
-    <!-- IMPORTANTE: classe preservada -->
-    <div class="videos-container row g-3 mt-3">
-      <!-- carregado automaticamente -->
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="container py-4">
-    <div class="text-center">
-
-      <p class="p-title">Legenda:</p>
-
-      <div class="d-flex gap-2 flex-wrap justify-content-center mb-3">
-        <a class="button button-red">Indisponivel</a>
-        <a class="button button-yellow">Prioridade</a>
-        <a class="button button-green">Disponível</a>
-        <a class="button flex-space-between">Normal</a>
+  <body>
+    <!-- HEADER -->
+    <header class="container py-3">
+      <!-- STATUS DO SERVIDOR -->
+      <div class="text-center mt-2">
+        <span id="server-status" class="badge bg-warning fs-6">
+          Verificando servidor...
+        </span>
       </div>
 
-      <p>
-        Copyright © 2015 -
-        <script>document.write(new Date().getFullYear());</script>
-        Wube Software & LUIS DAS ARTIMANHAS - all rights reserved.
-      </p>
-    </div>
-  </footer>
+      <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <button
+          class="button flex-space-between"
+          onclick="window.open('./discord')"
+        >
+          Discord
+        </button>
+
+        <button class="button button-yellow" onclick="redirectUrl('./login')">
+          Login
+        </button>
+
+        <button
+          class="button flex-space-between"
+          onclick="redirectUrl('./downloads')"
+        >
+          Transferencias (Factorio, DLCs, MODS)
+        </button>
+
+        <button class="button button-yellow" onclick="redirectUrl('./upload')">
+          Upload (Saves, Mods)
+        </button>
+
+        <button
+          class="button flex-space-between"
+          onclick="redirectUrl('./contato')"
+        >
+          Contato
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <section class="container my-4">
+      <div class="row g-4">
+        <!-- Coluna esquerda: Mod -->
+        <div class="col-12 col-lg-8">
+          <label for="mods">ALL THE MODS TRANSLATED BR</label>
+
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe
+              src="https://mods.factorio.com/mods/LUIS_DAS_ARTIMANHAS/All-The-Mods-Translated-BR"
+              allowtransparency="true"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Coluna direita: Discord como ASIDE -->
+        <aside class="col-12 col-lg-4">
+          <div class="ratio ratio-1x1">
+            <iframe
+              src="https://discord.com/widget?id=1063117115864907797&theme=dark"
+              allowtransparency="true"
+              sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+            ></iframe>
+          </div>
+        </aside>
+      </div>
+
+      <h2 class="mt-4">Recomendados:</h2>
+
+      <!-- IMPORTANTE: classe preservada -->
+      <div class="videos-container row g-3 mt-3">
+        <!-- carregado automaticamente -->
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="container py-4">
+      <div class="text-center">
+        <p class="p-title">Legenda:</p>
+
+        <div class="d-flex gap-2 flex-wrap justify-content-center mb-3">
+          <a class="button button-red">Indisponivel</a>
+          <a class="button button-yellow">Prioridade</a>
+          <a class="button button-green">Disponível</a>
+          <a class="button flex-space-between">Normal</a>
+        </div>
+
+        <p>
+          Copyright © 2015 -
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Wube Software & LUIS DAS ARTIMANHAS - all rights reserved.
+        </p>
+      </div>
+    </footer>
 
     <scripts>
+      <script src="./src/js/server-status.mjs" type="module"></script>
       <script
-        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/offline.js"
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/offline.mjs"
         type="module"
       ></script>
       <script
@@ -147,11 +148,11 @@
         type="module"
       ></script>
       <script
-        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/recomendados-render.js"
+        src="https://luisdasartimanhas.github.io/factorio-atm-br-website/src/js/recomendados-render.mjs"
         type="module"
       ></script>
       <!-- <script
-        src="./src/js/recomendados-render.js"
+        src="./src/js/recomendados-render.mjs"
         type="module"
       ></script> -->
     </autoscripts>

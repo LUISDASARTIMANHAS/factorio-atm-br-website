@@ -12,7 +12,7 @@ import { renderScript } from "../lib/render.js";
   const bootstrapsJs = ["bootstrap@5.3.6","popper@2.11.8"]
 
   srcsModule.forEach((srcModule) => {
-    var url = `${fonteUser}/js/${srcModule}.js`;
+    var url = `${fonteUser}/js/${srcModule}.mjs`;
     renderScript(autoscripts, url, true);
 
     console.log(`%c [SISTEMA ATM BR]: Novo script ESM: ${url}`, "#ffaa00");
