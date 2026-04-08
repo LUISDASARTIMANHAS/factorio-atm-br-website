@@ -33,7 +33,7 @@ import config from "./config.js";
         }
 
         setTimeout(() => {
-          window.location.href = "../sys/offline.html";
+          window.location.href = `./sys/offline.html`;
         }, 5000);
       }
     }
