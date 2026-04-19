@@ -17,7 +17,7 @@ import { alternarVisibilidade, getStatus } from "./utils.mjs";
         alternarVisibilidade(!offline);
 
         setTimeout(() => {
-          // window.location.href = "../sys/offline.html";
+          // window.location.href = "./sys/offline.html";
         }, 1000 * config.defaultTimeoutSeconds);
       }
     }
@@ -26,3 +26,4 @@ import { alternarVisibilidade, getStatus } from "./utils.mjs";
     alert(`ERRO FATAL: ${error}`);
   }
 })();
+
