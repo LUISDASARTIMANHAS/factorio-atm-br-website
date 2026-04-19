@@ -1,6 +1,14 @@
-import { enviarDados, getCookie } from "../src/js/utils.mjs";
+import {
+  enviarDados,
+  formMessage,
+  getCookie,
+  getRandomHex,
+  getRandomInt,
+  sendApiAuth,
+  setCookie,
+} from "../src/js/utils.mjs";
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   const form = document.getElementById("form");
   const formCode = document.getElementById("formCode");
   const cookieContinuarConectado = getCookie("continuarConectado");
@@ -23,47 +31,20 @@ window.addEventListener("load", () => {
     sendCode();
   }
 
-  function getData() {
+  async function getData() {
     const inpEmail = document.getElementById("email");
     const payloadLogin = {
       email: inpEmail.value,
       type: "user",
     };
-    // const options = {
-    //   method: "POST",
-    //   mode: "cors",
-    //   headers: {
-    //     "content-type": "application/json;charset=utf-8",
-    //     Authorization: window.getAuthorizationHeader(),
-    //     key: date.getUTCHours() * date.getFullYear() * id,
-    //     id: id,
-    //   },
-    //   body: JSON.stringify(payloadLogin),
-    // };
 
-    loginMessage(`${censurarEmail(inpEmail.value)} Pediu um magic Link!`);
-    await enviarDados("api/login/magiclink",payloadLogin)
-
-    fetch(url, options)
-      .then((response) => {
-        if (response.ok) {
-          loginMessage(`Magic Link enviado com sucesso!`);
-          return response.text();
-        } else {
-          return response.text().then((errorText) => {
-            loginMessage("Erro ao Enviar Codigo Magick Link: " + errorText);
-            throw new Error("Erro ao Enviar Codigo Magick Link: " + errorText);
-          });
-        }
-      })
-      .then((data) => {
-        console.log("DATA RESPONSE: ");
-        console.log(data);
-        alert(data);
-        form.hidden = true;
-        formCode.hidden = false;
-      })
-      .catch((error) => onError(error));
+    // loginMessage(`${censurarEmail(inpEmail.value)} Pediu um magic Link!`);
+    const response = await sendApiAuth("request-code", payloadLogin);
+    const isOk = !response?.error;
+    if (isOk) {
+      form.hidden = true;
+      formCode.hidden = false;
+    }
   }
 
   async function sendCode() {
@@ -73,62 +54,42 @@ window.addEventListener("load", () => {
       email: inpEmail.value,
       code: inpCode.value,
     };
-    // const options = {
-    //   method: "POST",
-    //   mode: "cors",
-    //   headers: {
-    //     "content-type": "application/json;charset=utf-8",
-    //     Authorization: window.getAuthorizationHeader(),
-    //     key: date.getUTCHours() * date.getFullYear() * id,
-    //     id: id,
-    //   },
-    //   body: JSON.stringify(payloadLogin),
-    // };
 
-    await loginMessage(
-      censurarEmail(inpEmail.value) + " está tentando fazer login!"
-    );
-    await enviarDados("api/login",payloadLogin)
-    fetch(url, options)
-      .then(async (response) => {
-        if (response.ok) {
-          await loginMessage(
-            censurarEmail(inpEmail.value) + " Fez Login com sucesso!"
-          );
-          return response.json();
-        } else {
-          return response.text().then(async (errorText) => {
-            await loginMessage("Erro ao fazer login: " + errorText);
-            throw new Error("Erro ao fazer login: " + errorText);
-          });
-        }
-      })
-      .then((data) => {
-        console.log("DATA RESPONSE: ");
-        console.log(data);
-        autenticar(data);
-      })
-      .catch((error) => onError(error));
+    // await loginMessage(
+    //   censurarEmail(inpEmail.value) + " está tentando fazer login!",
+    // );
+    const response = await sendApiAuth("verify-code", payloadLogin);
+    const isOk = !response?.error;
+    if (isOk) {
+      autenticar(response);
+    }
+    // fetch(url, options)
+    //   .then(async (response) => {
+    //     if (response.ok) {
+    //       await loginMessage(
+    //         censurarEmail(inpEmail.value) + " Fez Login com sucesso!",
+    //       );
+    //       return response.json();
+    //     } else {
+    //       return response.text().then(async (errorText) => {
+    //         await loginMessage("Erro ao fazer login: " + errorText);
+    //         throw new Error("Erro ao fazer login: " + errorText);
+    //       });
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log("DATA RESPONSE: ");
+    //     console.log(data);
+    //     autenticar(data);
+    //   })
+    //   .catch((error) => onError(error));
   }
 
   function autenticar(userLogado) {
     const manterConectado = document.getElementById("continueConnected");
     const dataUserJson = JSON.stringify(userLogado);
-    const cords = 127;
-    const seed =
-      getRandomInt(cords) *
-      getRandomInt(cords) *
-      getRandomInt(cords) *
-      getRandomInt(cords);
-    const hexKey =
-      getRandomHex(seed) +
-      getRandomHex(seed) +
-      getRandomHex(seed) +
-      getRandomHex(seed);
-    const clientID = getRandomInt(255);
-    let token = hexKey + hexKey + "ValidDB:" + clientID;
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", userLogado.token);
     formMessage("Validando acesso...");
     localStorage.setItem("dataUser", dataUserJson);
     setCookie("continuarConectado", manterConectado.checked, 5);
@@ -142,8 +103,6 @@ window.addEventListener("load", () => {
     await window.factorio_message("LOGIN", msg);
   }
 
-
-
   function censurarEmail(email) {
     if (email.length >= 5) {
       // Mantém os primeiros cinco caracteres e substitui o restante por asteriscos
@@ -154,5 +113,4 @@ window.addEventListener("load", () => {
       return email;
     }
   }
-
 });

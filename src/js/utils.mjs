@@ -52,6 +52,12 @@ export function alternarVisibilidade(visivel) {
   }
 }
 
+export function getAuthorizationHeader() {
+    const combined = `${config.encodedUser}:${config.encodedPassword}`;
+    const doubleEncoded = btoa(btoa(combined));
+    return `Basic ${doubleEncoded}`;
+  }
+
 export function gerarNonce() {
   const date = new Date();
   return date.getUTCHours() * date.getFullYear() * getRandomID();
@@ -83,6 +89,7 @@ export function montarHeaders(path) {
   };
 
   if (path.startsWith("api/")) {
+    headers["Authorization"] = getAuthorizationHeader();
     headers["x-nonce"] = gerarNonce();
     headers["x-timestamp"] = Date.now().toString();
   }
@@ -90,7 +97,7 @@ export function montarHeaders(path) {
   return headers;
 }
 
-export async function enviarDados(path,rawPayload) {
+export async function enviarDados(path, rawPayload) {
   try {
     const url = `${config.serverUrl}/${path}`;
 
@@ -116,6 +123,16 @@ export async function enviarDados(path,rawPayload) {
     formMessageError(error);
     return { error: true, message: error.message };
   }
+}
+
+export async function sendApi(path,rawPayload) {
+  // middleware no estilo router.use("/api", api); que obriga usar a rota
+  return await enviarDados(`api/${path}`,rawPayload);
+}
+
+export async function sendApiAuth(path,rawPayload) {
+  // middleware no estilo router.use("/api/auth", auth); que obriga usar a rota auth
+  return await sendApi(`auth/${path}`,rawPayload);
 }
 
 export async function obterDados(path) {
