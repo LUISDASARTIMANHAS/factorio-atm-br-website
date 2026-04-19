@@ -12,30 +12,48 @@ export function alternarVisibilidade(visivel) {
   }
 }
 
-export async  function obterDados(path) {
+export function montarHeaders(path) {
+  const headers = {
+    "Content-Type": "application/json;charset=utf-8",
+  };
+
+  if (path.startsWith("api/")) {
+    // headers["x-nonce"] = gerarNonce();
+    headers["x-timestamp"] = Date.now().toString();
+  }
+
+  return headers;
+}
+
+export async function obterDados(path) {
   try {
     const url = `${config.serverUrl}/${path}`;
-    const options = {
+
+    const res = await fetch(url, {
       method: "GET",
       mode: "cors",
-      headers: {
-        "content-type": "application/json;charset=utf-8",
-      },
-    };
+      headers: montarHeaders(path),
+    });
 
-    let res = await fetch(url, options);
-    console.log(`%c [obterDados] /${path}: ${res}`, "color: #00ff00");
-    return res
+    const data = await res.json(); // <- aqui está a correção principal
+
+    if (!res.ok) {
+      console.error(`[obterDados] erro ${res.status} /${path}:`, data);
+      return { error: true, status: res.status, data };
+    }
+
+    console.log(`[obterDados] sucesso /${path}:`, data);
+    return data;
   } catch (error) {
-    console.error(`%c [obterDados] /${path}: ${error}`, "color: #ff0000");
-    return error
+    console.error(`[obterDados] falha /${path}:`, error);
+    return { error: true, message: error.message };
   }
 }
 
 export async function getStatus() {
-  return obterDados("status");
+  return await obterDados("status");
 }
 
 export async function getStatusManutencao() {
-  return obterDados("manutencao");
+  return await obterDados("manutencao");
 }

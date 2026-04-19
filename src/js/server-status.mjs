@@ -27,16 +27,17 @@ function updateStatus(online, code = null) {
  */
 async function checkServerStatus() {
   try {
-    const response = getStatus()
+    const response = await getStatus();
 
-    if (response.status === 200) {
-      updateStatus(true, response.status);
-    } else {
-      updateStatus(false, response.status);
-    }
+    const isOk = !response?.error;
+
+    const statusCode = response?.status ?? 200;
+
+    updateStatus(isOk, statusCode);
+
   } catch (error) {
     console.debug("[STATUS SERVER]", error);
-    updateStatus(false);
+    updateStatus(false, 0);
   }
 }
 

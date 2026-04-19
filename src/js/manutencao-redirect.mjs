@@ -1,11 +1,12 @@
 // import config from "./config.js";
+import config from "./config.js";
 import { alternarVisibilidade, getStatusManutencao } from "./utils.mjs";
 window.addEventListener("load", async () => {
   try {
     try {
-      let res = getStatusManutencao();
+      let res = await getStatusManutencao();
       if (res) {
-        redirectManutencao(false);
+        redirectManutencao(res);
       }
     } catch (error) {
       redirectManutencao(true);
@@ -27,7 +28,7 @@ window.addEventListener("load", async () => {
 
       setTimeout(() => {
         window.location.href = "../sys/manutencao.html";
-      }, 3000);
+      }, config.defaultTimeoutSeconds * 1000);
     }
   } catch (error) {
     alert(`ERRO FATAL: ${error}`);
