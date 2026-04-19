@@ -1,7 +1,7 @@
 import { renderA, renderDiv, renderVideoIframeYoutube } from "../lib/render.js";
 import { obterDados } from "./utils.mjs";
 
-(() => {
+(async () => {
   const youtubeContainer = document.querySelector(".videos-container");
   const FontLink = "https://www.youtube.com/@";
   const serverRecomendados = await obterDados("api/recomendados")

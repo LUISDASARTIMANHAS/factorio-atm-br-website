@@ -1,8 +1,8 @@
+import { enviarDados, getCookie } from "../src/js/utils.mjs";
+
 window.addEventListener("load", () => {
   const form = document.getElementById("form");
   const formCode = document.getElementById("formCode");
-  const msgError = document.getElementById("msgError");
-  const msgSuccess = document.getElementById("msgSuccess");
   const cookieContinuarConectado = getCookie("continuarConectado");
   const lastDataUser = localStorage.getItem("dataUser");
 
@@ -25,27 +25,24 @@ window.addEventListener("load", () => {
 
   function getData() {
     const inpEmail = document.getElementById("email");
-    const url = `${window.env.apiUrl}/login/magiclink`;
-    const date = new Date();
-    const id = Math.floor(Math.random() * 20242002);
     const payloadLogin = {
       email: inpEmail.value,
       type: "user",
     };
-    const options = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "content-type": "application/json;charset=utf-8",
-        Authorization: window.getAuthorizationHeader(),
-        key: date.getUTCHours() * date.getFullYear() * id,
-        id: id,
-      },
-      body: JSON.stringify(payloadLogin),
-    };
+    // const options = {
+    //   method: "POST",
+    //   mode: "cors",
+    //   headers: {
+    //     "content-type": "application/json;charset=utf-8",
+    //     Authorization: window.getAuthorizationHeader(),
+    //     key: date.getUTCHours() * date.getFullYear() * id,
+    //     id: id,
+    //   },
+    //   body: JSON.stringify(payloadLogin),
+    // };
 
-    formMessage("Aguardando Servidor....");
     loginMessage(`${censurarEmail(inpEmail.value)} Pediu um magic Link!`);
+    await enviarDados("api/login/magiclink",payloadLogin)
 
     fetch(url, options)
       .then((response) => {
@@ -72,29 +69,26 @@ window.addEventListener("load", () => {
   async function sendCode() {
     const inpEmail = document.getElementById("email");
     const inpCode = document.getElementById("code");
-    const url = `${window.env.apiUrl}/login`;
-    const date = new Date();
-    const id = Math.floor(Math.random() * 20242002);
     const payloadLogin = {
       email: inpEmail.value,
       code: inpCode.value,
     };
-    const options = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "content-type": "application/json;charset=utf-8",
-        Authorization: window.getAuthorizationHeader(),
-        key: date.getUTCHours() * date.getFullYear() * id,
-        id: id,
-      },
-      body: JSON.stringify(payloadLogin),
-    };
+    // const options = {
+    //   method: "POST",
+    //   mode: "cors",
+    //   headers: {
+    //     "content-type": "application/json;charset=utf-8",
+    //     Authorization: window.getAuthorizationHeader(),
+    //     key: date.getUTCHours() * date.getFullYear() * id,
+    //     id: id,
+    //   },
+    //   body: JSON.stringify(payloadLogin),
+    // };
 
-    formMessage("Aguardando Servidor....");
     await loginMessage(
       censurarEmail(inpEmail.value) + " está tentando fazer login!"
     );
+    await enviarDados("api/login",payloadLogin)
     fetch(url, options)
       .then(async (response) => {
         if (response.ok) {
@@ -144,22 +138,11 @@ window.addEventListener("load", () => {
     }, 7000);
   }
 
-  function onError(error) {
-    console.debug(error);
-    msgError.setAttribute("style", "display: block");
-    msgError.innerHTML = error;
-    msgSuccess.setAttribute("style", "display: none");
-  }
-
   async function loginMessage(msg) {
     await window.factorio_message("LOGIN", msg);
   }
 
-  function formMessage(message) {
-    msgError.setAttribute("style", "display: none");
-    msgSuccess.innerHTML = message;
-    msgSuccess.setAttribute("style", "display: block");
-  }
+
 
   function censurarEmail(email) {
     if (email.length >= 5) {
@@ -172,37 +155,4 @@ window.addEventListener("load", () => {
     }
   }
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  function getRandomBin(max) {
-    return Math.floor(Math.random() * max).toString(2);
-  }
-
-  function getRandomHex(max) {
-    return Math.floor(Math.random() * max).toString(16);
-  }
-
-  function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
-  function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == " ") {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
 });

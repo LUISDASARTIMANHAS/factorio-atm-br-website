@@ -197,7 +197,7 @@ tela {
   color: white;
   font-size: 18px;
   background-color: #313031;
-  border-image: url(https://cdn.glitch.global/59df7246-3def-4799-baad-d67e2fa48607/background_painel.png?v=background_painel)
+  border-image: url("../assets/background_painel.png")
     8/4px repeat;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -214,7 +214,7 @@ subtela {
   overflow: hidden;
   border-bottom: 7px solid white;
   font-size: 18px;
-  border-image: url("https://cdn.glitch.global/59df7246-3def-4799-baad-d67e2fa48607/sub_background_painel.png?v=sub_background_painel")
+  border-image: url("../assets/sub_background_painel.png")
     16/8px repeat;
   border-image-outset: 4px;
   background-color: #242324;
