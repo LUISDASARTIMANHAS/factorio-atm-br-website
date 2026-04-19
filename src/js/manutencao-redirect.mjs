@@ -1,32 +1,15 @@
-import config from "./config.js";
+// import config from "./config.js";
+import { alternarVisibilidade, getStatusManutencao } from "./utils.mjs";
 window.addEventListener("load", async () => {
   try {
-    const url = `${config.serverUrl}/manutencao`;
-    const options = {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "content-type": "application/json;charset=utf-8",
-      },
-    };
-    await fetch(url, options)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          return response.text().then((errorText) => {
-            const errorMessage = `Statuscode: ${response.status} - ${errorText}`;
-            throw new Error(errorMessage);
-          });
-        }
-      })
-      .then((data) => {
-        redirectManutencao(data);
-      })
-      .catch((error) => {
-        console.debug(`%c [SISTEMA MANUTENÇÃO] ${error}`, "color: #ff0000");
-        redirectManutencao(true);
-      });
+    try {
+      let res = getStatusManutencao();
+      if (res) {
+        redirectManutencao(false);
+      }
+    } catch (error) {
+      redirectManutencao(true);
+    }
 
     function redirectManutencao(offline) {
       const DebugMode = JSON.parse(localStorage.getItem("debugMode")) || false;
@@ -40,19 +23,12 @@ window.addEventListener("load", async () => {
         }
       }
 
-      if (verificarOfflineENaoDebugMode) {
-        body.hidden = true;
+      alternarVisibilidade(!offline);
 
-        if (body) {
-          body.style.display = "none";
-        }
-
-        setTimeout(() => {
-          window.location.href = "../sys/manutencao.html";
-        }, 3000);
-      }
+      setTimeout(() => {
+        window.location.href = "../sys/manutencao.html";
+      }, 3000);
     }
-    redirectManutencao(false);
   } catch (error) {
     alert(`ERRO FATAL: ${error}`);
   }
@@ -73,7 +49,7 @@ window.addEventListener("load", async () => {
       localStorage.setItem("debugMode", false);
       alert("Debug Mode Desativado!!");
       window.location.reload();
-    })
+    });
 
     h1Alert.appendChild(button);
     body.insertAdjacentElement("beforebegin", h1Alert);

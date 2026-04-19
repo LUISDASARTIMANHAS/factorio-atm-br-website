@@ -1,4 +1,5 @@
 import config from "./config.js";
+import { getStatus, obterDados } from "./utils.mjs";
 
 /**
  * Atualiza o status visual do servidor
@@ -26,10 +27,7 @@ function updateStatus(online, code = null) {
  */
 async function checkServerStatus() {
   try {
-    const response = await fetch(`${config.serverUrl}/status`, {
-      method: "GET",
-      mode: "cors",
-    });
+    const response = getStatus()
 
     if (response.status === 200) {
       updateStatus(true, response.status);

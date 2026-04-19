@@ -1,8 +1,10 @@
 import { renderA, renderDiv, renderVideoIframeYoutube } from "../lib/render.js";
+import { obterDados } from "./utils.mjs";
 
 (() => {
   const youtubeContainer = document.querySelector(".videos-container");
   const FontLink = "https://www.youtube.com/@";
+  const serverRecomendados = obterDados("api/recomendados")
   const recomendados = [
     {
       channelName: "promptdark",

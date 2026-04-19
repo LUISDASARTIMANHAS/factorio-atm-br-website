@@ -6,4 +6,5 @@ export default {
   encodedPassword: "==",
   encodedUserManutencao: "",
   encodedPasswordManutencao: "==",
+  defaultTimeoutSeconds: 5,
 };
