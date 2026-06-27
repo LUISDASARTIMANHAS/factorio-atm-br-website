@@ -93,14 +93,3 @@ document.addEventListener("DOMContentLoaded", () => {
     bindFilters();
   }
 });
-
-/**
- * Atualização automática.
- */
-setInterval(
-  () => {
-    updateLastUpdate();
-  },
-
-  1000 * 60,
-);

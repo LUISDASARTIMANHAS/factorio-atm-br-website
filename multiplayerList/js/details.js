@@ -1,3 +1,5 @@
+// js\details.js
+
 /**
  * Modal de detalhes do servidor.
  * @author Luis das Artimanhas
@@ -6,291 +8,240 @@
 "use strict";
 
 /**
- * Cria um badge.
- *
- * @param {string} text
- * @param {string} color
- * @returns {string}
+ * Cria badge Bootstrap.
  */
 function createBadge(text, color = "primary") {
   return `
-        <span class="badge bg-${color} me-1 mb-1">
-            ${text}
-        </span>
-    `;
+    <span class="badge bg-${color} me-1 mb-1">
+      ${text}
+    </span>
+  `;
 }
 
 /**
- * Converte boolean para Sim/Não.
- *
- * @param {boolean} value
- * @returns {string}
+ * Sim / Não
  */
 function yesNo(value) {
   return value ? "Sim" : "Não";
 }
 
-/**
- * Copia texto.
- *
- * @param {string} value
- */
-async function copyText(value) {
-  try {
-    await navigator.clipboard.writeText(value);
-  } catch (e) {
-    console.error(e);
-  }
-}
+
 
 /**
- * Exibe detalhes do servidor.
- *
- * @param {string} serverId
+ * Modal de servidor
  */
-async function showServer(serverId) {
+async function showServer(server) {
   try {
-    const server = await fetchServerDetails(serverId);
+    const detailedServer = await fetchServerDetails(server.game_id);
 
     const modal = new bootstrap.Modal(document.getElementById("serverModal"));
 
-    document.getElementById("modalTitle").innerHTML = `
-            <i class="bi bi-hdd-network"></i>
-            ${server.name}
-            `;
+    const app = detailedServer.application_version || {};
 
-    const tags = (server.tags || [])
+    const address = detailedServer.host_address || "-";
+
+    const playerList = Array.isArray(detailedServer.players)
+      ? detailedServer.players
+      : [];
+    const playersCount = playerList.length ?? 0;
+    const maxPlayers =
+      detailedServer.max_players ?? detailedServer.maxPlayers ?? 0;
+
+
+    const modsList = Array.isArray(detailedServer.mods)
+      ? detailedServer.mods
+      : [];
+
+    const percent = maxPlayers
+      ? Math.round((playersCount * 100) / maxPlayers)
+      : 0;
+
+    const headless = yesNo(detailedServer.headless_server);
+    const hasPassword = yesNo(detailedServer.has_password);
+    const isSteam = app.build_mode === "steam" ? "Sim" : "Não";
+
+    const tags = (detailedServer.tags || [])
+      .filter(Boolean)
       .map((tag) => createBadge(tag, "dark"))
       .join("");
 
-    const version = server.application_version?.game_version || "-";
-
-    const address = server.host_address || "-";
-
-    const players = server.playerCount || 0;
-
-    const maxPlayers = server.maxPlayers || 0;
-
-    const percent = maxPlayers ? Math.round((players * 100) / maxPlayers) : 0;
+    document.getElementById("modalTitle").innerHTML = `
+      <i class="bi bi-hdd-network"></i>
+      ${detailedServer.name || "Servidor"}
+    `;
 
     document.getElementById("modalBody").innerHTML = `
 <div class="container-fluid">
 
-<div class="row">
+  <div class="row">
 
-<div class="col-lg-8">
+    <div class="col-lg-8">
 
-<h3 class="mb-3">
+      <h3 class="mb-3">${detailedServer.name || "-"}</h3>
 
-${server.name}
+      <p>${detailedServer.description || "Sem descrição."}</p>
 
-</h3>
+      <div class="mb-3">
+        ${tags}
+      </div>
 
-<p>
+      <div class="progress mb-3">
+        <div class="progress-bar bg-success" style="width:${percent}%">
+          ${playersCount}/${maxPlayers}
+        </div>
+      </div>
 
-${server.description || "Sem descrição."}
+      <!-- PLAYERS -->
+      <div class="glass p-3 mb-3">
+        <b>Jogadores online</b><br>
 
-</p>
+        ${
+          playerList.length
+            ? `
+              <div class="d-flex flex-wrap gap-1 mt-2">
+                ${playerList
+                  .map((p) => `<span class="badge bg-info">${p}</span>`)
+                  .join("")}
+              </div>
+            `
+            : `<span class="text-muted">Nenhum jogador online</span>`
+        }
+      </div>
 
-<div class="mb-4">
+      <!-- MODS (CORRIGIDO) -->
+      <div class="glass p-3 mb-3">
+        <b>Mods (${modsList.length})</b><br>
 
-${tags}
+        ${
+          modsList.length
+            ? `
+              <div class="d-flex flex-wrap gap-1 mt-2">
+                ${modsList
+                  .slice(0, 50)
+                  .map(
+                    (m) =>
+                      `<span class="badge bg-warning">${m.name} ${m.version}</span>`,
+                  )
+                  .join("")}
+              </div>
+            `
+            : `<span class="text-muted">Vanilla</span>`
+        }
+      </div>
+
+      <div class="row g-3">
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Versão</b><br>
+            ${app.game_version || "-"}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Build</b><br>
+            ${app.build_version || "-"}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Modo</b><br>
+            ${app.build_mode || "-"}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Plataforma</b><br>
+            ${app.platform || "-"}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Endereço</b><br>
+            ${address}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Headless</b><br>
+            ${headless}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Senha</b><br>
+            ${hasPassword}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="glass p-3">
+            <b>Steam</b><br>
+            ${isSteam}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <div class="glass p-4">
+
+        <h5>Status</h5>
+        <hr>
+
+        <p><b>Jogadores</b><br>${playersCount}/${maxPlayers}</p>
+        <p><b>Mods</b><br>${modsList.length}</p>
+        <p><b>Headless</b><br>${headless}</p>
+        <p><b>Senha</b><br>${hasPassword}</p>
+        <p><b>Steam</b><br>${isSteam}</p>
+
+        <button id="copyAddress" class="btn btn-primary w-100 mb-2">
+          <i class="bi bi-copy"></i> Copiar endereço
+        </button>
+
+        <button id="connectServer" class="btn btn-success w-100">
+          <i class="bi bi-controller"></i> Conectar
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
-
-<div class="progress mb-3">
-
-<div
-class="progress-bar bg-success"
-style="width:${percent}%">
-
-${players}/${maxPlayers}
-
-</div>
-
-</div>
-
-<div class="row g-3">
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Versão</b>
-
-<br>
-
-${version}
-
-</div>
-
-</div>
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Endereço</b>
-
-<br>
-
-${address}
-
-</div>
-
-</div>
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Mods</b>
-
-<br>
-
-${server.modCount}
-
-</div>
-
-</div>
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Headless</b>
-
-<br>
-
-${yesNo(server.dedicated)}
-
-</div>
-
-</div>
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Senha</b>
-
-<br>
-
-${yesNo(server.hasPassword)}
-
-</div>
-
-</div>
-
-<div class="col-md-6">
-
-<div class="glass p-3">
-
-<b>Steam</b>
-
-<br>
-
-${yesNo(server.steam_host)}
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="col-lg-4">
-
-<div class="glass p-4">
-
-<h5>
-
-<i class="bi bi-activity"></i>
-
-Status
-
-</h5>
-
-<hr>
-
-<p>
-
-<b>Jogadores</b>
-
-<br>
-
-${players}/${maxPlayers}
-
-</p>
-
-<p>
-
-<b>Servidor dedicado</b>
-
-<br>
-
-${yesNo(server.dedicated)}
-
-</p>
-
-<p>
-
-<b>Mods</b>
-
-<br>
-
-${server.modCount}
-
-</p>
-
-<p>
-
-<b>Senha</b>
-
-<br>
-
-${yesNo(server.hasPassword)}
-
-</p>
-
-<button
-id="copyAddress"
-class="btn btn-primary w-100 mb-2">
-
-<i class="bi bi-copy"></i>
-
-Copiar endereço
-
-</button>
-
-<button
-class="btn btn-success w-100">
-
-<i class="bi bi-controller"></i>
-
-Conectar
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 `;
 
-    document.getElementById("copyAddress").onclick = () => {
-      copyText(address);
+    document.getElementById("copyAddress").onclick = async () => {
+      await copyText(address);
+
+      const btn = document.getElementById("copyAddress");
+      btn.innerHTML = "Copiado!";
+
+      setTimeout(() => {
+        btn.innerHTML = `<i class="bi bi-copy"></i> Copiar endereço`;
+      }, 1500);
+    };
+
+    document.getElementById("connectServer").onclick = () => {
+      if (!address || address === "-") return;
+
+      window.open(`steam://connect/${address}`, "_blank");
+      navigator.clipboard.writeText(address).catch(() => {});
     };
 
     modal.show();
   } catch (err) {
     console.error(err);
-
-    alert(err.message);
+    alert("Erro ao carregar servidor: " + err.message);
   }
 }

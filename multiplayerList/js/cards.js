@@ -84,6 +84,7 @@ function renderCards(list) {
     const card = document.createElement("div");
     card.className = "col-lg-4 col-md-6";
 
+    console.log(server);
     card.innerHTML = `
       <div class="glass p-4 h-100 server-card fade-in">
 
@@ -121,6 +122,15 @@ function renderCards(list) {
           )}
 
           ${badge(server.version, "secondary")}
+
+          ${server.application_version ? `
+            <div class="d-flex flex-wrap gap-1 mt-2">
+              ${badge(`🎮 ${server.application_version.game_version}`, "info")}
+              ${badge(`🔧 ${server.application_version.build_version}`, "secondary")}
+              ${badge(`⚙️ ${server.application_version.build_mode}`, "dark")}
+              ${badge(`💻 ${server.application_version.platform}`, "dark")}
+            </div>
+          ` : ""}
         </div>
 
         <div class="progress mb-3">
@@ -166,7 +176,7 @@ function renderCards(list) {
     `;
 
     card.querySelector("button").addEventListener("click", () => {
-      showServer(server.server_id);
+      showServer(server);
     });
 
     card.style.animationDelay = index * 0.05 + "s";

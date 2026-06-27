@@ -41,7 +41,7 @@ const API_URL =
  * Intervalo de atualização.
  * @type {number}
  */
-const REFRESH_INTERVAL = 1*60*1000;
+const REFRESH_INTERVAL_IN_MIN = 2;
 
 /**
  * Data da última atualização.
@@ -49,19 +49,6 @@ const REFRESH_INTERVAL = 1*60*1000;
  */
 let lastUpdate = null;
 
-/**
- * Atualiza o texto de status.
- *
- * @param {string} text
- * @returns {void}
- */
-function setStatus(text) {
-  const status = document.getElementById("status");
-
-  if (status) {
-    status.textContent = text;
-  }
-}
 
 /**
  * Busca a lista pública de servidores.
@@ -69,7 +56,7 @@ function setStatus(text) {
  * @returns {Promise<Array>}
  */
 async function fetchServers() {
-  setStatus("Atualizando...");
+  updateLastUpdate();
 
   const response = await fetch(API_URL, {
     method: "GET",
@@ -134,10 +121,8 @@ async function refreshServers() {
     updateLastUpdate();
     await pingApi();
 
-    setStatus("Atualizado às " + lastUpdate.toLocaleTimeString());
   } catch (error) {
     console.error(error);
-    setStatus("Falha ao atualizar.");
   } finally {
     document.body.classList.remove("loading");
   }
@@ -152,32 +137,10 @@ function startAutoRefresh() {
   setInterval(
     refreshServers,
 
-    REFRESH_INTERVAL,
+    REFRESH_INTERVAL_IN_MIN*60*1000,
   );
 }
 
-/**
- * Exibe detalhes do servidor.
- *
- * @param {string} serverId
- * @returns {Promise<void>}
- */
-async function showServer(serverId) {
-  try {
-    const data = await fetchServerDetails(serverId);
-
-    const modal = new bootstrap.Modal(document.getElementById("serverModal"));
-
-    document.getElementById("modalTitle").textContent = data.name || "Servidor";
-
-    document.getElementById("modalBody").innerHTML =
-      "<pre class='small'>" + JSON.stringify(data, null, 2) + "</pre>";
-
-    modal.show();
-  } catch (err) {
-    alert(err.message);
-  }
-}
 
 /**
  * Inicialização.
