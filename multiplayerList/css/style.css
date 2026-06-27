@@ -1,0 +1,346 @@
+:root {
+
+	--bg: #090b10;
+	--bg2: #111827;
+	--card: rgba(22, 28, 36, .72);
+
+	--primary: #3b82f6;
+	--primaryHover: #60a5fa;
+
+	--green: #22c55e;
+	--red: #ef4444;
+	--yellow: #f59e0b;
+
+	--border: rgba(255, 255, 255, .08);
+
+	--text: #f5f5f5;
+	--muted: #b0b7c3;
+
+	--shadow: 0 10px 40px rgba(0, 0, 0, .45);
+
+}
+
+body {
+
+	background:
+		radial-gradient(circle at top, #182234, #090b10 55%);
+	color: var(--text);
+	overflow-x: hidden;
+	min-height: 100vh;
+	font-family:
+		"Segoe UI",
+		sans-serif;
+
+}
+
+a {
+
+	color: inherit;
+	text-decoration: none;
+
+}
+
+#background-stars {
+
+	position: fixed;
+
+	inset: 0;
+
+	z-index: -1;
+
+	opacity: .4;
+
+	background-image:
+
+		radial-gradient(white 1px, transparent 1px),
+		radial-gradient(#5da7ff 1px, transparent 1px);
+
+	background-size:
+		140px 140px,
+		220px 220px;
+
+	background-position:
+		0 0,
+		80px 120px;
+
+}
+
+.glass {
+
+	background: var(--card);
+
+	backdrop-filter: blur(14px);
+
+	border: 1px solid var(--border);
+
+	border-radius: 18px;
+
+	box-shadow: var(--shadow);
+
+}
+
+.navbar {
+
+	border-bottom: 1px solid rgba(255, 255, 255, .05);
+
+}
+
+.navbar-brand {
+
+	font-size: 1.4rem;
+
+	letter-spacing: .8px;
+
+}
+
+.stat-card {
+
+	text-align: center;
+
+	padding: 30px;
+
+	transition: .35s;
+
+}
+
+.stat-card:hover {
+
+	transform: translateY(-8px);
+
+	border-color: rgba(59, 130, 246, .6);
+
+	box-shadow:
+		0 0 35px rgba(59, 130, 246, .3);
+
+}
+
+.stat-card i {
+
+	color: var(--primary);
+
+}
+
+.stat-card h2 {
+
+	font-weight: 700;
+
+	margin-top: 10px;
+
+	margin-bottom: 0;
+
+}
+
+.form-control,
+.form-select {
+
+	background: #151c26;
+
+	border: none;
+
+	color: white;
+
+}
+
+.form-control:focus,
+.form-select:focus {
+
+	background: #1c2430;
+
+	color: white;
+
+	box-shadow:
+
+		0 0 0 .2rem rgba(59, 130, 246, .35);
+
+}
+
+#status {
+
+	color: #88b9ff;
+
+	font-size: .9rem;
+
+}
+
+.server-card {
+
+	transition: .35s;
+
+	cursor: pointer;
+
+	overflow: hidden;
+
+	position: relative;
+
+}
+
+.server-card:hover {
+
+	transform:
+		translateY(-8px) scale(1.01);
+
+	border-color:
+
+		rgba(59, 130, 246, .7);
+
+	box-shadow:
+
+		0 0 30px rgba(59, 130, 246, .28);
+
+}
+
+.server-card::before {
+
+	content: "";
+
+	position: absolute;
+
+	left: -120%;
+
+	top: 0;
+
+	width: 100%;
+
+	height: 100%;
+
+	background:
+
+		linear-gradient(120deg,
+
+			transparent,
+
+			rgba(255, 255, 255, .07),
+
+			transparent);
+
+}
+
+.server-card:hover::before {
+
+	left: 120%;
+
+	transition: 1.2s;
+
+}
+
+.server-title {
+
+	font-size: 1.15rem;
+
+	font-weight: 700;
+
+}
+
+.server-description {
+
+	color: var(--muted);
+
+	min-height: 55px;
+
+	overflow: hidden;
+
+}
+
+.badge {
+
+	font-weight: 500;
+
+}
+
+.progress {
+
+	height: 9px;
+
+	background: #202833;
+
+}
+
+.progress-bar {
+
+	transition: 1s;
+
+}
+
+.modal-content {
+
+	border: none;
+
+}
+
+.modal-header {
+
+	border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+.modal-footer {
+
+	border-top: 1px solid rgba(255, 255, 255, .08);
+
+}
+
+::-webkit-scrollbar {
+
+	width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+
+	background: #111;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+	background: #3b82f6;
+
+	border-radius: 40px;
+
+}
+
+.loading {
+
+	animation: pulse 1.3s infinite;
+
+}
+
+.btn-outline-primary {
+
+	transition: .3s;
+
+}
+
+.btn-outline-primary:hover {
+
+	box-shadow:
+
+		0 0 18px rgba(59, 130, 246, .5);
+
+}
+
+.card-icon {
+
+	font-size: 1.2rem;
+
+	color: var(--primary);
+
+}
+
+footer {
+
+	opacity: .6;
+
+	text-align: center;
+
+	padding: 40px;
+
+}
+
+.small-info {
+
+	color: #97a5b7;
+
+	font-size: .88rem;
+
+}

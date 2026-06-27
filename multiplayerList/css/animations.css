@@ -1,0 +1,459 @@
+/* ===========================
+   FADE IN
+=========================== */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+
+}
+
+.fade-in{
+
+    animation:fadeIn .5s ease forwards;
+
+}
+
+
+/* ===========================
+   CARD SURGINDO
+=========================== */
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(35px)
+            scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.server-card{
+
+    animation:
+        cardAppear .5s ease;
+
+}
+
+
+/* ===========================
+   BRILHO NEON
+=========================== */
+
+@keyframes glow{
+
+    0%{
+
+        box-shadow:
+        0 0 5px rgba(59,130,246,.25);
+
+    }
+
+    50%{
+
+        box-shadow:
+        0 0 25px rgba(59,130,246,.55);
+
+    }
+
+    100%{
+
+        box-shadow:
+        0 0 5px rgba(59,130,246,.25);
+
+    }
+
+}
+
+.glow{
+
+    animation:
+        glow 2s infinite;
+
+}
+
+
+/* ===========================
+   PULSE
+=========================== */
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+    }
+
+}
+
+
+/* ===========================
+   LOADING
+=========================== */
+
+.loading{
+
+    animation:
+        pulse 1.2s infinite;
+
+}
+
+
+/* ===========================
+   ROTAÇÃO
+=========================== */
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+.rotate{
+
+    animation:
+        rotate 10s linear infinite;
+
+}
+
+
+/* ===========================
+   FLOAT
+=========================== */
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.float{
+
+    animation:
+        floating 3s ease-in-out infinite;
+
+}
+
+
+/* ===========================
+   CONTADOR
+=========================== */
+
+@keyframes counter{
+
+    from{
+
+        transform:scale(.6);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.counter{
+
+    animation:
+        counter .45s;
+
+}
+
+
+/* ===========================
+   BARRA
+=========================== */
+
+.progress-bar{
+
+    transition:
+        width .8s ease;
+
+}
+
+
+/* ===========================
+   SHIMMER
+=========================== */
+
+@keyframes shimmer{
+
+    0%{
+
+        background-position:-500px 0;
+
+    }
+
+    100%{
+
+        background-position:500px 0;
+
+    }
+
+}
+
+.skeleton{
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #1c2430 25%,
+        #283341 50%,
+        #1c2430 75%
+    );
+
+    background-size:500px 100%;
+
+    animation:
+        shimmer 1.4s infinite;
+
+}
+
+
+/* ===========================
+   ESTRELAS
+=========================== */
+
+@keyframes starsMove{
+
+    from{
+
+        transform:
+            translateY(0);
+
+    }
+
+    to{
+
+        transform:
+            translateY(120px);
+
+    }
+
+}
+
+#background-stars{
+
+    animation:
+        starsMove 40s linear infinite;
+
+}
+
+
+/* ===========================
+   STATUS
+=========================== */
+
+@keyframes blink{
+
+    0%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+    }
+
+}
+
+#status{
+
+    animation:
+        blink 2s infinite;
+
+}
+
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal.fade .modal-dialog{
+
+    transform:translateY(30px);
+
+    transition:.35s;
+
+}
+
+.modal.show .modal-dialog{
+
+    transform:translateY(0);
+
+}
+
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+.btn{
+
+    transition:
+        .25s;
+
+}
+
+.btn:hover{
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ===========================
+   HOVER DOS BADGES
+=========================== */
+
+.badge{
+
+    transition:.25s;
+
+}
+
+.badge:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+/* ===========================
+   ÍCONES
+=========================== */
+
+.stat-card i{
+
+    transition:.35s;
+
+}
+
+.stat-card:hover i{
+
+    transform:
+        rotate(-8deg)
+        scale(1.2);
+
+}
+
+
+/* ===========================
+   REFRESH
+=========================== */
+
+.refreshing{
+
+    animation:
+        rotate 1s linear infinite;
+
+}
+
+
+/* ===========================
+   SCROLL APPEAR
+=========================== */
+
+.show-on-scroll{
+
+    opacity:0;
+
+    transform:
+        translateY(40px);
+
+    transition:.6s;
+
+}
+
+.show-on-scroll.visible{
+
+    opacity:1;
+
+    transform:
+        translateY(0);
+
+}

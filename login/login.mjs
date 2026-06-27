@@ -63,26 +63,6 @@ window.addEventListener("load", async () => {
     if (isOk) {
       autenticar(response);
     }
-    // fetch(url, options)
-    //   .then(async (response) => {
-    //     if (response.ok) {
-    //       await loginMessage(
-    //         censurarEmail(inpEmail.value) + " Fez Login com sucesso!",
-    //       );
-    //       return response.json();
-    //     } else {
-    //       return response.text().then(async (errorText) => {
-    //         await loginMessage("Erro ao fazer login: " + errorText);
-    //         throw new Error("Erro ao fazer login: " + errorText);
-    //       });
-    //     }
-    //   })
-    //   .then((data) => {
-    //     console.log("DATA RESPONSE: ");
-    //     console.log(data);
-    //     autenticar(data);
-    //   })
-    //   .catch((error) => onError(error));
   }
 
   function autenticar(userLogado) {

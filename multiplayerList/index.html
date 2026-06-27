@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Factorio Multiplayer Browser</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/animations.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Background -->
+    <div id="background-stars"></div>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark glass sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">
+          <i class="bi bi-globe-americas"></i>
+          Factorio Multiplayer
+        </a>
+
+        <div class="d-flex align-items-center gap-3">
+          <span id="lastUpdate" class="small-info"> Nunca atualizado </span>
+
+          <span id="apiPing" class="badge bg-success"> -- </span>
+
+          <button id="refreshButton" class="btn btn-outline-primary">
+            <i id="refreshIcon" class="bi bi-arrow-clockwise"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Conteúdo -->
+
+    <div class="container mt-4">
+      <!-- Estatísticas -->
+
+      <div class="row g-4 mb-4">
+        <div class="col-lg col-md-6">
+          <div class="glass stat-card">
+            <i class="bi bi-hdd-network display-5"></i>
+
+            <h2 id="totalServers">0</h2>
+
+            <small>Servidores</small>
+          </div>
+        </div>
+
+        <div class="col-lg col-md-6">
+          <div class="glass stat-card">
+            <i class="bi bi-people display-5"></i>
+
+            <h2 id="totalPlayers">0</h2>
+
+            <small>Jogadores</small>
+          </div>
+        </div>
+
+        <div class="col-lg col-md-6">
+          <div class="glass stat-card">
+            <i class="bi bi-puzzle display-5"></i>
+
+            <h2 id="modsServers">0</h2>
+
+            <small>Servidores com Mods</small>
+          </div>
+        </div>
+
+        <div class="col-lg col-md-6">
+          <div class="glass stat-card">
+            <i class="bi bi-lock-fill display-5"></i>
+
+            <h2 id="passwordServers">0</h2>
+
+            <small>Protegidos</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pesquisa -->
+
+      <div class="glass p-4 mb-4">
+        <div class="row g-3">
+          <div class="col-lg-6">
+            <input
+              id="search"
+              class="form-control"
+              placeholder="Pesquisar servidor..."
+            />
+          </div>
+
+          <div class="col">
+            <select id="filterVersion" class="form-select">
+              <option value="">Todas versões</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <select id="filterMods" class="form-select">
+              <option value="">Mods</option>
+              <option value="true">Com Mods</option>
+              <option value="false">Vanilla</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <select id="filterPassword" class="form-select">
+              <option value="">Senha</option>
+              <option value="true">Com senha</option>
+              <option value="false">Sem senha</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status -->
+
+      <div class="d-flex justify-content-between mb-3">
+        <h4>Lista Pública</h4>
+
+        <span id="status"> Atualizando... </span>
+      </div>
+
+      <!-- Cards -->
+
+      <div id="serversContainer" class="row g-4"></div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="serverModal">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content glass">
+          <div class="modal-header">
+            <h4 id="modalTitle"></h4>
+
+            <button
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div id="modalBody" class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/details.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
