@@ -1,0 +1,443 @@
+{
+    "results": [
+        {
+            "name": "----",
+            "title": "[placeholder]",
+            "owner": "kuxynator",
+            "summary": "",
+            "downloads_count": 10,
+            "category": "internal",
+            "score": 0.16666666666666663,
+            "latest_release": {
+                "download_url": "/download/----/67548312f3014638e6b96ff4",
+                "file_name": "----_0.0.0.zip",
+                "info_json": {
+                    "factorio_version": "0.13"
+                },
+                "released_at": "2024-12-07T17:17:06.653000Z",
+                "version": "0.0.0",
+                "sha1": "cd4a2865f642058c28cab723bbf0e1ec3531109d"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "----early-bird----",
+            "title": "early-bird",
+            "owner": "kuxynator",
+            "summary": "A collection of tools that should be available early.\r\n<Does nothing at present>",
+            "downloads_count": 50,
+            "category": "no-category",
+            "score": 0.33333333333333337,
+            "latest_release": {
+                "download_url": "/download/----early-bird----/6756ac2f6e47491de8effb50",
+                "file_name": "----early-bird----_3.0.0.zip",
+                "info_json": {
+                    "factorio_version": "2.0"
+                },
+                "released_at": "2024-12-09T08:37:03.108000Z",
+                "version": "3.0.0",
+                "sha1": "2698164c15531060d1d26ceb3d6ac7b40785c141"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/73163a08113a6a43a665d21b4c9ff64f3e292b4c.thumb.png"
+        },
+        {
+            "name": "----early-bird-base----",
+            "title": "Early Bird: base",
+            "owner": "kuxynator",
+            "summary": "provides `base_data_raw` an early snapshpt of `data.raw`",
+            "downloads_count": 35,
+            "category": "no-category",
+            "score": 0.16666666666666663,
+            "latest_release": {
+                "download_url": "/download/----early-bird-base----/6756ffe13df6486d0acc0062",
+                "file_name": "----early-bird-base----_3.0.0.zip",
+                "info_json": {
+                    "factorio_version": "2.0"
+                },
+                "released_at": "2024-12-09T14:34:09.260000Z",
+                "version": "3.0.0",
+                "sha1": "9d93cf356f6e99d544309c19d20283933749f915"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/a8ea680787d1941ce3e08205f328120118302350.thumb.png"
+        },
+        {
+            "name": "---Jonnys-debug",
+            "title": "Jonnys Debug",
+            "owner": "1Jonny",
+            "summary": "\"ErrorReport Log Gui\" for Modder\r\nFactorio Start = Printet all Tables and Variables in the JoErrRep Funktion into a Gui Overlay and Stop Factorio",
+            "downloads_count": 32,
+            "category": "no-category",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/---Jonnys-debug/5ca2b94a254a20000b09bb8f",
+                "file_name": "---Jonnys-debug_0.17.0.zip",
+                "info_json": {
+                    "factorio_version": "0.17"
+                },
+                "released_at": "2019-04-02T01:22:18.431000Z",
+                "version": "0.17.0",
+                "sha1": "bbd86d46a4893c416f3f7775d6abb8698feb42e7"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/83685d1d621eabe66e1baf72da21f9f616a8a391.thumb.png"
+        },
+        {
+            "name": "-modpack",
+            "title": "Cheater Modpack",
+            "owner": "tntmasta",
+            "summary": "Old and broken.",
+            "downloads_count": 23,
+            "category": "mod-packs",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/-modpack/62544767e3e23bc4fcc9449b",
+                "file_name": "-modpack_0.0.1.zip",
+                "info_json": {
+                    "factorio_version": "1.1"
+                },
+                "released_at": "2022-04-11T15:21:11.154000Z",
+                "version": "0.0.1",
+                "sha1": "1df7c33e30f41f93ffa4e5ff3729fe8a8b3d3965"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/93cc9f4d86e2bee7f301df7829105e36139f4de5.thumb.png"
+        },
+        {
+            "name": "0-Kux-PreEvents",
+            "title": "Kux PreEvents",
+            "owner": "kuxynator",
+            "summary": "A mod that provides a remote interface to register prioritized event handlers.\r\n<a dependency mod for mod developers, not for standalone playing>",
+            "downloads_count": 37,
+            "category": "no-category",
+            "score": -0.6333333333333334,
+            "latest_release": {
+                "download_url": "/download/0-Kux-PreEvents/67569dbc6e47491de8effb4b",
+                "file_name": "0-Kux-PreEvents_3.0.0.zip",
+                "info_json": {
+                    "factorio_version": "2.0"
+                },
+                "released_at": "2024-12-09T07:35:24.987000Z",
+                "version": "3.0.0",
+                "sha1": "2e4fb764df8e11301211d9f0148273bc48c4ec21"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/c254add56e12fe98e397c74065669584fae32298.thumb.png"
+        },
+        {
+            "name": "0-event-trace",
+            "title": "Lua API Event Trace",
+            "owner": "x2605",
+            "summary": "This is a debugging tool. This mod tracks and shows you what event ID(defines.events.～) occurs. Only admins can open GUI if it is multiplay game.\r\n- Press SHIFT+F3 to open GUI. (you can change key bindings)\r\n- Press SHIFT+F2 for quick toggle logging mode while GUI is opened.\r\n- Only works while GUI is opened.\r\nTracked logs can be saved and investigated by \"gvv\" mod. https://mods.factorio.com/mod/gvv\r\nVisit https://lua-api.factorio.com/latest/events.html to see full description of events.",
+            "downloads_count": 1391,
+            "category": "utilities",
+            "score": -1.0666666666666669,
+            "latest_release": {
+                "download_url": "/download/0-event-trace/6753e28c4819181566a93555",
+                "file_name": "0-event-trace_0.3.3.zip",
+                "info_json": {
+                    "factorio_version": "2.0"
+                },
+                "released_at": "2024-12-07T05:52:12.320000Z",
+                "version": "0.3.3",
+                "sha1": "19517dca498ce408e8127eb3199141ab50083c0f"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/f8d9800d624ed299ec32f7cb89c99c44e9972958.thumb.png"
+        },
+        {
+            "name": "000-Rebalanced-game",
+            "title": "Rebalanced Game",
+            "owner": "EpicSlayer7666",
+            "summary": "Totally changes the game Balance. (Why put furnaces in Science Potions when you should be putting the Potion in the Furnace? upgrade your labs instead! and Player/Enemies/Spawners have Different HP and healing rates.)",
+            "downloads_count": 19,
+            "category": "tweaks",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/000-Rebalanced-game/5e2539f2084a49000baa7707",
+                "file_name": "000-Rebalanced-game_0.17.70.zip",
+                "info_json": {
+                    "factorio_version": "0.17"
+                },
+                "released_at": "2020-01-20T05:26:10.779000Z",
+                "version": "0.17.70",
+                "sha1": "328b7cea3b8a443b5646565f9c27a377d9a4b01b"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/2d8e60ad47f2be76045e246c3bb8b924658f3a5a.thumb.png"
+        },
+        {
+            "name": "0000",
+            "title": "[placeholder]",
+            "owner": "kuxynator",
+            "summary": "",
+            "downloads_count": 9,
+            "category": "internal",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/0000/675481e5f3014638e6b96ff1",
+                "file_name": "0000_0.0.0.zip",
+                "info_json": {
+                    "factorio_version": "0.13"
+                },
+                "released_at": "2024-12-07T17:12:05.633000Z",
+                "version": "0.0.0",
+                "sha1": "ad42fe85c0ad4f20e1406014408eedf9e23973ae"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "00electric-vehicles-lib-reloaded",
+            "title": "Electric Vehicles Lib: Reloaded",
+            "owner": "OwnlyMe",
+            "summary": "Library. CONTAINS NO VEHICLES. Can be used as a dependency or included in your mod",
+            "downloads_count": 585,
+            "category": "internal",
+            "score": -1.7999999999999998,
+            "latest_release": {
+                "download_url": "/download/00electric-vehicles-lib-reloaded/677f43e14761a5041c8c2f1b",
+                "file_name": "00electric-vehicles-lib-reloaded_2.0.3.zip",
+                "info_json": {
+                    "factorio_version": "2.0"
+                },
+                "released_at": "2025-01-09T03:34:57.470000Z",
+                "version": "2.0.3",
+                "sha1": "a501072d1456a44219c96852cfd2b45e12a851de"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/08a934b40e3a0f03a02d34d4496bd4db1eb21ace.thumb.png"
+        },
+        {
+            "name": "015AdvancedRadar",
+            "title": "Advanced Radar for Factorio 0.15",
+            "owner": "ChurchOrganist",
+            "summary": "Port to 0.15 of Malcolm Cooks' AdvancedRadar mod. Advanced radar with greater range, speed, and power consumption.",
+            "downloads_count": 17,
+            "category": "no-category",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/015AdvancedRadar/5a5f1ae6adcc441024d745a4",
+                "file_name": "015AdvancedRadar_0.15.1.zip",
+                "info_json": {
+                    "factorio_version": "0.15"
+                },
+                "released_at": "2017-11-24T17:44:27.381000Z",
+                "version": "0.15.1",
+                "sha1": "f2b2864a4099ef97a21fb9c2de6096952e72b2f5"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/0725dc4326b800f1aa900e72b2aac4549276ee2d.thumb.png"
+        },
+        {
+            "name": "015_like_infinite_research",
+            "title": "infinite research (0.15 like)",
+            "owner": "marshkip",
+            "summary": "add (almost) infinite research like planned in 0.15. see friday fact #161. this mod add infinite research for upgrading robots, turrets, weapons and researching speed.",
+            "downloads_count": 24,
+            "category": "content",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/015_like_infinite_research/5a5f1ae6adcc441024d72e0e",
+                "file_name": "015_like_infinite_research_0.1.0.zip",
+                "info_json": {
+                    "factorio_version": "0.14"
+                },
+                "released_at": "2016-11-11T07:07:22.473000Z",
+                "version": "0.1.0",
+                "sha1": "7529aeeba5382daa08fc6c907924eb0783119a22"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/84109a73b35230d21599ed5939d01090329ee5b6.thumb.png"
+        },
+        {
+            "name": "016-science",
+            "title": "0.16 Science Packs",
+            "owner": "SuperSandro2000",
+            "summary": "Reverts the science pack recipes back to match 0.16.",
+            "downloads_count": 15,
+            "category": "tweaks",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/016-science/5c7bb097c3dad0000d0074ff",
+                "file_name": "016-science_0.1.1.zip",
+                "info_json": {
+                    "factorio_version": "0.17"
+                },
+                "released_at": "2019-03-03T10:46:47.817000Z",
+                "version": "0.1.1",
+                "sha1": "19917402e48749dbd57122b0a91ac88937cac433"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "017-packs-for-014",
+            "title": "0.17 science for 0.14 ( New-science addon)",
+            "owner": "voldkost",
+            "summary": "",
+            "downloads_count": 17,
+            "category": "no-category",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/017-packs-for-014/5c2baf14f64c7c000c51bb30",
+                "file_name": "017-packs-for-014_0.0.2.zip",
+                "info_json": {
+                    "factorio_version": "0.14"
+                },
+                "released_at": "2019-01-01T18:19:00.993000Z",
+                "version": "0.0.2",
+                "sha1": "61057f3ba6429f3e10f48de11d3f5c27c433f155"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "017-science",
+            "title": "0.17 Science Packs",
+            "owner": "SuperSandro2000",
+            "summary": "Changes the science pack recipes to match 0.17.",
+            "downloads_count": 12,
+            "category": "tweaks",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/017-science/5c2e873bd593fa000d3f90f4",
+                "file_name": "017-science_0.1.8.zip",
+                "info_json": {
+                    "factorio_version": "0.16"
+                },
+                "released_at": "2019-01-03T22:05:47.932000Z",
+                "version": "0.1.8",
+                "sha1": "689f8fa04a16c36514ce79983dd02447a56a2ab5"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "017_science",
+            "title": "0.17 science conversion",
+            "owner": "morley376",
+            "summary": "# DEPRECATED AS OF 2019-03-31T22:13:01 - SUPPORT PHASE ENDED\r\nAdds in the new science pack recipes and known tech tree, while keeping 0.16 recipes intact so that the player may update their base at their own pace. Implements almost all 0.17 balance changes: transport-belt, mining, smelting changes, and more (see page for full list). Compatible with existing saves, most big mods and will support release 0.17!\r\nIMPORTANT NOTE: Version 0.1.6 of this mod is the last working version of the mod. Version 0.1.7 of the mod will be only for migrating saves to the official 0.17.",
+            "downloads_count": 18,
+            "category": "tweaks",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/017_science/5c716df3eadbd5000deb9064",
+                "file_name": "017_science_0.1.61.zip",
+                "info_json": {
+                    "factorio_version": "0.16"
+                },
+                "released_at": "2019-02-23T15:59:47.744000Z",
+                "version": "0.1.61",
+                "sha1": "9aeae6dcbc6044f1331a77635441874dde208bbf"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "name": "03-long-inserters",
+            "title": "03 Longer Inserters",
+            "owner": "sokerd",
+            "summary": "3 block inserter",
+            "downloads_count": 19,
+            "category": "content",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/03-long-inserters/5a5f1ae6adcc441024d7484c",
+                "file_name": "03-long-inserters_0.0.1.zip",
+                "info_json": {
+                    "factorio_version": "0.16"
+                },
+                "released_at": "2017-12-20T15:14:41.412000Z",
+                "version": "0.0.1",
+                "sha1": "97f1b1c0d32b0f4dfd05a4dd65057ba3673ba890"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/8c72a96a9df2a751ad40083794ec00173ecf4d46.thumb.png"
+        },
+        {
+            "name": "0FactorioExtended-Plus-Layout",
+            "title": "FactorioExtended Plus-Layout",
+            "owner": "billbo99",
+            "summary": "Moves all the FE+ crafting recipes into the main 4x tabs",
+            "downloads_count": 3913,
+            "category": "tweaks",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/0FactorioExtended-Plus-Layout/630e55318ccd0f08e0144baa",
+                "file_name": "0FactorioExtended-Plus-Layout_1.1.5.zip",
+                "info_json": {
+                    "factorio_version": "1.1"
+                },
+                "released_at": "2022-08-30T18:21:37.960000Z",
+                "version": "1.1.5",
+                "sha1": "8290095a490295907bea1223be38c5ebd56a4e95"
+            },
+            "thumbnail": "https://assets-mod.factorio.com/assets/727b4a43026f43ba5a18a91cc1b0aa8ebadce868.thumb.png"
+        },
+        {
+            "name": "0ULogger",
+            "title": "Switchable logger",
+            "owner": "ZwerOxotnik",
+            "summary": "Very simple switchable logger for writing data from events into script-output\\0ULogger_data.log (works on servers only)",
+            "downloads_count": 46,
+            "category": "utilities",
+            "score": -0.30000000000000004,
+            "latest_release": {
+                "download_url": "/download/0ULogger/61fb98df4714d5885d4a4e19",
+                "file_name": "0ULogger_0.1.0.zip",
+                "info_json": {
+                    "factorio_version": "1.1"
+                },
+                "released_at": "2022-02-03T08:57:03.118000Z",
+                "version": "0.1.0",
+                "sha1": "3b950d8ab66052888a1f7f8674004e5f35feb56c"
+            },
+            "thumbnail": "https://factorio.com/static/img/space-age-capsule.png"
+        },
+        {
+            "download_url": "/download/crafting-efficiency-2/685e9d6e3b5362a58cb193e8",
+            "file_name": "crafting-efficiency-2_0.2.17.zip",
+            "info_json": {
+                "dependencies": [
+                    "base >= 2.0.0",
+                    "?space-age >= 2.0.0",
+                    "?vanilla_galore_continued",
+                    "?space_age_galore",
+                    "?bobplates",
+                    "?ev-refining",
+                    "?ev-machines"
+                ],
+                "factorio_version": "2.0"
+            },
+            "released_at": "2025-06-27T13:32:30.393000Z",
+            "sha1": "abd5e11a8576147fedd507aace5297e055dcdfc6",
+            "version": "0.2.17"
+        },
+        {
+            "download_url": "/download/crafting-efficiency-2/686ae004215b16f4dcd88e92",
+            "file_name": "crafting-efficiency-2_0.2.18.zip",
+            "info_json": {
+                "dependencies": [
+                    "base >= 2.0.0",
+                    "?space-age >= 2.0.0",
+                    "?vanilla_galore_continued",
+                    "?space_age_galore",
+                    "?bobplates",
+                    "?ev-refining",
+                    "?ev-machines"
+                ],
+                "factorio_version": "2.0"
+            },
+            "released_at": "2025-07-06T20:43:48.917000Z",
+            "sha1": "ac4e68e38961ea892fc67f47a21c86ba399b4926",
+            "version": "0.2.18"
+        },
+        {
+            "download_url": "/download/crafting-efficiency-2/6872c38f3d15669c3737d619",
+            "file_name": "crafting-efficiency-2_0.2.19.zip",
+            "info_json": {
+                "dependencies": [
+                    "base >= 2.0.0",
+                    "?space-age >= 2.0.0",
+                    "?vanilla_galore_continued",
+                    "?space_age_galore",
+                    "?bobplates",
+                    "?ev-refining",
+                    "?ev-machines",
+                    "?extraplanetary-production"
+                ],
+                "factorio_version": "2.0"
+            },
+            "released_at": "2025-07-12T20:20:31.775000Z",
+            "sha1": "18eee02ebe1df6dfac2a6d1f62e5f7df42ca4d9e",
+            "version": "0.2.19"
+        }
+    ],
+    "lastUpdatedDateTime": "2025-09-15T03:48:35.753Z"
+}
