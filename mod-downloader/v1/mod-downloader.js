@@ -1,4 +1,4 @@
-import config from "../src/js/config.js";
+import config from "../../src/js/config.js";
 
 export async function fetchInitialMods() {
 	const res = await fetch(`${config.serverUrl}/mods`);

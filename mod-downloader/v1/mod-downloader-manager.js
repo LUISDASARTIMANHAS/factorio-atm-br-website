@@ -2,7 +2,7 @@
 // https://pingobras-factorio-server.onrender.com/mods/mod a pesquisar
 
 import { fetchInitialMods, fetchModByName } from "./mod-downloader.js";
-import config from "../src/js/config.js";
+import config from "../../src/js/config.js";
 // baixar mod
 // https://pingobras-factorio-server.onrender.com/download/mod/nome do mod
 const modsContainer = document.getElementById("modsContainer");

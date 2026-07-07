@@ -1,260 +1,137 @@
-/* ==========================================================================
-   FACTORIO MOD BROWSER - SYSTEM THEME (HIGH CONTRAST INDUSTRIAL BLUEPRINT)
-   ========================================================================== */
-
-:root {
-  --bg-main: #0e1013;
-  --bg-panel: #17191e;
-  --bg-input: #101216;
-  --border-layout: #2b303c;
-  --factorio-orange: #ff7605;
-  --factorio-orange-hover: #ff9233;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-highlight: #ffb870;
-}
-
-/* Reset Geral e Tipografia */
+/* Fundo geral escuro com gradiente sutil */
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  min-height: 100vh;
-  letter-spacing: 0.02em;
+	background: linear-gradient(145deg, #1f1f2b, #29293d);
+	color: #f0f0f0;
+	font-family: 'Segoe UI', sans-serif;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
 }
 
-/* Títulos Industriais */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.04em;
+/* Container principal */
+.container {
+	padding-top: 30px;
 }
 
-/* Dados Técnicos e Códigos */
-code, .tech-data, .badge {
-  font-family: 'JetBrains Mono', monospace;
+.mod-card ul,
+.mod-card li {
+	color: #f0f0f0;
+}
+.mod-card p {
+	color: #f0f0f0;
 }
 
-/* Cabeçalho Principal */
-.main-header {
-  background: linear-gradient(180deg, #13161c 0%, var(--bg-main) 100%);
-  border-bottom: 1px solid var(--border-layout);
-}
-
-.main-header h1 {
-  color: var(--factorio-orange);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Painel de Busca e Filtros */
-.control-panel {
-  background-color: var(--bg-panel);
-  border: 1px solid var(--border-layout);
-  border-left: 4px solid var(--factorio-orange);
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-/* Sobrescrevendo Inputs do Bootstrap para Modo Escuro Legível */
-.form-control {
-  background-color: var(--bg-input) !important;
-  border: 1px solid var(--border-layout) !important;
-  color: #ffffff !important;
-  font-family: 'Roboto', sans-serif;
-}
-
-.form-control::placeholder {
-  color: #64748b !important;
-}
-
-.form-control:focus {
-  background-color: var(--bg-input) !important;
-  border-color: var(--factorio-orange) !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.25) !important;
-}
-
-/* Emblema de Status */
-.status-badge {
-  background-color: var(--bg-input);
-  border: 1px solid var(--border-layout);
-  color: var(--text-primary);
-  letter-spacing: 0.05em;
-}
-
-/* Cards de Modificações - Alta Visibilidade */
+/* Cards com estilo moderno e efeito vidro */
 .mod-card {
-  background-color: var(--bg-panel) !important;
-  border: 1px solid var(--border-layout) !important;
-  border-radius: 6px !important;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+	color: white;
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 16px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(8px);
+	animation: fadeInUp 0.6s ease forwards;
+	transform: translateY(20px);
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
 }
 
 .mod-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--factorio-orange) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+	transform: translateY(0) scale(1.02);
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
 }
 
-/* Detalhe estético de desenho técnico nos cantos */
-.mod-card::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid rgba(255, 255, 255, 0.15);
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
-  pointer-events: none;
+/* Imagem do mod */
+.mod-card img {
+	height: 160px;
+	object-fit: cover;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	background-color: #eee;
+	filter: brightness(95%) saturate(110%);
+	transition: filter 0.3s ease;
 }
 
-/* Imagens dos Cards */
-.mod-card-img {
-  height: 160px;
-  object-fit: cover;
-  border-bottom: 1px solid var(--border-layout);
-  background-color: #0b0c0e;
-  filter: brightness(85%);
-  transition: filter 0.2s ease;
+.mod-card img:hover {
+	filter: brightness(100%) saturate(130%);
 }
 
-.mod-card:hover .mod-card-img {
-  filter: brightness(100%);
+/* Corpo do card */
+.mod-card .card-body {
+	padding: 1rem;
 }
 
-/* Links dos Títulos */
-.card-title a {
-  color: #ffffff !important;
-  text-decoration: none;
-  font-size: 1.25rem;
-  transition: color 0.15s ease;
+.card-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #ffffff;
 }
 
-.card-title a:hover {
-  color: var(--factorio-orange) !important;
-}
-
-/* Texto de Sumário / Descrição (Contraste Aprimorado) */
 .card-text {
-  color: #cbd5e1 !important; /* Tom cinza claro nítido sobre o fundo escuro */
-  font-size: 0.925rem;
-  line-height: 1.5;
+	color: #d0d0d0;
+	font-size: 0.95rem;
 }
 
-/* Bloco de Metadados Internos */
-.tech-data {
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.02);
+/* Botão moderno */
+.btn-primary {
+	background: #00c3ff;
+	border: none;
+	color: black;
+	font-size: 0.9rem;
+	transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.tech-data li {
-  color: #94a3b8 !important;
-  font-size: 0.85rem;
+.btn-primary:hover {
+	background: #00a3cc;
+	color: white;
+	box-shadow: 0 0 10px rgba(0, 195, 255, 0.6);
 }
 
-.tech-data strong {
-  color: var(--text-highlight) !important;
-  font-weight: 600;
+/* Campo de pesquisa */
+.search-bar {
+	margin: 20px 0;
+	color: white;
 }
 
-/* Cores Vivas de Alerta para Dependências no Modo Escuro */
-.text-danger { color: #f87171 !important; }   /* Vermelho pastel de alto contraste */
-.text-info { color: #38bdf8 !important; }     /* Azul celeste vívido */
-.text-warning { color: #fbbf24 !important; }  /* Amarelo ouro nítido */
-
-/* Botão Sólido Factorio */
-.btn-factorio {
-  background-color: var(--factorio-orange) !important;
-  color: #000000 !important;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  border: none !important;
-  border-radius: 4px !important;
-  padding: 10px 16px;
-  transition: background-color 0.15s ease, transform 0.1s ease !important;
+input#searchInput {
+	width: 100%;
+	padding: 10px 14px;
+	border-radius: 12px;
+	border: none;
+	background: #2e2e42;
+	color: white;
+	box-shadow: 0 0 8px rgba(0, 195, 255, 0.2);
+	transition: box-shadow 0.2s ease;
 }
 
-.btn-factorio:hover {
-  background-color: var(--factorio-orange-hover) !important;
-  color: #000000 !important;
+input#searchInput:focus {
+	outline: none;
+	box-shadow: 0 0 12px rgba(0, 195, 255, 0.5);
 }
 
-.btn-factorio:active {
-  transform: scale(0.98);
+/* Animação suave para os cards */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-/* Rodapé */
-.main-footer {
-  background-color: #0b0c0e;
-  border-top: 1px solid var(--border-layout) !important;
+/* Responsividade */
+@media (max-width: 768px) {
+	.mod-card img {
+		height: 140px;
+	}
 }
 
-.main-footer p {
-  color: #64748b;
-}
-
-.hover-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.hover-link:hover {
-  color: var(--factorio-orange) !important;
-}
-/* ==========================================================================
-   NOVOS CONTROLES: FILTROS E PAGINAÇÃO
-   ========================================================================== */
-
-/* Selects Estilizados */
-.form-select {
-  background-color: var(--bg-input) !important;
-  border: 1px solid var(--border-layout) !important;
-  color: #ffffff !important;
-  font-family: 'Roboto', sans-serif;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff7605' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
-}
-
-.form-select:focus {
-  border-color: var(--factorio-orange) !important;
-  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.25) !important;
-}
-
-/* Paginação Estilo Factorio */
-.custom-pagination .page-link {
-  background-color: var(--bg-panel);
-  border-color: var(--border-layout);
-  color: var(--text-primary);
-  font-family: 'JetBrains Mono', monospace;
-  margin: 0 4px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-}
-
-.custom-pagination .page-link:hover {
-  background-color: #2b303c;
-  color: var(--factorio-orange);
-  border-color: var(--factorio-orange);
-}
-
-.custom-pagination .page-item.active .page-link {
-  background-color: var(--factorio-orange);
-  border-color: var(--factorio-orange);
-  color: #000;
-  font-weight: bold;
-}
-
-.custom-pagination .page-item.disabled .page-link {
-  background-color: var(--bg-main);
-  color: #475569;
-  border-color: var(--border-layout);
+@media (max-width: 576px) {
+	.card-title {
+		font-size: 1rem;
+	}
+	.card-text {
+		font-size: 0.85rem;
+	}
 }
