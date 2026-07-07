@@ -105,7 +105,7 @@ function renderCollection() {
 
   if (state.filteredMods.length === 0) {
     modsContainer.innerHTML = `
-      <div class="col-12 text-center text-muted py-5">
+      <div class="col-12 text-center  py-5">
         <h4 class="text-warning mb-3">Nenhum esquema encontrado</h4>
         <p>Ajuste seus filtros ou termos de pesquisa.</p>
       </div>`;
@@ -193,7 +193,7 @@ const handleSearchInput = debounce(async (event) => {
       modsContainer.innerHTML = `
         <div class="col-12 text-center py-5">
           <div class="spinner-border text-primary" role="status"></div>
-          <p class="text-muted mt-2">Buscando servidores remotamente...</p>
+          <p class=" mt-2">Buscando servidores remotamente...</p>
         </div>`;
       
       const results = await fetchModByName(query);

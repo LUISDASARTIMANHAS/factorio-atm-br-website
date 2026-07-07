@@ -53,13 +53,13 @@ export function createModCardElement(mod) {
 
   // Descrição/Sumário
   const descEl = document.createElement("p");
-  descEl.className = "card-text text-muted small flex-grow-1";
+  descEl.className = "card-text  small flex-grow-1";
   descEl.textContent = mod.summary || "Sem descrição disponível.";
   cardBody.appendChild(descEl);
 
   // Informações Técnicas estruturadas (Metadados)
   const metaList = document.createElement("ul");
-  metaList.className = "list-unstyled small tech-data my-3 border-top pt-2 text-muted";
+  metaList.className = "list-unstyled small tech-data my-3 border-top pt-2 ";
 
   const addMetaItem = (label, value) => {
     const li = document.createElement("li");
