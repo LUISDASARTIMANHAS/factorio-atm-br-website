@@ -4,6 +4,6 @@
  */
 export default {
   serverUrl: "https://pingobras-factorio-server.onrender.com",
-  apiUrl: "http://localhost:3000/api",
+  apiUrl: "https://pingobras-factorio-server.onrender.com/api",
   defaultTimeoutSeconds: 5,
 };
