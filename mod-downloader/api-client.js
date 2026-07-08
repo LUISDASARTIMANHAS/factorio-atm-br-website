@@ -12,9 +12,13 @@ import config from "./config.js";
  * @returns {Promise<Array<Object>>} Lista de objetos representando os mods.
  */
 export async function fetchInitialMods() {
-  const response = await fetch(`${config.serverUrl}/mods`);
+  const response = await fetch(`${config.serverUrl}/mods`, {
+    method: "GET",
+
+    headers: getApiHeaders(),
+  });
   if (!response.ok) {
-    throw new Error(`Erro na API (${response.status})`);
+    throw new Error(`Erro na API (${response.apiUrl})`);
   }
   const data = await response.json();
   return data.results || [];
@@ -29,10 +33,39 @@ export async function fetchInitialMods() {
  */
 export async function fetchModByName(name) {
   const encodedName = encodeURIComponent(name);
-  const response = await fetch(`${config.serverUrl}/mods/search/mod?mod=${encodedName}`);
+  const response = await fetch(
+    `${config.apiUrl}/mods/search/mod?name=${encodedName}`,
+    {
+      method: "GET",
+
+      headers: getApiHeaders(),
+    },
+  );
   if (!response.ok) {
     throw new Error(`Erro na busca (${response.status})`);
   }
   const data = await response.json();
   return data.mods || [];
+}
+
+/**
+ * Gera um número aleatório para o nonce.
+ *
+ * @returns {string}
+ */
+function generateNonce() {
+  return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString();
+}
+
+/**
+ * Gera os headers obrigatórios da API.
+ *
+ * @returns {Object}
+ */
+function getApiHeaders() {
+  return {
+    authorization: "RekuSTYBmF",
+    "x-nonce": generateNonce(),
+    "x-timestamp": Date.now().toString(),
+  };
 }
