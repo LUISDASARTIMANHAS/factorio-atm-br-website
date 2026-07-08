@@ -1,5 +1,9 @@
 import { createElement } from "./dom-utils.js";
 import { isValidSecureUrl } from "../utils.js";
+import config from "../config.js";
+
+// url endpoint
+// ${config.serverUrl}/download/mod/modname/version
 
 const FACTORIO_DOWNLOAD_BASE = "https://mods.factorio.com";
 
@@ -49,7 +53,7 @@ export function createModReleases(mod) {
 		info.appendChild(version);
 		info.appendChild(file);
 
-		const url = `${FACTORIO_DOWNLOAD_BASE}${release.download_url}`;
+		const url = `${config.serverUrl}/download/mod/${encodeURIComponent(mod.name)}/${encodeURIComponent(release.version)}`;
 
 		const button = createElement("a", "btn btn-sm btn-primary", "Baixar");
 
