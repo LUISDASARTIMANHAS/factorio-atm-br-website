@@ -237,7 +237,7 @@ async function init() {
     modsContainer.innerHTML = `
       <div class="col-12 text-center py-4">
         <div class="alert alert-danger d-inline-block border-danger text-danger bg-dark">
-          <strong>Falha Crítica:</strong> Servidor inacessível. Tentando reconectar...
+          <strong>Falha Crítica:</strong> ${error} Servidor inacessível. Tentando reconectar...
         </div>
       </div>`;
     setTimeout(init, 7000);

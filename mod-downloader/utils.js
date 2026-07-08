@@ -55,3 +55,23 @@ export function isValidSecureUrl(stringUrl) {
     return false;
   }
 }
+
+/**
+ * Retorna todas as versões disponíveis do mod.
+ * Suporta tanto mods completos quanto mods resumidos.
+ *
+ * @function getAllVersions
+ * @param {Object} mod - Objeto contendo os dados do mod.
+ * @returns {Array<Object>} Lista de releases disponíveis.
+ */
+export function getAllVersions(mod) {
+  if (Array.isArray(mod.releases) && mod.releases.length > 0) {
+    return mod.releases;
+  }
+
+  if (mod.latest_release) {
+    return [mod.latest_release];
+  }
+
+  return [];
+}

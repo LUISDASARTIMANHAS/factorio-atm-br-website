@@ -1,5 +1,6 @@
+// mod-downloader\mod-renderer.js
 import config from "./config.js";
-import { getLatestRelease, isValidSecureUrl } from "./utils.js";
+import { getLatestRelease,getAllVersions, isValidSecureUrl } from "./utils.js";
 
 /**
  * Módulo especializado na renderização e manipulação do DOM sem innerHTML (Segurança Anti-XSS).
