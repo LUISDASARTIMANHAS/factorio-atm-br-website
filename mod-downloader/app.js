@@ -33,6 +33,11 @@ const state = {
  * @param {Array<Object>} mods
  */
 function populateCategoryDropdown(mods) {
+  if (!Array.isArray(mods)) {
+    console.warn("Formato inválido para categorias:", mods);
+    return;
+  }
+
   const categories = new Set(mods.map((m) => m.category).filter(Boolean));
   const currentVal = categoryFilter.value;
 
@@ -56,7 +61,7 @@ function populateCategoryDropdown(mods) {
  */
 function processAndRender() {
   // 1. Filtro de Busca Local (se a API já trouxe tudo, ou apenas garante consistência)
-  let result = state.rawMods;
+  let result = Array.isArray(state.rawMods) ? [...state.rawMods] : [];
   if (state.searchQuery) {
     const q = state.searchQuery.toLowerCase();
     result = result.filter(
@@ -192,7 +197,11 @@ const handleSearchInput = debounce(async (event) => {
       renderLoading(modsContainer);
 
       const results = await fetchModByName(query);
-      state.rawMods = results;
+
+      const mods = Array.isArray(results) ? results : results.mods || [];
+
+      state.rawMods = mods;
+
       populateCategoryDropdown(state.rawMods);
     } catch (error) {
       console.error("Erro na busca remota", error);
@@ -226,11 +235,14 @@ async function init() {
   try {
     const rawMods = await fetchInitialMods();
 
-    console.log("MODS RECEBIDOS:", rawMods);
-    console.log("TOTAL:", rawMods.length);
+    const mods = Array.isArray(rawMods) ? rawMods : rawMods.mods || [];
 
-    state.rawMods = rawMods;
-    populateCategoryDropdown(rawMods);
+    console.log("MODS RECEBIDOS:", mods);
+    console.log("TOTAL:", mods.length);
+
+    state.rawMods = mods;
+
+    populateCategoryDropdown(mods);
     processAndRender();
   } catch (error) {
     console.error(error);
