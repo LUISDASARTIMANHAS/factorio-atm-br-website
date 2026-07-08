@@ -22,7 +22,7 @@ export async function fetchInitialMods() {
     throw new Error(`Erro na API (${response.apiUrl})`);
   }
   const data = await response.json();
-  return data.results || [];
+  return data || [];
 }
 
 /**
@@ -46,7 +46,7 @@ export async function fetchModByName(name) {
     throw new Error(`Erro na busca (${response.status})`);
   }
   const data = await response.json();
-  return data.mods || [];
+  return data || [];
 }
 
 /**

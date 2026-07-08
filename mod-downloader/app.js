@@ -1,6 +1,7 @@
 // mod-downloader\app.js
 import { fetchInitialMods, fetchModByName } from "./api-client.js";
-import { createModCardElement } from "./mod-renderer.js";
+import { renderLoading } from "./components/loading.js";
+import { renderModList } from "./components/mod-list.js";
 import { getLatestRelease, debounce } from "./utils.js";
 
 /**
@@ -18,32 +19,35 @@ const paginationContainer = document.getElementById("paginationContainer");
 
 // Estado Global da Aplicação
 const state = {
-  rawMods: [],        // Todos os mods vindos da API
-  filteredMods: [],   // Mods após aplicação de busca e categoria
+  rawMods: [], // Todos os mods vindos da API
+  filteredMods: [], // Mods após aplicação de busca e categoria
   searchQuery: "",
   category: "all",
   sortBy: "downloads_desc",
   currentPage: 1,
-  itemsPerPage: 12
+  itemsPerPage: 12,
 };
 
 /**
  * Extrai categorias únicas dos mods e popula o select dinamicamente.
- * @param {Array<Object>} mods 
+ * @param {Array<Object>} mods
  */
 function populateCategoryDropdown(mods) {
-  const categories = new Set(mods.map(m => m.category).filter(Boolean));
+  const categories = new Set(mods.map((m) => m.category).filter(Boolean));
   const currentVal = categoryFilter.value;
-  
+
   categoryFilter.innerHTML = '<option value="all">Todas as Categorias</option>';
-  
-  Array.from(categories).sort().forEach(cat => {
-    const option = document.createElement("option");
-    option.value = cat;
-    option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1).replace(/-/g, ' ');
-    categoryFilter.appendChild(option);
-  });
-  
+
+  Array.from(categories)
+    .sort()
+    .forEach((cat) => {
+      const option = document.createElement("option");
+      option.value = cat;
+      option.textContent =
+        cat.charAt(0).toUpperCase() + cat.slice(1).replace(/-/g, " ");
+      categoryFilter.appendChild(option);
+    });
+
   categoryFilter.value = currentVal; // Mantém a seleção se existir
 }
 
@@ -55,29 +59,32 @@ function processAndRender() {
   let result = state.rawMods;
   if (state.searchQuery) {
     const q = state.searchQuery.toLowerCase();
-    result = result.filter(mod => 
-      (mod.name && mod.name.toLowerCase().includes(q)) || 
-      (mod.title && mod.title.toLowerCase().includes(q))
+    result = result.filter(
+      (mod) =>
+        (mod.name && mod.name.toLowerCase().includes(q)) ||
+        (mod.title && mod.title.toLowerCase().includes(q)),
     );
   }
 
   // 2. Filtro de Categoria
   if (state.category !== "all") {
-    result = result.filter(mod => mod.category === state.category);
+    result = result.filter((mod) => mod.category === state.category);
   }
 
   // 3. Ordenação
   result.sort((a, b) => {
     const aRel = getLatestRelease(a);
     const bRel = getLatestRelease(b);
-    
+
     switch (state.sortBy) {
       case "downloads_desc":
         return (b.downloads_count || 0) - (a.downloads_count || 0);
       case "downloads_asc":
         return (a.downloads_count || 0) - (b.downloads_count || 0);
       case "recent":
-        return new Date(bRel?.released_at || 0) - new Date(aRel?.released_at || 0);
+        return (
+          new Date(bRel?.released_at || 0) - new Date(aRel?.released_at || 0)
+        );
       case "name_asc":
         return (a.title || a.name || "").localeCompare(b.title || b.name || "");
       default:
@@ -86,7 +93,7 @@ function processAndRender() {
   });
 
   state.filteredMods = result;
-  
+
   // 4. Correção de página caso os filtros reduzam os resultados além da página atual
   const totalPages = Math.ceil(state.filteredMods.length / state.itemsPerPage);
   if (state.currentPage > totalPages && totalPages > 0) {
@@ -100,28 +107,19 @@ function processAndRender() {
 /**
  * Renderiza apenas os mods da página atual.
  */
+/**
+ * Renderiza apenas a página atual.
+ */
 function renderCollection() {
-  modsContainer.innerHTML = "";
   labelModsCarregados.textContent = state.filteredMods.length;
 
-  if (state.filteredMods.length === 0) {
-    modsContainer.innerHTML = `
-      <div class="col-12 text-center  py-5">
-        <h4 class="text-warning mb-3">Nenhum esquema encontrado</h4>
-        <p>Ajuste seus filtros ou termos de pesquisa.</p>
-      </div>`;
-    return;
-  }
+  const start = (state.currentPage - 1) * state.itemsPerPage;
 
-  // Lógica de Paginação (Slice)
-  const startIndex = (state.currentPage - 1) * state.itemsPerPage;
-  const endIndex = startIndex + state.itemsPerPage;
-  const paginatedMods = state.filteredMods.slice(startIndex, endIndex);
+  const end = start + state.itemsPerPage;
 
-  paginatedMods.forEach(mod => {
-    const cardNode = createModCardElement(mod);
-    if (cardNode) modsContainer.appendChild(cardNode);
-  });
+  const paginated = state.filteredMods.slice(start, end);
+
+  renderModList(modsContainer, paginated);
 }
 
 /**
@@ -135,7 +133,7 @@ function renderPagination() {
 
   // Botão Anterior
   const prevLi = document.createElement("li");
-  prevLi.className = `page-item ${state.currentPage === 1 ? 'disabled' : ''}`;
+  prevLi.className = `page-item ${state.currentPage === 1 ? "disabled" : ""}`;
   prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Anterior">&laquo;</a>`;
   prevLi.addEventListener("click", (e) => {
     e.preventDefault();
@@ -143,7 +141,7 @@ function renderPagination() {
       state.currentPage--;
       renderCollection();
       renderPagination();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
   paginationContainer.appendChild(prevLi);
@@ -154,21 +152,21 @@ function renderPagination() {
 
   for (let i = startPage; i <= endPage; i++) {
     const pageLi = document.createElement("li");
-    pageLi.className = `page-item ${state.currentPage === i ? 'active' : ''}`;
+    pageLi.className = `page-item ${state.currentPage === i ? "active" : ""}`;
     pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
     pageLi.addEventListener("click", (e) => {
       e.preventDefault();
       state.currentPage = i;
       renderCollection();
       renderPagination();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
     paginationContainer.appendChild(pageLi);
   }
 
   // Botão Próximo
   const nextLi = document.createElement("li");
-  nextLi.className = `page-item ${state.currentPage === totalPages ? 'disabled' : ''}`;
+  nextLi.className = `page-item ${state.currentPage === totalPages ? "disabled" : ""}`;
   nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Próximo">&raquo;</a>`;
   nextLi.addEventListener("click", (e) => {
     e.preventDefault();
@@ -176,7 +174,7 @@ function renderPagination() {
       state.currentPage++;
       renderCollection();
       renderPagination();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
   paginationContainer.appendChild(nextLi);
@@ -191,12 +189,8 @@ const handleSearchInput = debounce(async (event) => {
 
   if (query.length > 0) {
     try {
-      modsContainer.innerHTML = `
-        <div class="col-12 text-center py-5">
-          <div class="spinner-border text-primary" role="status"></div>
-          <p class=" mt-2">Buscando servidores remotamente...</p>
-        </div>`;
-      
+      renderLoading(modsContainer);
+
       const results = await fetchModByName(query);
       state.rawMods = results;
       populateCategoryDropdown(state.rawMods);
@@ -205,10 +199,10 @@ const handleSearchInput = debounce(async (event) => {
     }
   } else {
     // Se esvaziar, recarrega a lista inicial (ou você pode manter um cache intocável)
-    init(); 
+    init();
     return;
   }
-  
+
   processAndRender();
 }, 400);
 
@@ -231,16 +225,23 @@ sortFilter.addEventListener("change", (e) => {
 async function init() {
   try {
     const rawMods = await fetchInitialMods();
+
+    console.log("MODS RECEBIDOS:", rawMods);
+    console.log("TOTAL:", rawMods.length);
+
     state.rawMods = rawMods;
     populateCategoryDropdown(rawMods);
     processAndRender();
   } catch (error) {
+    console.error(error);
+
     modsContainer.innerHTML = `
       <div class="col-12 text-center py-4">
-        <div class="alert alert-danger d-inline-block border-danger text-danger bg-dark">
-          <strong>Falha Crítica:</strong> ${error} Servidor inacessível. Tentando reconectar...
+        <div class="alert alert-danger">
+          ${error.message}
         </div>
       </div>`;
+
     setTimeout(init, 7000);
   }
 }
