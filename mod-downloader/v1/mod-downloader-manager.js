@@ -88,7 +88,7 @@ function renderMod(mod) {
             ${listDependencies}
             </ul>
           </ul>
-          <a href="${downloadUrl}" class="btn btn-primary mt-auto" target="_blank">Download</a>
+          <a href="${downloadUrl}" class="btn btn-primary" target="_blank">Download</a>
         </div>
       </div>
     `;

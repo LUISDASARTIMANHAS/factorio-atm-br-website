@@ -33,7 +33,7 @@ export function createModReleases(mod) {
 	releases.forEach((release) => {
 		const item = createElement(
 			"div",
-			"list-group-item d-flex justify-content-between align-items-center",
+			"list-group-item d-flex flex-wrap justify-content-between align-items-center",
 		);
 
 		const info = createElement("div");

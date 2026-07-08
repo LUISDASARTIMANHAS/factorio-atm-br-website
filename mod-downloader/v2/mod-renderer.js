@@ -26,7 +26,7 @@ export function createModCardElement(mod) {
 
   // Elemento Card principal
   const card = document.createElement("div");
-  card.className = "card mod-card h-100 shadow-sm";
+  card.className = "card mod-card shadow-sm";
 
   // Imagem de Preview com Validação de Endpoint
   const img = document.createElement("img");

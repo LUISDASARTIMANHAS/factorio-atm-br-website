@@ -23,7 +23,7 @@ export function createModCardElement(mod) {
 
   const col = createElement("div", "col-md-4 mb-4");
 
-  const card = createElement("div", "card mod-card h-100 shadow-sm");
+  const card = createElement("div", "card mod-card shadow-sm");
 
   const body = createElement("div", "card-body d-flex flex-column");
 

@@ -7,7 +7,7 @@ import { createElement } from "./dom-utils.js";
  * @returns {HTMLElement}
  */
 export function createModDescription(mod) {
-	const description = createElement("p", "card-text small flex-grow-1");
+	const description = createElement("p", "card-text small");
 
 	description.textContent = mod.summary || "Sem descrição disponível.";
 
