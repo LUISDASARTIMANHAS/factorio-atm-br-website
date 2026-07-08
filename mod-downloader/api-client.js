@@ -12,7 +12,7 @@ import config from "./config.js";
  * @returns {Promise<Array<Object>>} Lista de objetos representando os mods.
  */
 export async function fetchInitialMods() {
-  const response = await fetch(`${config.serverUrl}/mods`, {
+  const response = await fetch(`${config.apiUrl}/mods`, {
     method: "GET",
 
     headers: getApiHeaders(),
@@ -64,7 +64,7 @@ function generateNonce() {
  */
 function getApiHeaders() {
   return {
-    authorization: "RekuSTYBmF",
+    authorization: "$3559t5hLoVYS3z^Tm&doY",
     "x-nonce": generateNonce(),
     "x-timestamp": Date.now().toString(),
   };
