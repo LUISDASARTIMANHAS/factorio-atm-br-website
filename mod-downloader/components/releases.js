@@ -40,9 +40,15 @@ export function createModReleases(mod) {
 			"list-group-item d-flex flex-wrap flex-column flex-md-row gap-2 justify-content-between align-items-md-center",
 		);
 
-		const info = createElement("div");
+		const info = createElement("div", "div-info");
 
 		const version = createElement("strong", "", `v${release.version}`);
+
+		const factorioVersion = createElement(
+			"p",
+			"",
+			`Game Version: v${release.info_json.factorio_version}`,
+		);
 
 		const file = createElement(
 			"small",
@@ -51,6 +57,7 @@ export function createModReleases(mod) {
 		);
 
 		info.appendChild(version);
+		info.appendChild(factorioVersion);
 		info.appendChild(file);
 
 		const url = `${config.serverUrl}/download/mod/${encodeURIComponent(mod.name)}/${encodeURIComponent(release.version)}`;
