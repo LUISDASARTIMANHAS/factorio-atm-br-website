@@ -3,6 +3,7 @@ import { fetchInitialMods, fetchModByName } from "./api-client.js";
 import { renderLoading } from "./components/loading.js";
 import { renderModList } from "./components/mod-list.js";
 import { getLatestRelease, debounce } from "./utils.js";
+import { renderPagination } from "./components/pagination.js";
 
 /**
  * @module app
@@ -16,6 +17,7 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortFilter = document.getElementById("sortFilter");
 const paginationContainer = document.getElementById("paginationContainer");
+const paginationContainerTop = document.getElementById("paginationContainerTop");
 
 // Estado Global da Aplicação
 const state = {
@@ -106,7 +108,7 @@ function processAndRender() {
   }
 
   renderCollection();
-  renderPagination();
+  renderPaginationControls();
 }
 
 /**
@@ -130,59 +132,44 @@ function renderCollection() {
 /**
  * Constrói os botões de paginação dinâmicos.
  */
-function renderPagination() {
-  paginationContainer.innerHTML = "";
-  const totalPages = Math.ceil(state.filteredMods.length / state.itemsPerPage);
+function renderPaginationControls() {
+	const totalPages = Math.ceil(
+		state.filteredMods.length / state.itemsPerPage,
+	);
 
-  if (totalPages <= 1) return;
+	renderPagination(
+		paginationContainer,
+		state.currentPage,
+		totalPages,
+		(page) => {
+			state.currentPage = page;
 
-  // Botão Anterior
-  const prevLi = document.createElement("li");
-  prevLi.className = `page-item ${state.currentPage === 1 ? "disabled" : ""}`;
-  prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Anterior">&laquo;</a>`;
-  prevLi.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (state.currentPage > 1) {
-      state.currentPage--;
-      renderCollection();
-      renderPagination();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  });
-  paginationContainer.appendChild(prevLi);
+			renderCollection();
+			renderPaginationControls();
 
-  // Páginas Numéricas (Limitado para não quebrar o layout)
-  let startPage = Math.max(1, state.currentPage - 2);
-  let endPage = Math.min(totalPages, state.currentPage + 2);
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		},
+	);
 
-  for (let i = startPage; i <= endPage; i++) {
-    const pageLi = document.createElement("li");
-    pageLi.className = `page-item ${state.currentPage === i ? "active" : ""}`;
-    pageLi.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-    pageLi.addEventListener("click", (e) => {
-      e.preventDefault();
-      state.currentPage = i;
-      renderCollection();
-      renderPagination();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-    paginationContainer.appendChild(pageLi);
-  }
+  renderPagination(
+		paginationContainerTop,
+		state.currentPage,
+		totalPages,
+		(page) => {
+			state.currentPage = page;
 
-  // Botão Próximo
-  const nextLi = document.createElement("li");
-  nextLi.className = `page-item ${state.currentPage === totalPages ? "disabled" : ""}`;
-  nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Próximo">&raquo;</a>`;
-  nextLi.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (state.currentPage < totalPages) {
-      state.currentPage++;
-      renderCollection();
-      renderPagination();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  });
-  paginationContainer.appendChild(nextLi);
+			renderCollection();
+			renderPaginationControls();
+
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth",
+			});
+		},
+	);
 }
 
 // ================= Event Listeners =================
