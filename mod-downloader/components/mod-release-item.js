@@ -12,7 +12,7 @@ import { createReleaseDownloadButton } from "./mod-release-download.js";
 export function createReleaseItem(mod, release) {
 	const item = createElement(
 		"div",
-		"list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2",
+		"list-group-item flex-wrap d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2",
 	);
 
 	item.append(

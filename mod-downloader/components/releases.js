@@ -1,6 +1,6 @@
 import { createElement } from "./dom-utils.js";
-import { sortReleases } from "./mod-release-utils.js";
-import { createReleaseList } from "./mod-release-list.js";
+import { groupReleasesByFactorioVersion } from "./mod-release-utils.js";
+import { createReleaseGroup } from "./mod-release-group.js";
 
 /**
  * Renderiza releases do mod.
@@ -14,9 +14,9 @@ export function createModReleases(mod) {
 		"mod-releases mt-3",
 	);
 
-	const releases = sortReleases(mod.releases);
+	const groups = groupReleasesByFactorioVersion(mod.releases);
 
-	if (!releases.length) {
+	if (!Object.keys(groups).length) {
 		container.appendChild(
 			createElement(
 				"p",
@@ -28,15 +28,33 @@ export function createModReleases(mod) {
 		return container;
 	}
 
-	container.append(
+	container.appendChild(
 		createElement(
 			"h6",
 			"mb-2",
 			"Versões disponíveis",
 		),
-
-		createReleaseList(mod, releases),
 	);
+
+	const accordion = createElement(
+		"div",
+		"accordion",
+	);
+
+	Object.entries(groups).forEach(
+		([factorioVersion, releases], index) => {
+			accordion.appendChild(
+				createReleaseGroup(
+					mod,
+					factorioVersion,
+					releases,
+					index,
+				),
+			);
+		},
+	);
+
+	container.appendChild(accordion);
 
 	return container;
 }
