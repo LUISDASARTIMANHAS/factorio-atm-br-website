@@ -4,6 +4,7 @@ import { renderLoading } from "./components/loading.js";
 import { renderModList } from "./components/mod-list.js";
 import { getLatestRelease, debounce } from "./utils.js";
 import { renderPagination } from "./components/pagination.js";
+import { renderError } from "./components/renderError.js";
 
 /**
  * @module app
@@ -17,7 +18,9 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortFilter = document.getElementById("sortFilter");
 const paginationContainer = document.getElementById("paginationContainer");
-const paginationContainerTop = document.getElementById("paginationContainerTop");
+const paginationContainerTop = document.getElementById(
+  "paginationContainerTop",
+);
 
 // Estado Global da Aplicação
 const state = {
@@ -118,6 +121,15 @@ function processAndRender() {
  * Renderiza apenas a página atual.
  */
 function renderCollection() {
+  if (state.error) {
+    modsContainer.innerHTML = `
+      <div class="col-12">
+          <div class="alert alert-danger">
+              ${state.error}
+          </div>
+      </div>`;
+    return;
+  }
   labelModsCarregados.textContent = state.filteredMods.length;
 
   const start = (state.currentPage - 1) * state.itemsPerPage;
@@ -133,43 +145,41 @@ function renderCollection() {
  * Constrói os botões de paginação dinâmicos.
  */
 function renderPaginationControls() {
-	const totalPages = Math.ceil(
-		state.filteredMods.length / state.itemsPerPage,
-	);
-
-	renderPagination(
-		paginationContainer,
-		state.currentPage,
-		totalPages,
-		(page) => {
-			state.currentPage = page;
-
-			renderCollection();
-			renderPaginationControls();
-
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			});
-		},
-	);
+  const totalPages = Math.ceil(state.filteredMods.length / state.itemsPerPage);
 
   renderPagination(
-		paginationContainerTop,
-		state.currentPage,
-		totalPages,
-		(page) => {
-			state.currentPage = page;
+    paginationContainer,
+    state.currentPage,
+    totalPages,
+    (page) => {
+      state.currentPage = page;
 
-			renderCollection();
-			renderPaginationControls();
+      renderCollection();
+      renderPaginationControls();
 
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
-			});
-		},
-	);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  );
+
+  renderPagination(
+    paginationContainerTop,
+    state.currentPage,
+    totalPages,
+    (page) => {
+      state.currentPage = page;
+
+      renderCollection();
+      renderPaginationControls();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  );
 }
 
 // ================= Event Listeners =================
@@ -191,12 +201,11 @@ const handleSearchInput = debounce(async (event) => {
 
       populateCategoryDropdown(state.rawMods);
     } catch (error) {
-      modsContainer.innerHTML = `
-        <div class="col-12 text-center py-5">
-          <div class="spinner-border text-primary" role="status"></div>
-          <p class=" mt-2">Erro ao pesquisar: ${error}</p>
-        </div>`;
-      console.error("Erro na busca remota", error);
+      console.error(error);
+
+      renderError(modsContainer, error.message, "Erro ao pesquisar mods");
+
+      return;
     }
   } else {
     // Se esvaziar, recarrega a lista inicial (ou você pode manter um cache intocável)
@@ -204,8 +213,10 @@ const handleSearchInput = debounce(async (event) => {
     return;
   }
 
-  processAndRender();
-}, 400);
+  setTimeout(() => {
+    processAndRender();
+  }, 1000 * 5);
+}, 500);
 
 searchInput.addEventListener("input", handleSearchInput);
 
@@ -239,14 +250,9 @@ async function init() {
   } catch (error) {
     console.error(error);
 
-    modsContainer.innerHTML = `
-      <div class="col-12 text-center py-4">
-        <div class="alert alert-danger">
-          ${error.message}
-        </div>
-      </div>`;
+    renderError(modsContainer, error.message, "Erro ao carregar mods.");
 
-    setTimeout(init, 7000);
+    setTimeout(init, 7 * 1000);
   }
 }
 
