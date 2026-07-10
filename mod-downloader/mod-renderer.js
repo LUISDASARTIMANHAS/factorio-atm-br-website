@@ -4,7 +4,7 @@ import { createElement } from "./components/dom-utils.js";
 import { createModImage } from "./components/mod-image.js";
 import { createModHeader } from "./components/mod-header.js";
 import { createModDescription } from "./components/mod-description.js";
-import { createMetadata } from "./components/mod-metadata.js";
+import { createMetadata } from "./mod/mod-metadata.js";
 import { createDownloadButton } from "./components/mod-download-button.js";
 import { createModReleases } from "./components/releases.js";
 

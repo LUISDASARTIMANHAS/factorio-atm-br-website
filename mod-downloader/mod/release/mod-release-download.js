@@ -1,6 +1,6 @@
-import config from "../config.js";
-import { createElement } from "./base/dom-utils.js";
-import { isValidSecureUrl } from "../utils.js";
+import config from "../../config.js";
+import { createElement } from "../../components/base/dom-utils.js";
+import { isValidSecureUrl } from "../../utils.js";
 
 /**
  * Cria botão de download da release.

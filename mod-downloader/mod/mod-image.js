@@ -1,4 +1,4 @@
-import { createElement } from "./base/dom-utils.js";
+import { createElement } from "../components/base/dom-utils.js";
 import { isValidSecureUrl } from "../utils.js";
 
 const DEFAULT_IMAGE =
