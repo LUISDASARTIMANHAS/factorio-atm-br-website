@@ -1,5 +1,5 @@
 import config from "../config.js";
-import { createElement } from "./dom-utils.js";
+import { createElement } from "./base/dom-utils.js";
 
 /**
  * Cria botão download.

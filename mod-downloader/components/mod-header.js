@@ -1,4 +1,4 @@
-import { createElement } from "./dom-utils.js";
+import { createElement } from "./base/dom-utils.js";
 
 /**
  * Cria título do mod.

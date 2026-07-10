@@ -5,6 +5,8 @@ import { renderModList } from "./components/mod-list.js";
 import { getLatestRelease, debounce } from "./utils.js";
 import { renderPagination } from "./components/pagination.js";
 import { renderError } from "./components/renderError.js";
+import { updateServerStatus } from "./components/server-status/update.js";
+import { createServerStatus } from "./components/server-status/create.js";
 
 /**
  * @module app
@@ -18,6 +20,9 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortFilter = document.getElementById("sortFilter");
 const paginationContainer = document.getElementById("paginationContainer");
+const serverStatusContainer = document.getElementById(
+    "serverStatusContainer",
+  );
 const paginationContainerTop = document.getElementById(
   "paginationContainerTop",
 );
@@ -254,6 +259,16 @@ async function init() {
 
     setTimeout(init, 7 * 1000);
   }
+
+  createServerStatus(serverStatusContainer);
+
+  updateServerStatus(serverStatusContainer, {
+    status: "ONLINE",
+    version: "2.0.0",
+    cache: true,
+    responseTime: 18,
+    uptime: "4d 12h",
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

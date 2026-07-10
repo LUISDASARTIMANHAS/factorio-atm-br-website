@@ -1,4 +1,4 @@
-import { createElement } from "./dom-utils.js";
+import { createElement } from "./base/dom-utils.js";
 import { groupReleasesByFactorioVersion } from "./mod-release-utils.js";
 import { createReleaseGroup } from "./mod-release-group.js";
 

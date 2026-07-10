@@ -1,4 +1,4 @@
-import { createElement } from "./dom-utils.js";
+import { createElement } from "./base/dom-utils.js";
 import { createReleaseInfo } from "./mod-release-info.js";
 import { createReleaseDownloadButton } from "./mod-release-download.js";
 
