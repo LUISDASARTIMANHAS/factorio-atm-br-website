@@ -13,7 +13,7 @@ export function renderLoading(container) {
 	div.innerHTML = `
 		<div class="spinner-border text-primary"></div>
 		<p class="mt-2">
-			Sincronizando banco de dados...
+			Buscando servidores remotos... Isso pode demorar.
 		</p>
 	`;
 

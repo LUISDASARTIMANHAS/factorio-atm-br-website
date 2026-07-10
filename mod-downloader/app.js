@@ -191,6 +191,11 @@ const handleSearchInput = debounce(async (event) => {
 
       populateCategoryDropdown(state.rawMods);
     } catch (error) {
+      modsContainer.innerHTML = `
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class=" mt-2">Erro ao pesquisar: ${error}</p>
+        </div>`;
       console.error("Erro na busca remota", error);
     }
   } else {
