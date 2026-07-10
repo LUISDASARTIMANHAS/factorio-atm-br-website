@@ -1,5 +1,5 @@
 import { createModCardElement } from "./mod-renderer.js";
-
+import { createEmptyState } from "../base/emptyState.js";
 
 /**
  * Renderiza uma coleção de mods.
@@ -11,21 +11,13 @@ export function renderModList(container, mods) {
 	container.replaceChildren();
 
 	if (mods.length === 0) {
-		const empty = document.createElement("div");
-
-		empty.className = "col-12 text-center py-5";
-
-		empty.innerHTML = `
-			<h4 class="text-warning mb-3">
-				Nenhum mod encontrado
-			</h4>
-
-			<p>
-				Ajuste seus filtros ou termos de pesquisa.
-			</p>
-		`;
-
-		container.appendChild(empty);
+		container.append(
+			createEmptyState(
+				"Nenhum mod encontrado",
+				"Ajuste seus filtros ou termos de pesquisa.",
+				"col-12 text-center py-5",
+			),
+		);
 
 		return;
 	}
@@ -34,7 +26,7 @@ export function renderModList(container, mods) {
 		const card = createModCardElement(mod);
 
 		if (card) {
-			container.appendChild(card);
+			container.append(card);
 		}
 	});
 }

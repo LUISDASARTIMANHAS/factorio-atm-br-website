@@ -1,18 +1,9 @@
-// mod-downloader\components\dom-utils.js
-/**
- * Cria elemento DOM configurável.
- *
- * @param {string} tag
- * @param {string} className
- * @param {string|null} textContent
- * @param {Object} attributes
- * @returns {HTMLElement}
- */
 export function createElement(
 	tag,
 	className = "",
 	textContent = null,
 	attributes = {},
+	children = [],
 ) {
 	const element = document.createElement(tag);
 
@@ -29,6 +20,10 @@ export function createElement(
 			element.setAttribute(key, value);
 		},
 	);
+
+	children.forEach(child => {
+		element.appendChild(child);
+	});
 
 	return element;
 }

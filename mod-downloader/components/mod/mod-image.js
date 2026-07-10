@@ -1,6 +1,5 @@
 import { isValidSecureUrl } from "../../utils.js";
-import { createElement } from "../base/dom-utils.js";
-
+import { createImage } from "../base/image.js";
 
 const DEFAULT_IMAGE =
 	"https://factorio.com/static/img/space-age-capsule.png";
@@ -14,7 +13,6 @@ const FACTORIO_MODS_URL = "https://mods.factorio.com";
  * @returns {string|null}
  */
 function resolveModImage(mod) {
-	// Novo formato API: images[]
 	if (Array.isArray(mod.images) && mod.images.length > 0) {
 		const image = mod.images[0];
 
@@ -27,12 +25,10 @@ function resolveModImage(mod) {
 		}
 	}
 
-	// Formato antigo/API resumida
 	if (isValidSecureUrl(mod.thumbnail)) {
 		return mod.thumbnail;
 	}
 
-	// Thumbnail relativa da API
 	if (mod.thumbnail?.startsWith("/")) {
 		const fullUrl = `${FACTORIO_MODS_URL}${mod.thumbnail}`;
 
@@ -51,13 +47,11 @@ function resolveModImage(mod) {
  * @returns {HTMLImageElement}
  */
 export function createModImage(mod) {
-	const img = createElement("img", "card-img-top mod-card-img");
-
-	img.src = resolveModImage(mod) || DEFAULT_IMAGE;
-
-	img.alt = mod.title || mod.name || "Factorio Mod";
-
-	img.loading = "lazy";
+	const img = createImage(
+		resolveModImage(mod) || DEFAULT_IMAGE,
+		mod.title || mod.name || "Factorio Mod",
+		"card-img-top mod-card-img",
+	);
 
 	img.onerror = () => {
 		img.src = DEFAULT_IMAGE;

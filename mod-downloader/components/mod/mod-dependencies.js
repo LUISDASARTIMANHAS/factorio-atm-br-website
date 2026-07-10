@@ -1,33 +1,31 @@
-import { createElement } from "../base/dom-utils.js";
-
+import { createList } from "../base/list.js";
+import { createListItem } from "../base/listItem.js";
 
 /**
  * Renderiza dependências.
  *
  * @param {Array<string>} dependencies
- * @returns {HTMLElement|null}
+ * @returns {HTMLUListElement|null}
  */
 export function createDependencies(dependencies) {
 	if (!dependencies.length) {
 		return null;
 	}
 
-	const wrapper = createElement("ul", "ps-3 small");
+	const wrapper = createList("ul", "ps-3 small");
 
 	dependencies.forEach((dep) => {
-		const item = createElement("li");
-
-		item.textContent = dep;
+		let className = "text-warning";
 
 		if (dep.includes("!")) {
-			item.className = "text-danger";
+			className = "text-danger";
 		} else if (dep.includes("?")) {
-			item.className = "text-info";
-		} else {
-			item.className = "text-warning";
+			className = "text-info";
 		}
 
-		wrapper.appendChild(item);
+		wrapper.append(
+			createListItem(dep, className),
+		);
 	});
 
 	return wrapper;

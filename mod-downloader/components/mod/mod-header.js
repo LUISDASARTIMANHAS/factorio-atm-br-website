@@ -1,25 +1,26 @@
-import { createElement } from "../base/dom-utils.js";
-
+import { createHeading } from "../base/heading.js";
+import { createLink } from "../base/link.js";
 
 /**
  * Cria título do mod.
  *
  * @param {Object} mod
- * @returns {HTMLElement}
+ * @returns {HTMLHeadingElement}
  */
 export function createModHeader(mod) {
-	const title = createElement("h5", "card-title text-truncate");
+	const title = createHeading(5, "", "card-title text-truncate");
 
-	const link = createElement("a");
-
-	link.target = "_blank";
-	link.rel = "noopener noreferrer";
-
-	link.href = `https://mods.factorio.com/mod/${encodeURIComponent(mod.name || "")}`;
-
-	link.textContent = mod.title || mod.name || "[Sem Título]";
-
-	title.appendChild(link);
+	title.append(
+		createLink(
+			mod.title || mod.name || "[Sem Título]",
+			`https://mods.factorio.com/mod/${encodeURIComponent(mod.name || "")}`,
+			"",
+			{
+				target: "_blank",
+				rel: "noopener noreferrer",
+			},
+		),
+	);
 
 	return title;
 }

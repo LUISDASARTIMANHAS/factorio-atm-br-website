@@ -1,25 +1,20 @@
 import config from "../../config.js";
-import { createElement } from "../base/dom-utils.js";
-
+import { createLink } from "../base/link.js";
 
 /**
- * Cria botão download.
+ * Cria botão de download.
  *
  * @param {Object} mod
- * @returns {HTMLElement}
+ * @returns {HTMLAnchorElement}
  */
 export function createDownloadButton(mod) {
-	const button = createElement(
-		"a",
+	return createLink(
+		"Download Mod",
+		`${config.serverUrl}/download/mod/${encodeURIComponent(mod.name || "")}`,
 		"btn btn-factorio w-100 btn-action mt-auto",
+		{
+			target: "_blank",
+			rel: "noopener noreferrer",
+		},
 	);
-
-	button.href = `${config .serverUrl}/download/mod/${encodeURIComponent(mod.name || "")}`;
-
-	button.textContent = "Download Mod";
-
-	button.target = "_blank";
-	button.rel = "noopener noreferrer";
-
-	return button;
 }

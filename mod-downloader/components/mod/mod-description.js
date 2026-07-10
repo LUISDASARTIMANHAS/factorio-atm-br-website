@@ -1,16 +1,14 @@
-import { createElement } from "../base/dom-utils.js";
-
+import { createParagraph } from "../base/paragraph.js";
 
 /**
  * Cria descrição do mod.
  *
  * @param {Object} mod
- * @returns {HTMLElement}
+ * @returns {HTMLParagraphElement}
  */
 export function createModDescription(mod) {
-	const description = createElement("p", "card-text small");
-
-	description.textContent = mod.summary || "Sem descrição disponível.";
-
-	return description;
+	return createParagraph(
+		mod.summary || "Sem descrição disponível.",
+		"card-text small",
+	);
 }
