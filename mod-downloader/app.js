@@ -1,6 +1,6 @@
 // mod-downloader\app.js
 import { fetchInitialMods, fetchModByName } from "./api-client.js";
-import { renderLoading } from "./components/loading.js";
+import { renderLoading } from "./components/renderLoading.js";
 import { renderModList } from "./components/mod/mod-list.js";
 import { renderPagination } from "./components/pagination.js";
 import { renderError } from "./components/renderError.js";
