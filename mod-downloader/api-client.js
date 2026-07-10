@@ -68,6 +68,6 @@ function getApiHeaders() {
     authorization: "$3559t5hLoVYS3z^Tm&doY",
     "x-nonce": generateNonce(),
     "x-timestamp": Date.now().toString(),
-    "x-disable-cache": true,
+    "x-disable-cache": false,
   };
 }
