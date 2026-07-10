@@ -1,12 +1,12 @@
 // mod-downloader\app.js
 import { fetchInitialMods, fetchModByName } from "./api-client.js";
 import { renderLoading } from "./components/loading.js";
-import { renderModList } from "./components/mod-list.js";
-import { getLatestRelease, debounce } from "./utils.js";
+import { renderModList } from "./components/mod/mod-list.js";
 import { renderPagination } from "./components/pagination.js";
 import { renderError } from "./components/renderError.js";
 import { updateServerStatus } from "./components/server-status/update.js";
 import { createServerStatus } from "./components/server-status/create.js";
+import { debounce, getLatestRelease } from "./utils.js";
 
 /**
  * @module app

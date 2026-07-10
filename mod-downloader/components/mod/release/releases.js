@@ -1,6 +1,6 @@
-import { createElement } from "./base/dom-utils.js";
-import { groupReleasesByFactorioVersion } from "../mod/release/mod-release-utils.js";
-import { createReleaseGroup } from "../mod/release/mod-release-group.js";
+import { createElement } from "../../base/dom-utils.js";
+import { groupReleasesByFactorioVersion } from "./mod-release-utils.js";
+import { createReleaseGroup } from "./mod-release-group.js";
 
 /**
  * Renderiza releases do mod.

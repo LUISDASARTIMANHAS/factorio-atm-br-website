@@ -1,5 +1,6 @@
-import config from "../config.js";
-import { createElement } from "../components/base/dom-utils.js";
+import config from "../../config.js";
+import { createElement } from "../base/dom-utils.js";
+
 
 /**
  * Cria botão download.
@@ -13,7 +14,7 @@ export function createDownloadButton(mod) {
 		"btn btn-factorio w-100 btn-action mt-auto",
 	);
 
-	button.href = `${config.serverUrl}/download/mod/${encodeURIComponent(mod.name || "")}`;
+	button.href = `${config .serverUrl}/download/mod/${encodeURIComponent(mod.name || "")}`;
 
 	button.textContent = "Download Mod";
 

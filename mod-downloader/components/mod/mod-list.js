@@ -1,4 +1,4 @@
-import { createModCardElement } from "../mod-renderer.js";
+import { createModCardElement } from "./mod-renderer.js";
 
 
 /**

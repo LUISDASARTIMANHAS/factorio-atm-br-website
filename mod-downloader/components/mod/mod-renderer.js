@@ -1,12 +1,12 @@
-import { getLatestRelease } from "./utils.js";
 
-import { createElement } from "./components/dom-utils.js";
-import { createModImage } from "./components/mod-image.js";
-import { createModHeader } from "./components/mod-header.js";
-import { createModDescription } from "./components/mod-description.js";
-import { createMetadata } from "./mod/mod-metadata.js";
-import { createDownloadButton } from "./components/mod-download-button.js";
-import { createModReleases } from "./components/releases.js";
+import { getLatestRelease } from "../../utils.js";
+import { createElement } from "../base/dom-utils.js";
+import { createModDescription } from "./mod-description.js";
+import { createDownloadButton } from "./mod-download-button.js";
+import { createModHeader } from "./mod-header.js";
+import { createModImage } from "./mod-image.js";
+import { createMetadata } from "./mod-metadata.js";
+import { createModReleases } from "./release/releases.js";
 
 /**
  * Renderiza um card completo de mod.
@@ -28,17 +28,17 @@ export function createModCardElement(mod) {
   const body = createElement("div", "card-body d-flex flex-column");
 
   card.appendChild(createModImage(mod));
-  
+
   body.appendChild(createModHeader(mod));
-  
+
   body.appendChild(createModDescription(mod));
 
   body.appendChild(createMetadata(mod, release));
-  
-    if (mod.detailsLoaded) {
-      body.appendChild(createModReleases(mod));
-    }
-  
+
+  if (mod.detailsLoaded) {
+    body.appendChild(createModReleases(mod));
+  }
+
   body.appendChild(createDownloadButton(mod));
 
   card.appendChild(body);

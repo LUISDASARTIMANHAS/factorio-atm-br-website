@@ -1,5 +1,6 @@
-import { createElement } from "../components/base/dom-utils.js";
-import { isValidSecureUrl } from "../utils.js";
+import { isValidSecureUrl } from "../../utils.js";
+import { createElement } from "../base/dom-utils.js";
+
 
 const DEFAULT_IMAGE =
 	"https://factorio.com/static/img/space-age-capsule.png";
