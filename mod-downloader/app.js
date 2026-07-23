@@ -1,5 +1,9 @@
 // mod-downloader\app.js
-import { fetchInitialMods, fetchModByName } from "./api-client.js";
+import {
+  fetchInitialMods,
+  fetchModByName,
+  fetchStatusMods,
+} from "./api-client.js";
 import { renderLoading } from "./components/renderLoading.js";
 import { renderModList } from "./components/mod/mod-list.js";
 import { renderPagination } from "./components/pagination.js";
@@ -20,9 +24,7 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortFilter = document.getElementById("sortFilter");
 const paginationContainer = document.getElementById("paginationContainer");
-const serverStatusContainer = document.getElementById(
-    "serverStatusContainer",
-  );
+const serverStatusContainer = document.getElementById("serverStatusContainer");
 const paginationContainerTop = document.getElementById(
   "paginationContainerTop",
 );
@@ -240,6 +242,7 @@ sortFilter.addEventListener("change", (e) => {
 // ================= Boot =================
 
 async function init() {
+  const status = await fetchStatusMods();
   try {
     const rawMods = await fetchInitialMods();
 
@@ -261,13 +264,12 @@ async function init() {
   }
 
   createServerStatus(serverStatusContainer);
-
   updateServerStatus(serverStatusContainer, {
-    status: "ONLINE",
-    version: "2.0.0",
-    cache: true,
-    responseTime: 18,
-    uptime: "4d 12h",
+    "lastUpdatedDateTime": status.lastUpdatedDateTime,
+    "expiredMods": status.expired,
+    "cache": true,
+    "modsDetailed": status.full,
+    "percentExpired": status.percentExpired,
   });
 }
 

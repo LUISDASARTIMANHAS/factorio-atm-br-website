@@ -12,21 +12,11 @@ export function createServerStatus(container) {
 	wrapper.className =
 		"container py-2 d-flex flex-wrap justify-content-center align-items-center gap-4 small";
 
-	const badge = document.createElement("span");
-
-	badge.innerHTML = `
-				<strong>Status:</strong>
-				<span class="badge bg-secondary" data-server-status>
-						Verificando...
-				</span>
-		`;
-
-	wrapper.appendChild(badge);
-
-	wrapper.appendChild(createStatusItem("Versão", "server-version"));
-	wrapper.appendChild(createStatusItem("Cache", "server-cache"));
-	wrapper.appendChild(createStatusItem("Resposta", "server-latency"));
-	wrapper.appendChild(createStatusItem("Uptime", "server-uptime"));
+	wrapper.appendChild(createStatusItem("Ultima vez Atualizado", "server-last-updated-DateTime"));
+	wrapper.appendChild(createStatusItem("Mods Expirados", "server-expired-mods"));
+	wrapper.appendChild(createStatusItem("cache", "server-cache"));
+	wrapper.appendChild(createStatusItem("Mods Detalhados", "server-mods-detailed"));
+	wrapper.appendChild(createStatusItem("perc de mods Expirados", "server-percent-expired"));
 
 	section.appendChild(wrapper);
 

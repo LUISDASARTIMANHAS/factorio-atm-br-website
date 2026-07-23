@@ -1,21 +1,26 @@
 import { updateStatusBadge } from "./badge.js";
 
 export function updateServerStatus(container, status) {
-	updateStatusBadge(
-		container.querySelector("[data-server-status]"),
-		status.status,
-	);
+  const dataServerLastUpdatedDateTime = container.querySelector("[data-server-last-updated-DateTime]");
+  const dataServerExpiredMods = container.querySelector(
+    "[data-server-expired-mods]",
+  );
+  const dataServerCache = container.querySelector("[data-server-cache]");
+  const dataServerModsDetailed = container.querySelector(
+    "[data-server-mods-detailed]",
+  );
+  const dataServerModsPercentExpired = container.querySelector(
+    "[data-server-percent-expired]",
+  );
 
-	container.querySelector("[data-server-version]").textContent =
-		status.version ?? "-";
+	dataServerLastUpdatedDateTime.textContent = status.lastUpdatedDateTime ?? "-";
 
-	container.querySelector("[data-server-cache]").textContent = status.cache
-		? "Ativo"
-		: "Desativado";
+  dataServerExpiredMods.textContent = status.expiredMods ?? "-";
 
-	container.querySelector("[data-server-latency]").textContent =
-		status.responseTime != null ? `${status.responseTime} ms` : "-";
+  dataServerCache.textContent = status.cache ? "Ativo" : "Desativado";
 
-	container.querySelector("[data-server-uptime]").textContent =
-		status.uptime ?? "-";
+  dataServerModsDetailed.textContent =
+    status.modsDetailed != null ? status.modsDetailed : "-";
+
+  dataServerModsPercentExpired.textContent = `${status.percentExpired}%` ?? "-";
 }

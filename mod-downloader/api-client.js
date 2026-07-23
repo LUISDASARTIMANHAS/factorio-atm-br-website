@@ -26,6 +26,26 @@ export async function fetchInitialMods() {
 }
 
 /**
+ * Status de como o cache e o servidor se comporta.
+ * @async
+ * @function fetchStatusMods
+ * @returns {Promise<Array<Object>>} Lista de objetos representando os mods.
+ */
+export async function fetchStatusMods() {
+  const response = await fetch(`${config.apiUrl}/mods/status`, {
+    method: "GET",
+
+    headers: getApiHeaders(),
+  });
+  if (!response.ok) {
+    throw new Error(`Erro na API (${response.apiUrl})`);
+  }
+  const data = await response.json();
+  console.log(data)
+  return data || [];
+}
+
+/**
  * Realiza uma busca textual por um termo específico de mod.
  * @async
  * @function fetchModByName

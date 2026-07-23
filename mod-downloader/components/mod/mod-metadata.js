@@ -58,6 +58,14 @@ export function createMetadata(mod, release) {
 		"Factorio",
 		info.factorio_version || "N/A",
 	);
+	add(
+		"Detalhes Carregados",
+		mod.detailsLoaded || "N/A",
+	);
+	add(
+		"Detalhes Atualizados em",
+		new Date(mod.lastDetailsUpdate) || "N/A",
+	);
 
 	const deps = createDependencies(
 		info.dependencies || [],
