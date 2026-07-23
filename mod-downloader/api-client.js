@@ -35,13 +35,13 @@ export async function fetchStatusMods() {
   const response = await fetch(`${config.apiUrl}/mods/status`, {
     method: "GET",
 
-    headers: getApiHeaders(),
+    headers: getApiHeaders(true),
   });
   if (!response.ok) {
     throw new Error(`Erro na API (${response.apiUrl})`);
   }
   const data = await response.json();
-  console.log(data)
+  console.log(data);
   return data || [];
 }
 
@@ -83,11 +83,11 @@ function generateNonce() {
  *
  * @returns {Object}
  */
-function getApiHeaders() {
+function getApiHeaders(disableCache) {
   return {
     authorization: "$3559t5hLoVYS3z^Tm&doY",
     "x-nonce": generateNonce(),
     "x-timestamp": Date.now().toString(),
-    "x-disable-cache": false,
+    "x-disable-cache": disableCache || false,
   };
 }
