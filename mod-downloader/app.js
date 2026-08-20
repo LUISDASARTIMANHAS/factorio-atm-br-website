@@ -24,7 +24,7 @@ const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const sortFilter = document.getElementById("sortFilter");
 const paginationContainer = document.getElementById("paginationContainer");
-const serverStatusContainer = document.getElementById("serverStatusContainer");
+const containerServerStatus = document.getElementById("containerServerStatus");
 const paginationContainerTop = document.getElementById(
   "paginationContainerTop",
 );
@@ -263,8 +263,8 @@ async function init() {
     setTimeout(init, 7 * 1000);
   }
 
-  createServerStatus(serverStatusContainer);
-  updateServerStatus(serverStatusContainer, {
+  createServerStatus(containerServerStatus);
+  updateServerStatus(containerServerStatus, {
     "lastUpdatedDateTime": status.lastUpdatedDateTime,
     "expiredMods": status.expired,
     "cache": true,
