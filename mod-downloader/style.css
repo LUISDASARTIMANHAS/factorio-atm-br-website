@@ -24,7 +24,12 @@ body {
 }
 
 /* Títulos Industriais */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   color: var(--text-primary);
@@ -32,7 +37,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Dados Técnicos e Códigos */
-code, .tech-data, .badge {
+code,
+.tech-data,
+.badge {
   font-family: 'JetBrains Mono', monospace;
 }
 
@@ -140,7 +147,8 @@ code, .tech-data, .badge {
 
 /* Texto de Sumário / Descrição (Contraste Aprimorado) */
 .card-text {
-  color: #cbd5e1 !important; /* Tom cinza claro nítido sobre o fundo escuro */
+  color: #cbd5e1 !important;
+  /* Tom cinza claro nítido sobre o fundo escuro */
   font-size: 0.925rem;
   line-height: 1.5;
 }
@@ -164,9 +172,26 @@ code, .tech-data, .badge {
 }
 
 /* Cores Vivas de Alerta para Dependências no Modo Escuro */
-.text-danger { color: #f87171 !important; }   /* Vermelho pastel de alto contraste */
-.text-info { color: #38bdf8 !important; }     /* Azul celeste vívido */
-.text-warning { color: #fbbf24 !important; }  /* Amarelo ouro nítido */
+/* Vermelho pastel de alto contraste */
+.text-danger,
+ul li.text-danger,
+ul li .text-danger {
+  color: #f87171 !important;
+}
+
+/* Azul celeste vívido */
+.text-info,
+ul li.text-info,
+ul li .text-info {
+  color: #38bdf8 !important;
+}
+
+/* Amarelo ouro nítido */
+.text-warning,
+ul li.text-warning,
+ul li .text-warning {
+  color: #fbbf24 !important;
+}
 
 /* Botão Sólido Factorio */
 .btn-factorio {
@@ -211,6 +236,7 @@ code, .tech-data, .badge {
 .hover-link:hover {
   color: var(--factorio-orange) !important;
 }
+
 /* ==========================================================================
    NOVOS CONTROLES: FILTROS E PAGINAÇÃO
    ========================================================================== */
@@ -260,11 +286,11 @@ code, .tech-data, .badge {
 }
 
 .server-status {
-    background: rgba(0,0,0,.25);
-    backdrop-filter: blur(6px);
-    border-color: rgba(255,255,255,.08) !important;
+  background: rgba(0, 0, 0, .25);
+  backdrop-filter: blur(6px);
+  border-color: rgba(255, 255, 255, .08) !important;
 }
 
-.server-status .badge{
-    min-width:90px;
+.server-status .badge {
+  min-width: 90px;
 }
