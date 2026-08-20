@@ -8,10 +8,6 @@ export function createElement(
 ) {
     const element = document.createElement(tag);
 
-    element.appendChild(
-        document.createComment(comment)
-    );
-
     if (className) {
         element.className = className;
     }
@@ -29,6 +25,10 @@ export function createElement(
     children.forEach(child => {
         element.appendChild(child);
     });
+
+    element.prepend(
+        document.createComment(comment),
+    );
 
     return element;
 }
