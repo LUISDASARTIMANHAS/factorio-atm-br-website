@@ -19,8 +19,10 @@ export async function fetchInitialMods() {
     headers: getApiHeaders(),
   });
   if (!response.ok) {
+    updateServerSatusCode(response.status);
     throw new Error(`Erro na API (${response.apiUrl})`);
   }
+  updateServerSatusCode(response.status);
   const data = await response.json();
   return data || [];
 }
@@ -38,8 +40,10 @@ export async function fetchStatusMods() {
     headers: getApiHeaders(true),
   });
   if (!response.ok) {
+    updateServerSatusCode(response.status);
     throw new Error(`Erro na API (${response.apiUrl})`);
   }
+  updateServerSatusCode(response.status);
   const data = await response.json();
   console.log(data);
   return data || [];
@@ -63,10 +67,20 @@ export async function fetchModByName(name) {
     },
   );
   if (!response.ok) {
+    updateServerSatusCode(response.status);
     throw new Error(`Erro na busca (${response.status})`);
   }
+  updateServerSatusCode(response.status);
   const data = await response.json();
   return data || [];
+}
+
+function updateServerSatusCode(status) {
+  console.log(status);
+  const statusCodeLabel = document.querySelector("[data-server-status-code]");
+  if (statusCodeLabel) {
+    statusCodeLabel.textContent = status ?? "-";
+  }
 }
 
 /**

@@ -17,6 +17,7 @@ export function createServerStatus(container) {
 	wrapper.appendChild(createStatusItem("cache", "server-cache"));
 	wrapper.appendChild(createStatusItem("Mods Detalhados", "server-mods-detailed"));
 	wrapper.appendChild(createStatusItem("perc de mods Expirados", "server-percent-expired"));
+	wrapper.appendChild(createStatusItem("server status", "server-status-code"));
 
 	section.appendChild(wrapper);
 
