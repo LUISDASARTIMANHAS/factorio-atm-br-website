@@ -1,29 +1,34 @@
 export function createElement(
-	tag,
-	className = "",
-	textContent = null,
-	attributes = {},
-	children = [],
+    tag,
+    className = "",
+    textContent = null,
+    attributes = {},
+    children = [],
+    comment = `Builder - ${tag}`,
 ) {
-	const element = document.createElement(tag);
+    const element = document.createElement(tag);
 
-	if (className) {
-		element.className = className;
-	}
+    element.appendChild(
+        document.createComment(comment)
+    );
 
-	if (textContent !== null) {
-		element.textContent = textContent;
-	}
+    if (className) {
+        element.className = className;
+    }
 
-	Object.entries(attributes).forEach(
-		([key, value]) => {
-			element.setAttribute(key, value);
-		},
-	);
+    if (textContent !== null) {
+        element.textContent = textContent;
+    }
 
-	children.forEach(child => {
-		element.appendChild(child);
-	});
+    Object.entries(attributes).forEach(
+        ([key, value]) => {
+            element.setAttribute(key, value);
+        },
+    );
 
-	return element;
+    children.forEach(child => {
+        element.appendChild(child);
+    });
+
+    return element;
 }

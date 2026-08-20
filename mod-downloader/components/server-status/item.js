@@ -1,18 +1,26 @@
+import { createSpan } from "../base/span.js";
+import { createStrong } from "../base/strong.js";
+
 /**
  * Cria um item da barra de status.
  *
  * @param {string} label
  * @param {string} dataKey
- * @returns {HTMLElement}
+ * @returns {HTMLSpanElement}
  */
 export function createStatusItem(label, dataKey) {
-	const span = document.createElement("span");
+    const span = createSpan();
 
-	span.innerHTML = `
-				<!-- StatusItem -->
-				<strong>${label}:</strong>
-				<span data-${dataKey}>-</span>
-		`;
+    span.append(
+        createStrong(`${label}:`),
+        createSpan(
+            "",
+            "-",
+            {
+                [`data-${dataKey}`]: "",
+            },
+        ),
+    );
 
-	return span;
+    return span;
 }

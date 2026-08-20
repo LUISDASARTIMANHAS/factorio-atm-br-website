@@ -8,6 +8,6 @@ import { createElement } from "./dom-utils.js";
  * @param {Object} attributes
  * @returns {HTMLUListElement|HTMLOListElement}
  */
-export function createList(type = "ul", className = "", attributes = {}) {
-	return createElement(type, className, null, attributes);
+export function createList(type = "ul", className = "", attributes = {},children,comment="List") {
+	return createElement(type, className, null, attributes,children,comment);
 }

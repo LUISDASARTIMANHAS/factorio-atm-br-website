@@ -8,6 +8,6 @@ import { createElement } from "./dom-utils.js";
  * @param {Object} attributes
  * @returns {HTMLParagraphElement}
  */
-export function createParagraph(text = "", className = "", attributes = {}) {
-	return createElement("p", className, text, attributes);
+export function createParagraph(text = "", className = "", attributes = {},children,comment="Paragrafo") {
+	return createElement("p", className, text, attributes,children,comment);
 }

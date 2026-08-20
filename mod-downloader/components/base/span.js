@@ -8,19 +8,12 @@ import { createElement } from "./dom-utils.js";
  * @param {Object} attributes
  * @returns {HTMLElement}
  */
-export function createStrong(
+export function createSpan(
 	text = "",
 	className = "",
 	attributes = {},
 	children,
-	comment = "Texto em destaque",
+	comment = "Label span",
 ) {
-	return createElement(
-		"strong",
-		className,
-		text,
-		attributes,
-		children,
-		comment,
-	);
+	return createElement("span", className, text, attributes, children, comment);
 }
