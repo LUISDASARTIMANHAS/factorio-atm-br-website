@@ -1,3 +1,4 @@
+import { reportBug } from "../api-client.js";
 import { createErrorState } from "./base/errorState.js";
 
 /**
@@ -7,14 +8,15 @@ import { createErrorState } from "./base/errorState.js";
  * @param {string} message
  * @param {string} [title="Erro ao carregar"]
  */
-export function renderError(
+export async function renderError(
 	container,
-	message,
+	error,
 	title = "Erro ao carregar",
 ) {
+	await reportBug(error);
 	container.replaceChildren(
 		createErrorState(
-			message,
+			error,
 			title,
 		),
 	);

@@ -210,7 +210,7 @@ const handleSearchInput = debounce(async (event) => {
     } catch (error) {
       console.error(error);
 
-      renderError(modsContainer, error.message, "Erro ao pesquisar mods");
+      renderError(modsContainer, error, "Erro ao pesquisar mods");
 
       return;
     }

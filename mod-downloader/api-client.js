@@ -49,6 +49,25 @@ export async function fetchStatusMods() {
   return data || [];
 }
 
+export async function reportBug(error) {
+  const payload = {
+    error: error
+  }
+  const response = await fetch(`${config.apiUrl}/report`, {
+    method: "POST",
+    headers: getApiHeaders(true),
+    body: JSON.stringify(payload)
+  });
+  if (!response.ok) {
+    updateServerSatusCode(response.status);
+    throw new Error(`Erro na API (${response.apiUrl})`);
+  }
+  updateServerSatusCode(response.status);
+  const data = await response.json();
+  console.log(data);
+  return data || [];
+}
+
 /**
  * Realiza uma busca textual por um termo específico de mod.
  * @async

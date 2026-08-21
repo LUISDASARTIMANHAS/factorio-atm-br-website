@@ -10,7 +10,7 @@ import { createAlert } from "./alert.js";
  * @param {string} title
  * @returns {HTMLElement}
  */
-export function createErrorState(message, title = "Erro ao carregar") {
+export function createErrorState(error, title = "Erro ao carregar") {
 	const alert = createAlert("", "danger", "shadow-sm text-start mx-auto");
 
 	alert.style.maxWidth = "720px";
@@ -18,7 +18,8 @@ export function createErrorState(message, title = "Erro ao carregar") {
 	alert.append(
 		createHeading(4, `⚠️ ${title}`, "alert-heading mb-3"),
 
-		createParagraph(message || "Ocorreu um erro inesperado.", "mb-0"),
+		createParagraph(error.message || "Ocorreu um erro inesperado.", "mb-0"),
+		createParagraph(`Critical Error: ${error}` || "Não foi possivel carregar os detalhes do erro.", "mb-0"),
 	);
 
 	return createElement("div", "col-12 text-center py-5", null, {}, [alert]);
