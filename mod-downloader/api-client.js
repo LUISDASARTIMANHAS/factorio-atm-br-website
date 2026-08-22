@@ -49,14 +49,14 @@ export async function fetchStatusMods() {
   return data || [];
 }
 
-export async function reportBug(error) {
+export async function reportBug(err) {
   const payload = {
-    error: error
+    details: err.message
   }
   const response = await fetch(`${config.apiUrl}/report`, {
     method: "POST",
     headers: getApiHeaders(true),
-    body: JSON.stringify(payload)
+    body: JSON.stringify(payload),
   });
   if (!response.ok) {
     updateServerSatusCode(response.status);
@@ -119,6 +119,7 @@ function generateNonce() {
 function getApiHeaders(disableCache) {
   return {
     authorization: "$3559t5hLoVYS3z^Tm&doY",
+    "Content-Type": "application/json",
     "x-nonce": generateNonce(),
     "x-timestamp": Date.now().toString(),
     "x-disable-cache": disableCache || false,
