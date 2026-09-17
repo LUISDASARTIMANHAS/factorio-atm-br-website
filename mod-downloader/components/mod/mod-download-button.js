@@ -9,7 +9,7 @@ import { createLink } from "../base/link.js";
  */
 export function createDownloadButton(mod) {
 	return createLink(
-		"Download Mod",
+		"Download Latest Mod",
 		`${config.serverUrl}/download/mod/${encodeURIComponent(mod.name || "")}`,
 		"btn btn-factorio w-100 btn-action mt-auto",
 		{
