@@ -92,7 +92,7 @@ async function defaultFetch(url, options = {}) {
 
     if (!response.ok) {
       const apiError = await readApiError(response);
-      const message = [apiError.error, apiError.details]
+      const message = [apiError.error, apiError.message, apiError.details]
         .filter(Boolean)
         .join("\n");
 
