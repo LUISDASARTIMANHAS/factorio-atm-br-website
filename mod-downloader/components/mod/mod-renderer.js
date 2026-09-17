@@ -8,7 +8,7 @@ import { createDownloadButton } from "./mod-download-button.js";
 import { createModHeader } from "./mod-header.js";
 import { createModImage } from "./mod-image.js";
 import { createMetadata } from "./mod-metadata.js";
-import { createModReleases } from "./release/releases.js";
+import { createLink } from "../base/link.js";
 
 /**
  * Renderiza um card completo de mod.
@@ -38,11 +38,11 @@ export function createModCardElement(mod) {
 					createModHeader(mod),
 					createModDescription(mod),
 					createMetadata(mod, release),
-
-					mod.detailsLoaded
-						? createModReleases(mod)
-						: null,
-
+					createLink(
+						"Ver detalhes e versões",
+						`./mod.html?name=${encodeURIComponent(mod.name || "")}`,
+						"btn btn-outline-warning w-100 mt-3",
+					),
 					createDownloadButton(mod),
 				].filter(Boolean),
 			),

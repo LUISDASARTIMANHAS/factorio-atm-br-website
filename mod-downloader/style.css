@@ -133,6 +133,15 @@ code,
   filter: brightness(100%);
 }
 
+.mod-details-card {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.mod-details-card .mod-card-img {
+  height: 280px;
+}
+
 /* Links dos Títulos */
 .card-title a {
   color: #ffffff !important;
