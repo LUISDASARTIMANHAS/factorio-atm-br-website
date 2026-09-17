@@ -1,6 +1,6 @@
 // mod-downloader\api-client.js
 import config from "./config.js";
-import { showErrorModal } from "./components/base/errorModal.js";
+import { showErrorToast } from "./components/base/errorToast.js";
 
 /**
  * Camada de comunicação HTTP com a API remota.
@@ -70,7 +70,7 @@ export async function fetchModByName(name) {
 
 /**
  * Executa as requisições da API com as configurações padrão da aplicação.
- * Erros são exibidos no modal global e continuam sendo propagados ao chamador.
+ * Erros são exibidos no toast global e continuam sendo propagados ao chamador.
  *
  * @param {string} url
  * @param {RequestInit & {disableCache?: boolean}} options
@@ -105,7 +105,7 @@ async function defaultFetch(url, options = {}) {
       ? error
       : new Error("Não foi possível conectar à API.");
 
-    showErrorModal(normalizedError);
+    showErrorToast(normalizedError);
     throw normalizedError;
   }
 }

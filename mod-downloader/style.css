@@ -90,42 +90,60 @@ code,
   letter-spacing: 0.05em;
 }
 
-/* Modal de erro */
-.modal-content {
+/* Toast de erro */
+.error-toast {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1090;
+  width: min(420px, calc(100vw - 2rem));
+  padding: 1rem 1.1rem;
   background-color: var(--bg-panel);
   border: 1px solid var(--border-layout);
-  border-top: 4px solid var(--factorio-orange);
+  border-left: 4px solid var(--factorio-orange);
+  border-radius: 6px;
   color: var(--text-primary);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.modal-header,
-.modal-footer {
-  border-color: var(--border-layout);
+.error-toast.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.modal-title {
+.error-toast-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   color: var(--factorio-orange);
 }
 
-.modal-body {
+.error-toast-message {
+  margin-top: 0.5rem;
   color: var(--text-secondary);
   overflow-wrap: anywhere;
   white-space: pre-line;
 }
 
-.modal .btn-close {
-  filter: invert(1) grayscale(100%) brightness(200%);
-  opacity: 0.8;
+.error-toast-close {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
-.modal .btn-close:hover,
-.modal .btn-close:focus {
-  opacity: 1;
-}
-
-.modal-backdrop.show {
-  opacity: 0.8;
+.error-toast-close:hover,
+.error-toast-close:focus {
+  color: var(--text-primary);
 }
 
 /* Cards de Modificações - Alta Visibilidade */
