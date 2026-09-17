@@ -210,7 +210,7 @@ const handleSearchInput = debounce(async (event) => {
     } catch (error) {
       console.error(error);
 
-      renderError(modsContainer, error, "Erro ao pesquisar mods");
+      await renderError(modsContainer, error, "Erro ao pesquisar mods");
 
       return;
     }
@@ -242,8 +242,10 @@ sortFilter.addEventListener("change", (e) => {
 // ================= Boot =================
 
 async function init() {
-  const status = await fetchStatusMods();
+  let status;
+
   try {
+    status = await fetchStatusMods();
     const rawMods = await fetchInitialMods();
 
     const mods = Array.isArray(rawMods) ? rawMods : rawMods.mods || [];
@@ -258,9 +260,10 @@ async function init() {
   } catch (error) {
     console.error(error);
 
-    renderError(modsContainer, error.message, "Erro ao carregar mods.");
+    await renderError(modsContainer, error, "Erro ao carregar mods.");
 
     setTimeout(init, 7 * 1000);
+    return;
   }
 
   createServerStatus(containerServerStatus);
