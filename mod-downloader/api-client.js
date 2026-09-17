@@ -91,7 +91,12 @@ async function defaultFetch(url, options = {}) {
     updateServerSatusCode(response.status);
 
     if (!response.ok) {
-      throw new Error(`Erro na API (${response.status})`);
+      const apiError = await readApiError(response);
+      const message = [apiError.error, apiError.details]
+        .filter(Boolean)
+        .join("\n");
+
+      throw new Error(message || `Erro na API (${response.status})`);
     }
 
     return response;
@@ -102,6 +107,21 @@ async function defaultFetch(url, options = {}) {
 
     showErrorModal(normalizedError);
     throw normalizedError;
+  }
+}
+
+/**
+ * Lê a mensagem de erro enviada pela API sem falhar em respostas não-JSON.
+ *
+ * @param {Response} response
+ * @returns {Promise<Object>}
+ */
+async function readApiError(response) {
+  try {
+    const data = await response.json();
+    return data && typeof data === "object" ? data : {};
+  } catch {
+    return {};
   }
 }
 

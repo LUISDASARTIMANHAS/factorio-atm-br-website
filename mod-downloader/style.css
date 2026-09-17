@@ -111,6 +111,7 @@ code,
 .modal-body {
   color: var(--text-secondary);
   overflow-wrap: anywhere;
+  white-space: pre-line;
 }
 
 .modal .btn-close {
