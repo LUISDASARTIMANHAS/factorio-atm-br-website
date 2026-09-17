@@ -1,5 +1,6 @@
 // mod-downloader\api-client.js
 import config from "./config.js";
+import { showErrorModal } from "./components/base/errorModal.js";
 
 /**
  * Camada de comunicação HTTP com a API remota.
@@ -13,16 +14,9 @@ import config from "./config.js";
  * @returns {Promise<Array<Object>>} Lista de objetos representando os mods.
  */
 export async function fetchInitialMods() {
-  const response = await fetch(`${config.apiUrl}/mods`, {
+  const response = await defaultFetch(`${config.apiUrl}/mods`, {
     method: "GET",
-
-    headers: getApiHeaders(),
   });
-  if (!response.ok) {
-    updateServerSatusCode(response.status);
-    throw new Error(`Erro na API (${response.apiUrl})`);
-  }
-  updateServerSatusCode(response.status);
   const data = await response.json();
   return data || [];
 }
@@ -34,37 +28,24 @@ export async function fetchInitialMods() {
  * @returns {Promise<Array<Object>>} Lista de objetos representando os mods.
  */
 export async function fetchStatusMods() {
-  const response = await fetch(`${config.apiUrl}/mods/status`, {
+  const response = await defaultFetch(`${config.apiUrl}/mods/status`, {
     method: "GET",
-
-    headers: getApiHeaders(true),
+    disableCache: true,
   });
-  if (!response.ok) {
-    updateServerSatusCode(response.status);
-    throw new Error(`Erro na API (${response.apiUrl})`);
-  }
-  updateServerSatusCode(response.status);
   const data = await response.json();
-  console.log(data);
   return data || [];
 }
 
 export async function reportBug(err) {
   const payload = {
-    details: err.message
-  }
-  const response = await fetch(`${config.apiUrl}/report`, {
+    details: err.message,
+  };
+  const response = await defaultFetch(`${config.apiUrl}/report`, {
     method: "POST",
-    headers: getApiHeaders(true),
+    disableCache: true,
     body: JSON.stringify(payload),
   });
-  if (!response.ok) {
-    updateServerSatusCode(response.status);
-    throw new Error(`Erro na API (${response.apiUrl})`);
-  }
-  updateServerSatusCode(response.status);
   const data = await response.json();
-  console.log(data);
   return data || [];
 }
 
@@ -77,21 +58,51 @@ export async function reportBug(err) {
  */
 export async function fetchModByName(name) {
   const encodedName = encodeURIComponent(name);
-  const response = await fetch(
+  const response = await defaultFetch(
     `${config.apiUrl}/mods/search/mod?name=${encodedName}`,
     {
       method: "GET",
-
-      headers: getApiHeaders(),
     },
   );
-  if (!response.ok) {
-    updateServerSatusCode(response.status);
-    throw new Error(`Erro na busca (${response.status})`);
-  }
-  updateServerSatusCode(response.status);
   const data = await response.json();
   return data || [];
+}
+
+/**
+ * Executa as requisições da API com as configurações padrão da aplicação.
+ * Erros são exibidos no modal global e continuam sendo propagados ao chamador.
+ *
+ * @param {string} url
+ * @param {RequestInit & {disableCache?: boolean}} options
+ * @returns {Promise<Response>}
+ */
+async function defaultFetch(url, options = {}) {
+  const { disableCache = false, headers = {}, ...requestOptions } = options;
+
+  try {
+    const response = await fetch(url, {
+      ...requestOptions,
+      headers: {
+        ...getApiHeaders(disableCache),
+        ...headers,
+      },
+    });
+
+    updateServerSatusCode(response.status);
+
+    if (!response.ok) {
+      throw new Error(`Erro na API (${response.status})`);
+    }
+
+    return response;
+  } catch (error) {
+    const normalizedError = error instanceof Error
+      ? error
+      : new Error("Não foi possível conectar à API.");
+
+    showErrorModal(normalizedError);
+    throw normalizedError;
+  }
 }
 
 function updateServerSatusCode(status) {

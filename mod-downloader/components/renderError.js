@@ -13,7 +13,12 @@ export async function renderError(
 	error,
 	title = "Erro ao carregar",
 ) {
-	await reportBug(error);
+	try {
+		await reportBug(error);
+	} catch (reportError) {
+		console.error("Não foi possível reportar o erro:", reportError);
+	}
+
 	container.replaceChildren(
 		createErrorState(
 			error,

@@ -90,6 +90,43 @@ code,
   letter-spacing: 0.05em;
 }
 
+/* Modal de erro */
+.modal-content {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-layout);
+  border-top: 4px solid var(--factorio-orange);
+  color: var(--text-primary);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.55);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border-layout);
+}
+
+.modal-title {
+  color: var(--factorio-orange);
+}
+
+.modal-body {
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.modal .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 0.8;
+}
+
+.modal .btn-close:hover,
+.modal .btn-close:focus {
+  opacity: 1;
+}
+
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+
 /* Cards de Modificações - Alta Visibilidade */
 .mod-card {
   background-color: var(--bg-panel) !important;
