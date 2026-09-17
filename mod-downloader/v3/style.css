@@ -1,0 +1,433 @@
+/* ==========================================================================
+   FACTORIO MOD BROWSER - SYSTEM THEME (HIGH CONTRAST INDUSTRIAL BLUEPRINT)
+   ========================================================================== */
+
+:root {
+  --bg-main: #0e1013;
+  --bg-panel: #17191e;
+  --bg-input: #101216;
+  --border-layout: #2b303c;
+  --factorio-orange: #ff7605;
+  --factorio-orange-hover: #ff9233;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-highlight: #ffb870;
+}
+
+/* Reset Geral e Tipografia */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  letter-spacing: 0.02em;
+}
+
+/* Títulos Industriais */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+}
+
+/* Dados Técnicos e Códigos */
+code,
+.tech-data,
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Cabeçalho Principal */
+.main-header {
+  background: linear-gradient(180deg, #13161c 0%, var(--bg-main) 100%);
+  border-bottom: 1px solid var(--border-layout);
+}
+
+.main-header h1 {
+  color: var(--factorio-orange);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Painel de Busca e Filtros */
+.control-panel {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-layout);
+  border-left: 4px solid var(--factorio-orange);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Sobrescrevendo Inputs do Bootstrap para Modo Escuro Legível */
+.form-control {
+  background-color: var(--bg-input) !important;
+  border: 1px solid var(--border-layout) !important;
+  color: #ffffff !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-control::placeholder {
+  color: #64748b !important;
+}
+
+.form-control:focus {
+  background-color: var(--bg-input) !important;
+  border-color: var(--factorio-orange) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.25) !important;
+}
+
+/* Emblema de Status */
+.status-badge {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-layout);
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+/* Cards de Modificações - Alta Visibilidade */
+.mod-card {
+  background-color: var(--bg-panel) !important;
+  border: 1px solid var(--border-layout) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.mod-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--factorio-orange) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Detalhe estético de desenho técnico nos cantos */
+.mod-card::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid rgba(255, 255, 255, 0.15);
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  pointer-events: none;
+}
+
+/* Imagens dos Cards */
+.mod-card-img {
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-layout);
+  background-color: #0b0c0e;
+  filter: brightness(85%);
+  transition: filter 0.2s ease;
+}
+
+.mod-card:hover .mod-card-img {
+  filter: brightness(100%);
+}
+
+.mod-details-page {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 4rem;
+}
+
+.mod-details-hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.35fr);
+  min-height: 360px;
+  border-bottom: 1px solid var(--border-layout);
+}
+
+.mod-details-image {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  background: #0b0c0e;
+  filter: brightness(88%);
+}
+
+.mod-details-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  background: linear-gradient(135deg, #17191e 0%, #101216 100%);
+  border-left: 4px solid var(--factorio-orange);
+}
+
+.mod-details-eyebrow,
+.mod-details-slug {
+  color: var(--factorio-orange);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.mod-details-slug {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.mod-details-title {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.mod-details-hero-content .card-text {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.mod-details-overview,
+.mod-details-releases {
+  padding-top: 3rem;
+}
+
+.section-title {
+  color: var(--factorio-orange);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.mod-details-overview .tech-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+  margin-bottom: 0;
+}
+
+.mod-details-releases .mod-releases {
+  margin-top: 0 !important;
+}
+
+.mod-details-releases .mod-releases > h6 {
+  display: none;
+}
+
+.mod-details-releases .accordion-item {
+  background-color: var(--bg-panel);
+  border-color: var(--border-layout);
+}
+
+.mod-details-releases .accordion-button {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.mod-details-releases .accordion-button:not(.collapsed) {
+  background-color: #242933;
+  color: var(--factorio-orange);
+  box-shadow: none;
+}
+
+.mod-details-releases .accordion-button:focus {
+  border-color: var(--factorio-orange);
+  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.2);
+}
+
+.mod-details-releases .accordion-body {
+  background-color: var(--bg-input);
+}
+
+@media (max-width: 767.98px) {
+  .mod-details-page {
+    padding-top: 1rem;
+  }
+
+  .mod-details-hero {
+    display: block;
+  }
+
+  .mod-details-image,
+  .mod-details-hero {
+    min-height: 0;
+  }
+
+  .mod-details-image {
+    height: 240px;
+  }
+
+  .mod-details-hero-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .mod-details-overview .tech-data {
+    display: block;
+  }
+}
+
+/* Links dos Títulos */
+.card-title a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 1.25rem;
+  transition: color 0.15s ease;
+}
+
+.card-title a:hover {
+  color: var(--factorio-orange) !important;
+}
+
+/* Texto de Sumário / Descrição (Contraste Aprimorado) */
+.card-text {
+  color: #cbd5e1 !important;
+  /* Tom cinza claro nítido sobre o fundo escuro */
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+/* Bloco de Metadados Internos */
+.tech-data {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.tech-data li {
+  color: #94a3b8 !important;
+  font-size: 0.85rem;
+}
+
+.tech-data strong {
+  color: var(--text-highlight) !important;
+  font-weight: 600;
+}
+
+/* Cores Vivas de Alerta para Dependências no Modo Escuro */
+/* Vermelho pastel de alto contraste */
+.text-danger,
+ul li.text-danger,
+ul li .text-danger {
+  color: #f87171 !important;
+}
+
+/* Azul celeste vívido */
+.text-info,
+ul li.text-info,
+ul li .text-info {
+  color: #38bdf8 !important;
+}
+
+/* Amarelo ouro nítido */
+.text-warning,
+ul li.text-warning,
+ul li .text-warning {
+  color: #fbbf24 !important;
+}
+
+/* Botão Sólido Factorio */
+.btn-factorio {
+  background-color: var(--factorio-orange) !important;
+  color: #000000 !important;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 10px 16px;
+  transition: background-color 0.15s ease, transform 0.1s ease !important;
+}
+
+.btn-factorio:hover {
+  background-color: var(--factorio-orange-hover) !important;
+  color: #000000 !important;
+}
+
+.btn-factorio:active {
+  transform: scale(0.98);
+}
+
+/* Rodapé */
+.main-footer {
+  background-color: #0b0c0e;
+  border-top: 1px solid var(--border-layout) !important;
+}
+
+.main-footer p {
+  color: #64748b;
+}
+
+.hover-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.hover-link:hover {
+  color: var(--factorio-orange) !important;
+}
+
+/* ==========================================================================
+   NOVOS CONTROLES: FILTROS E PAGINAÇÃO
+   ========================================================================== */
+
+/* Selects Estilizados */
+.form-select {
+  background-color: var(--bg-input) !important;
+  border: 1px solid var(--border-layout) !important;
+  color: #ffffff !important;
+  font-family: 'Roboto', sans-serif;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ff7605' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+.form-select:focus {
+  border-color: var(--factorio-orange) !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.25) !important;
+}
+
+/* Paginação Estilo Factorio */
+.custom-pagination .page-link {
+  background-color: var(--bg-panel);
+  border-color: var(--border-layout);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #2b303c;
+  color: var(--factorio-orange);
+  border-color: var(--factorio-orange);
+}
+
+.custom-pagination .page-item.active .page-link {
+  background-color: var(--factorio-orange);
+  border-color: var(--factorio-orange);
+  color: #000;
+  font-weight: bold;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+  background-color: var(--bg-main);
+  color: #475569;
+  border-color: var(--border-layout);
+}
+
+.server-status {
+  background: rgba(0, 0, 0, .25);
+  backdrop-filter: blur(6px);
+  border-color: rgba(255, 255, 255, .08) !important;
+}
+
+.server-status .badge {
+  min-width: 90px;
+}

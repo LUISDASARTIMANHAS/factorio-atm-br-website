@@ -12,7 +12,7 @@ Primary entry points:
 - `config.js` — runtime URLs and backend configuration
 - `components/` — reusable UI builders and renderers
 - `state.js` — shared state helpers if used by the app
-- `v2/` — alternate version of the UI, not the main implementation unless explicitly asked to work there
+- `v3/` — alternate version of the UI, not the main implementation unless explicitly asked to work there
 
 ## How to run locally
 
@@ -55,7 +55,7 @@ Do not assume there is a Node or npm workflow. There is no `package.json` for th
 - API and server URLs are centralized in `config.js`; use those instead of hardcoding endpoints in new files.
 - The app depends on remote backend endpoints; verify whether any changes affect the contract before editing API calls.
 - Search and pagination are state-driven; when editing filters or rendering logic, keep the `state` object and pagination flow in sync.
-- The repo appears to have a production UI and a separate experimental `v2/` folder; default to the main app unless a request specifically targets `v2`.
+- The repo appears to have a production UI and a separate experimental `v3/` folder; default to the main app unless a request specifically targets `v3`.
 
 ## Safe change strategy
 
