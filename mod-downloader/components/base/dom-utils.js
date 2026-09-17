@@ -1,3 +1,14 @@
+/**
+ * Cria um elemento HTML de forma padronizada.
+ *
+ * @param {string} tag - Nome da tag HTML.
+ * @param {string} className - Classes CSS do elemento.
+ * @param {string|null} textContent - Texto do elemento.
+ * @param {Object} attributes - Atributos HTML.
+ * @param {Node[]} children - Elementos filhos.
+ * @param {string} comment - Comentário HTML inserido no elemento.
+ * @returns {HTMLElement} Elemento HTML criado.
+ */
 export function createElement(
     tag,
     className = "",
@@ -16,19 +27,27 @@ export function createElement(
         element.textContent = textContent;
     }
 
-    Object.entries(attributes).forEach(
-        ([key, value]) => {
-            element.setAttribute(key, value);
-        },
-    );
+    if (attributes && typeof attributes === "object") {
+        Object.entries(attributes).forEach(([key, value]) => {
+            if (value !== null && value !== undefined) {
+                element.setAttribute(key, String(value));
+            }
+        });
+    }
 
-    children.forEach(child => {
-        element.appendChild(child);
-    });
+    if (Array.isArray(children)) {
+        children.forEach((child) => {
+            if (child instanceof Node) {
+                element.appendChild(child);
+            }
+        });
+    }
 
-    element.prepend(
-        document.createComment(comment),
-    );
+    if (comment) {
+        element.prepend(
+            document.createComment(comment),
+        );
+    }
 
     return element;
 }
