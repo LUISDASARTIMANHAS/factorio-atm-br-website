@@ -133,13 +133,141 @@ code,
   filter: brightness(100%);
 }
 
-.mod-details-card {
-  max-width: 980px;
+.mod-details-page {
+  width: min(1240px, 100%);
   margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 4rem) 4rem;
 }
 
-.mod-details-card .mod-card-img {
-  height: 280px;
+.mod-details-hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.35fr);
+  min-height: 360px;
+  border-bottom: 1px solid var(--border-layout);
+}
+
+.mod-details-image {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  background: #0b0c0e;
+  filter: brightness(88%);
+}
+
+.mod-details-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  background: linear-gradient(135deg, #17191e 0%, #101216 100%);
+  border-left: 4px solid var(--factorio-orange);
+}
+
+.mod-details-eyebrow,
+.mod-details-slug {
+  color: var(--factorio-orange);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.mod-details-slug {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.mod-details-title {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.mod-details-hero-content .card-text {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.mod-details-overview,
+.mod-details-releases {
+  padding-top: 3rem;
+}
+
+.section-title {
+  color: var(--factorio-orange);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.mod-details-overview .tech-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 2rem;
+  margin-bottom: 0;
+}
+
+.mod-details-releases .mod-releases {
+  margin-top: 0 !important;
+}
+
+.mod-details-releases .mod-releases > h6 {
+  display: none;
+}
+
+.mod-details-releases .accordion-item {
+  background-color: var(--bg-panel);
+  border-color: var(--border-layout);
+}
+
+.mod-details-releases .accordion-button {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+}
+
+.mod-details-releases .accordion-button:not(.collapsed) {
+  background-color: #242933;
+  color: var(--factorio-orange);
+  box-shadow: none;
+}
+
+.mod-details-releases .accordion-button:focus {
+  border-color: var(--factorio-orange);
+  box-shadow: 0 0 0 0.25rem rgba(255, 118, 5, 0.2);
+}
+
+.mod-details-releases .accordion-body {
+  background-color: var(--bg-input);
+}
+
+@media (max-width: 767.98px) {
+  .mod-details-page {
+    padding-top: 1rem;
+  }
+
+  .mod-details-hero {
+    display: block;
+  }
+
+  .mod-details-image,
+  .mod-details-hero {
+    min-height: 0;
+  }
+
+  .mod-details-image {
+    height: 240px;
+  }
+
+  .mod-details-hero-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .mod-details-overview .tech-data {
+    display: block;
+  }
 }
 
 /* Links dos Títulos */

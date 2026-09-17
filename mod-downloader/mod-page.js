@@ -1,14 +1,6 @@
 import { fetchModByName } from "./api-client.js";
 import { createElement } from "./components/base/dom-utils.js";
-import { createCard } from "./components/base/card.js";
-import { createCardBody } from "./components/base/cardBody.js";
-import { createModDescription } from "./components/mod/mod-description.js";
-import { createDownloadButton } from "./components/mod/mod-download-button.js";
-import { createModHeader } from "./components/mod/mod-header.js";
-import { createModImage } from "./components/mod/mod-image.js";
-import { createMetadata } from "./components/mod/mod-metadata.js";
-import { createModReleases } from "./components/mod/release/releases.js";
-import { getLatestRelease } from "./utils.js";
+import { createModDetailsPage } from "./components/mod/mod-details.js";
 
 const detailsContainer = document.getElementById("modDetails");
 
@@ -18,23 +10,7 @@ const detailsContainer = document.getElementById("modDetails");
  * @returns {void}
  */
 function renderModDetails(mod) {
-  const release = getLatestRelease(mod);
-  if (!release) {
-    throw new Error("Este mod não possui versões disponíveis.");
-  }
-
-  const card = createCard("mod-card mod-details-card shadow-sm", [
-    createModImage(mod),
-    createCardBody("d-flex flex-column p-4", [
-      createModHeader(mod),
-      createModDescription(mod),
-      createMetadata(mod, release),
-      createModReleases(mod),
-      createDownloadButton(mod),
-    ]),
-  ]);
-
-  detailsContainer.replaceChildren(card);
+  detailsContainer.replaceChildren(createModDetailsPage(mod));
 }
 
 /**
