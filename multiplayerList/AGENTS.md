@@ -3,6 +3,8 @@
 ## Contexto
 
 - Este é um site estático em HTML, CSS e JavaScript vanilla, com Bootstrap 5.3 carregado por CDN.
+- O projeto é publicado no GitHub Pages e executado exclusivamente no navegador. Não introduza backend, runtime de servidor, dependências locais ou etapa de build como requisito para uso ou publicação.
+- Use recursos nativos do navegador e caminhos relativos compatíveis com publicação estática. Chamadas a serviços externos devem usar HTTPS e considerar CORS.
 - Não há documentação, dependências locais, scripts de build ou testes automatizados configurados. Não invente comandos de build/teste; valide as mudanças no navegador.
 - `index.html` define a estrutura da página e carrega os estilos e scripts.
 

@@ -1,5 +1,6 @@
 import { createElement } from "./base/dom-utils.js";
 import { createSpan } from "./base/span.js";
+import { fetchClientLocation } from "../js/api-client.js";
 
 /**
  * Cria a faixa de localização no rodapé da página.
@@ -33,7 +34,7 @@ async function initClientLocation() {
   document.body.appendChild(footer);
 
   try {
-    const { ip, country, city } = await window.fetchClientLocation();
+    const { ip, country, city } = await fetchClientLocation();
     footer.querySelector("#clientLocation").textContent =
       "IP: " + ip + " | País: " + country + " | Cidade: " + city;
   } catch (error) {
