@@ -133,6 +133,14 @@
       <div id="serversContainer" class="row g-4"></div>
     </div>
 
+    <footer class="client-location-bar" aria-label="Localização aproximada desta conexão">
+      <div class="container-fluid">
+        <span id="clientLocation" role="status" aria-live="polite">
+          Localização: carregando...
+        </span>
+      </div>
+    </footer>
+
     <!-- Modal -->
 
     <div class="modal fade" id="serverModal">
@@ -156,6 +164,7 @@
 
     <script src="js/utils.js"></script>
     <script src="js/api.js"></script>
+    <script src="js/client-location.js"></script>
     <script src="js/details.js"></script>
     <script src="js/cards.js"></script>
     <script src="js/filters.js"></script>

@@ -36,6 +36,41 @@ function getApiHeaders() {
 const API_URL =
   "https://pingobras-factorio-server.onrender.com/api/multiplayer/factorio";
 
+/**
+ * Busca dados JSON da API sem duplicar o tratamento de respostas HTTP.
+ *
+ * @param {string} url
+ * @param {Object} headers
+ * @returns {Promise<Object>}
+ */
+async function requestJson(url, headers = {}) {
+  const response = await fetch(url, { method: "GET", headers });
+
+  if (!response.ok) {
+    throw new Error("Erro ao obter dados da API.");
+  }
+
+  return response.json();
+}
+
+/**
+ * Obtém IP, país e cidade aproximada pela geolocalização do IP.
+ *
+ * @returns {Promise<{ip: string, country: string, city: string}>}
+ */
+async function fetchClientLocation() {
+  const geolocation = await requestJson("https://ipapi.co/json/");
+  const country = geolocation.country_code
+    ? new Intl.DisplayNames(["pt-BR"], { type: "region" }).of(geolocation.country_code)
+    : geolocation.country_name || "Indisponível";
+
+  return {
+    ip: geolocation.ip || "Indisponível",
+    country: country || "Indisponível",
+    city: geolocation.city || "Indisponível",
+  };
+}
+
 
 /**
  * Intervalo de atualização.

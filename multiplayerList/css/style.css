@@ -85,6 +85,18 @@ a {
 
 }
 
+.client-location-bar {
+
+	padding: .45rem 1rem;
+	margin-top: 2rem;
+	border-top: 1px solid var(--border);
+	background: rgba(9, 11, 16, .82);
+	color: var(--muted);
+	font-size: .8rem;
+	text-align: center;
+
+}
+
 .navbar-brand {
 
 	font-size: 1.4rem;
