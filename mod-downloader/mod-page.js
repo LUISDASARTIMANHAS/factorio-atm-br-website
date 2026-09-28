@@ -1,6 +1,7 @@
 import { fetchModByName } from "./api-client.js";
 import { createElement } from "./components/base/dom-utils.js";
 import { createModDetailsPage } from "./components/mod/mod-details.js";
+import { initVisitorLocation } from "./components/visitor-location.js";
 
 const detailsContainer = document.getElementById("modDetails");
 
@@ -48,4 +49,5 @@ async function init() {
   }
 }
 
+initVisitorLocation(document.getElementById("visitorLocation"));
 init();

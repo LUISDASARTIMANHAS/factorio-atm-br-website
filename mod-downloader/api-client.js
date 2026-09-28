@@ -36,6 +36,24 @@ export async function fetchStatusMods() {
   return data || [];
 }
 
+/**
+ * Busca os cabeçalhos públicos da conexão atual para exibir IP e localização.
+ * @returns {Promise<Object>}
+ */
+export async function fetchVisitorHeaders() {
+  const response = await fetch(config.visitorHeadersUrl, {
+    method: "GET",
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Não foi possível consultar a conexão (${response.status}).`);
+  }
+
+  const data = await response.json();
+  return data && typeof data === "object" ? data : {};
+}
+
 export async function reportBug(err) {
   const payload = {
     details: err.message,

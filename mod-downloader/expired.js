@@ -2,6 +2,7 @@ import { fetchStatusMods } from "./api-client.js";
 import { renderPagination } from "./components/pagination.js";
 import { renderError } from "./components/renderError.js";
 import { renderExpiredModList } from "./components/expired/expired-mod-list.js";
+import { initVisitorLocation } from "./components/visitor-location.js";
 
 const modsContainer = document.getElementById("expiredModsContainer");
 const modsCount = document.getElementById("expiredModsCount");
@@ -40,4 +41,7 @@ async function init() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", () => {
+  initVisitorLocation(document.getElementById("visitorLocation"));
+  init();
+});

@@ -10,6 +10,7 @@ import { renderPagination } from "./components/pagination.js";
 import { renderError } from "./components/renderError.js";
 import { updateServerStatus } from "./components/server-status/update.js";
 import { createServerStatus } from "./components/server-status/create.js";
+import { initVisitorLocation } from "./components/visitor-location.js";
 import { debounce, getLatestRelease } from "./utils.js";
 
 /**
@@ -276,4 +277,7 @@ async function init() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("DOMContentLoaded", () => {
+  initVisitorLocation(document.getElementById("visitorLocation"));
+  init();
+});

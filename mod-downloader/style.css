@@ -487,3 +487,38 @@ ul li .text-warning {
 .server-status .badge {
   min-width: 90px;
 }
+
+.visitor-location {
+  background-color: #08090b;
+  border-bottom: 1px solid var(--border-layout);
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+}
+
+.visitor-location-content {
+  width: min(100%, 1320px);
+  min-height: 34px;
+  margin: 0 auto;
+  padding: 0.4rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.5rem;
+}
+
+.visitor-location-item {
+  overflow-wrap: anywhere;
+}
+
+.visitor-location-label {
+  color: var(--factorio-orange);
+  font-weight: 700;
+}
+
+@media (max-width: 575.98px) {
+  .visitor-location-content {
+    justify-content: flex-start;
+    gap: 0.25rem 1rem;
+  }
+}
