@@ -3,35 +3,27 @@
  * @author Luis das Artimanhas
  */
 
-"use strict";
+import { createAlert } from "../components/base/alert.js";
+import { createBadge } from "../components/base/badge.js";
+import { createButton } from "../components/base/button.js";
+import { createCard } from "../components/base/card.js";
+import { createElement } from "../components/base/dom-utils.js";
+import { createHeading } from "../components/base/heading.js";
+import { createPaginationItem } from "../components/base/paginationItem.js";
+import { createPaginationLink } from "../components/base/paginationLink.js";
+import { createParagraph } from "../components/base/paragraph.js";
 
 const serversContainer = document.getElementById("serversContainer");
+const paginationContainer = document.getElementById("serversPagination");
+const PAGE_SIZE = 12;
+const MAX_VISIBLE_PLAYERS = 255;
+let currentList = [];
+let currentPage = 1;
 
-const SAFE_LIMIT = 150;
-
-/**
- * Escapa HTML.
- */
-function escapeHtml(text = "") {
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-/**
- * Cria badge Bootstrap.
- */
 function badge(text, color) {
-  return `
-    <span class="badge bg-${color}">
-      ${escapeHtml(text)}
-    </span>
-  `;
+  return createBadge(String(text), `badge bg-${color}`);
 }
 
-/**
- * Percentual de players.
- */
 function playerPercent(server) {
   const max = server?.maxPlayers || 0;
   const current = server?.playerCount || 0;
@@ -41,146 +33,194 @@ function playerPercent(server) {
   return Math.min(Math.round((current * 100) / max), 100);
 }
 
-/**
- * Cor da barra.
- */
 function progressColor(value) {
   if (value < 40) return "bg-success";
   if (value < 80) return "bg-warning";
   return "bg-danger";
 }
 
-/**
- * Renderiza cards.
- */
-function renderCards(list) {
-  serversContainer.innerHTML = "";
+function createServerCard(server, index) {
+  const players = Array.isArray(server.players) ? server.players : [];
+  const tags = Array.isArray(server.tags) ? server.tags : [];
+  const visiblePlayers = players.slice(0, MAX_VISIBLE_PLAYERS);
+  const hiddenPlayers = players.length - visiblePlayers.length;
+  const percent = playerPercent(server);
+  const applicationVersion = server.application_version || {};
 
-  if (!Array.isArray(list) || list.length === 0) {
-    serversContainer.innerHTML = `
-      <div class="col-12">
-        <div class="alert alert-warning">
-          Nenhum servidor encontrado.
-        </div>
-      </div>
-    `;
+  const identity = createElement("div", "", null, {}, [
+    createHeading(5, server.name || "Servidor", "server-title"),
+    createElement(
+      "div",
+      "small-info",
+      server.dedicated ? "Dedicated Server" : "Servidor",
+    ),
+  ]);
+  const header = createElement("div", "d-flex justify-content-between", null, {}, [
+    identity,
+    createElement("i", "bi bi-hdd-network display-6 card-icon", null, {
+      "aria-hidden": "true",
+    }),
+  ]);
+
+  const serverBadges = [
+    badge(`👥 ${server.playerCount || 0}/${server.maxPlayers || 0}`, "primary"),
+    badge(
+      server.hasMods ? `🧩 ${server.modCount || 0} Mods` : "Vanilla",
+      server.hasMods ? "warning" : "success",
+    ),
+    badge(
+      server.hasPassword ? "🔒 Senha" : "🔓 Livre",
+      server.hasPassword ? "danger" : "success",
+    ),
+    badge(server.version || "Desconhecida", "secondary"),
+  ];
+
+  if (server.application_version) {
+    serverBadges.push(
+      createElement("div", "d-flex flex-wrap gap-1 mt-2", null, {}, [
+        badge(`🎮 ${applicationVersion.game_version || "-"}`, "info"),
+        badge(`🔧 ${applicationVersion.build_version || "-"}`, "secondary"),
+        badge(`⚙️ ${applicationVersion.build_mode || "-"}`, "dark"),
+        badge(`💻 ${applicationVersion.platform || "-"}`, "dark"),
+      ]),
+    );
+  }
+
+  const playerList = visiblePlayers.map((player) => badge(player, "info"));
+  if (hiddenPlayers > 0) playerList.push(badge(`+${hiddenPlayers}`, "dark"));
+
+  const playerContent = players.length
+    ? createElement("div", "d-flex flex-wrap gap-1", null, {}, playerList)
+    : createElement("div", "small text-muted", "Sem jogadores ativos");
+
+  const detailsButton = createButton("", "btn btn-primary", {
+    type: "button",
+    "aria-label": `Ver detalhes de ${server.name || "servidor"}`,
+  });
+  detailsButton.append(
+    createElement("i", "bi bi-search me-1", null, { "aria-hidden": "true" }),
+    document.createTextNode("Ver detalhes"),
+  );
+  detailsButton.addEventListener("click", () => window.showServer(server));
+
+  const card = createCard("glass p-4 h-100 server-card fade-in", [
+    header,
+    createElement("hr"),
+    createParagraph(server.description || "Sem descrição.", "server-description"),
+    createElement("div", "d-flex flex-wrap gap-2 mb-3", null, {}, serverBadges),
+    createElement(
+      "div",
+      "progress mb-3",
+      null,
+      { "aria-label": "Ocupação de jogadores" },
+      [
+        createElement("div", `progress-bar ${progressColor(percent)}`, null, {
+          style: `width:${percent}%`,
+          role: "progressbar",
+          "aria-valuenow": percent,
+          "aria-valuemin": 0,
+          "aria-valuemax": 100,
+        }),
+      ],
+    ),
+    createElement("div", "mb-3", null, {}, [
+      createElement("div", "small text-muted mb-1", "Jogadores online"),
+      playerContent,
+    ]),
+    createElement(
+      "div",
+      "d-flex flex-wrap gap-2 mb-4",
+      null,
+      {},
+      tags.map((tag) => badge(tag, "dark")),
+    ),
+    createElement("div", "text-end", null, {}, [detailsButton]),
+  ]);
+
+  card.style.animationDelay = `${index * 0.05}s`;
+
+  return card;
+}
+
+/**
+ * Renderiza os cards dos servidores.
+ * @param {Object[]} list
+ * @returns {void}
+ */
+function renderPagination(totalPages) {
+  paginationContainer.replaceChildren();
+
+  if (totalPages <= 1) return;
+
+  const pagination = createElement("ul", "pagination justify-content-center", null, {
+    "aria-label": "Paginação dos servidores",
+  });
+  const previousLink = createPaginationLink("Anterior", () => {
+    renderPage(currentPage - 1);
+  });
+  const previousItem = createPaginationItem(previousLink, currentPage === 1 ? "disabled" : "");
+
+  if (currentPage === 1) {
+    previousLink.setAttribute("aria-disabled", "true");
+    previousLink.setAttribute("tabindex", "-1");
+  }
+
+  pagination.append(previousItem);
+
+  for (let page = 1; page <= totalPages; page += 1) {
+    const link = createPaginationLink(String(page), () => renderPage(page));
+    const item = createPaginationItem(link, page === currentPage ? "active" : "");
+
+    if (page === currentPage) link.setAttribute("aria-current", "page");
+
+    pagination.append(item);
+  }
+
+  const nextLink = createPaginationLink("Próxima", () => {
+    renderPage(currentPage + 1);
+  });
+  const nextItem = createPaginationItem(nextLink, currentPage === totalPages ? "disabled" : "");
+
+  if (currentPage === totalPages) {
+    nextLink.setAttribute("aria-disabled", "true");
+    nextLink.setAttribute("tabindex", "-1");
+  }
+
+  pagination.append(nextItem);
+  paginationContainer.append(pagination);
+}
+
+function renderPage(page) {
+  const totalPages = Math.ceil(currentList.length / PAGE_SIZE);
+  currentPage = Math.min(Math.max(page, 1), totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const visibleServers = currentList.slice(start, start + PAGE_SIZE);
+
+  serversContainer.replaceChildren();
+
+  if (visibleServers.length === 0) {
+    const emptyState = createAlert("Nenhum servidor encontrado.", "warning");
+    serversContainer.append(createElement("div", "col-12", null, {}, [emptyState]));
+    paginationContainer.replaceChildren();
     return;
   }
 
-  const safeList = list.slice(0, SAFE_LIMIT);
-
-  safeList.forEach((server, index) => {
-    const percent = playerPercent(server);
-
-    const tags = server.tags || [];
-    const description = server.description || "Sem descrição.";
-
-    const players = Array.isArray(server.players) ? server.players : [];
-
-    const MAX_VISIBLE_PLAYERS = 255;
-    const visiblePlayers = players.slice(0, MAX_VISIBLE_PLAYERS);
-    const hiddenPlayers = players.length - visiblePlayers.length;
-
-    const card = document.createElement("div");
-    card.className = "col-lg-4 col-md-6";
-
-    console.log(server);
-    card.innerHTML = `
-      <div class="glass p-4 h-100 server-card fade-in">
-
-        <div class="d-flex justify-content-between">
-          <div>
-            <h5 class="server-title">
-              ${escapeHtml(server.name)}
-            </h5>
-
-            <div class="small-info">
-              ${server.dedicated ? "Dedicated Server" : "Servidor"}
-            </div>
-          </div>
-
-          <i class="bi bi-hdd-network display-6 card-icon"></i>
-        </div>
-
-        <hr>
-
-        <p class="server-description">
-          ${escapeHtml(description)}
-        </p>
-
-        <div class="d-flex flex-wrap gap-2 mb-3">
-          ${badge(`👥 ${server.playerCount}/${server.maxPlayers}`, "primary")}
-
-          ${badge(
-            server.hasMods ? `🧩 ${server.modCount} Mods` : "Vanilla",
-            server.hasMods ? "warning" : "success"
-          )}
-
-          ${badge(
-            server.hasPassword ? "🔒 Senha" : "🔓 Livre",
-            server.hasPassword ? "danger" : "success"
-          )}
-
-          ${badge(server.version, "secondary")}
-
-          ${server.application_version ? `
-            <div class="d-flex flex-wrap gap-1 mt-2">
-              ${badge(`🎮 ${server.application_version.game_version}`, "info")}
-              ${badge(`🔧 ${server.application_version.build_version}`, "secondary")}
-              ${badge(`⚙️ ${server.application_version.build_mode}`, "dark")}
-              ${badge(`💻 ${server.application_version.platform}`, "dark")}
-            </div>
-          ` : ""}
-        </div>
-
-        <div class="progress mb-3">
-          <div
-            class="progress-bar ${progressColor(percent)}"
-            style="width:${percent}%">
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <div class="small text-muted mb-1">
-            Jogadores online
-          </div>
-
-          ${
-            players.length > 0
-              ? `
-                <div class="d-flex flex-wrap gap-1">
-                  ${visiblePlayers.map(p => badge(p, "info")).join("")}
-                  ${
-                    hiddenPlayers > 0
-                      ? `<span class="badge bg-dark">+${hiddenPlayers}</span>`
-                      : ""
-                  }
-                </div>
-              `
-              : `<div class="small text-muted">Sem jogadores ativos</div>`
-          }
-        </div>
-
-        <div class="d-flex flex-wrap gap-2 mb-4">
-          ${tags.map(tag => badge(tag, "dark")).join("")}
-        </div>
-
-        <div class="text-end">
-          <button class="btn btn-primary">
-            <i class="bi bi-search"></i>
-            Ver detalhes
-          </button>
-        </div>
-
-      </div>
-    `;
-
-    card.querySelector("button").addEventListener("click", () => {
-      showServer(server);
-    });
-
-    card.style.animationDelay = index * 0.05 + "s";
-
-    serversContainer.appendChild(card);
+  visibleServers.forEach((server, index) => {
+    serversContainer.append(
+      createElement("div", "col-lg-4 col-md-6", null, {}, [
+        createServerCard(server, index),
+      ]),
+    );
   });
+
+  renderPagination(totalPages);
+  serversContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 }
+
+function renderCards(list) {
+  currentList = Array.isArray(list) ? list : [];
+  currentPage = 1;
+  renderPage(currentPage);
+}
+
+window.renderCards = renderCards;

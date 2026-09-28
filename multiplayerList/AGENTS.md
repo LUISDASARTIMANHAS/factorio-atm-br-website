@@ -10,9 +10,11 @@
 
 - O sistema deve ser baseado em componentes pequenos, com responsabilidades claras e interfaces explícitas. Separe, por exemplo, filtros, estatísticas, cards de servidor e modal de detalhes; evite concentrar estado, eventos e renderização em um único arquivo.
 - Cada componente deve encapsular sua renderização e os eventos da própria interface, sem depender de variáveis globais compartilhadas quando houver uma alternativa local simples.
+- O uso dos componentes existentes em `components/` é obrigatório para agentes e desenvolvedores ao criar ou alterar interfaces. Antes de criar elementos, consulte os componentes disponíveis e componha a interface com eles; não recrie manualmente estruturas ou comportamentos que um componente já fornece.
+- Se não houver um componente adequado, crie ou amplie um componente reutilizável em `components/` seguindo os padrões locais e use-o na interface. A marcação estrutural da página em `index.html` e APIs imperativas do DOM que não tenham equivalente em componente são exceções; não justificam duplicar componentes existentes.
 - `js/api-client.js` é obrigatório e deve centralizar todas as chamadas HTTP: URL base, headers, `fetch`, leitura das respostas e tratamento de erros. Componentes e demais módulos não devem chamar `fetch` diretamente nem duplicar detalhes de transporte.
 - Mantenha `app.js` como ponto de composição e inicialização, não como implementação de todos os componentes ou da comunicação com a API.
-- O código atual ainda usa scripts clássicos, funções globais e chamadas HTTP em `api.js` e `app.js`; ele não é uma arquitetura formal de componentes. Faça a migração incremental, sem refatorações amplas não relacionadas. Se adotar módulos ES, atualize os imports/exports e a entrada em `index.html` de forma consistente; não misture dependências implícitas de ordem de scripts com módulos.
+- A migração dos scripts clássicos e funções globais para os componentes e módulos existentes deve ser incremental, sem refatorações amplas não relacionadas. Se adotar módulos ES, atualize os imports/exports e a entrada em `index.html` de forma consistente; não misture dependências implícitas de ordem de scripts com módulos.
 - Preserve Bootstrap e os arquivos separados por responsabilidade. Use HTML semântico e mantenha acessibilidade por teclado, rótulos e estados visíveis.
 
 ## Segurança e validação

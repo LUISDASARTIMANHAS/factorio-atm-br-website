@@ -1,4 +1,4 @@
-import { createElement } from "../dom-utils.js";
+import { createElement } from "./dom-utils.js";
 
 /**
  * Cria um botão.
