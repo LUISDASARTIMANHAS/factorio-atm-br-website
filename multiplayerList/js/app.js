@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.getElementById("refreshButton");
 
   button.addEventListener("click", fullRefresh);
-  initClientLocation();
 
   if (typeof bindFilters === "function") {
     bindFilters();

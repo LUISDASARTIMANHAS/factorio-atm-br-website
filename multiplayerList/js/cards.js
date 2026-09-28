@@ -14,7 +14,10 @@ import { createPaginationLink } from "../components/base/paginationLink.js";
 import { createParagraph } from "../components/base/paragraph.js";
 
 const serversContainer = document.getElementById("serversContainer");
-const paginationContainer = document.getElementById("serversPagination");
+const paginationContainers = [
+  document.getElementById("serversPaginationTop"),
+  document.getElementById("serversPagination"),
+];
 const PAGE_SIZE = 12;
 const MAX_VISIBLE_PLAYERS = 255;
 let currentList = [];
@@ -143,15 +146,16 @@ function createServerCard(server, index) {
 }
 
 /**
- * Renderiza os cards dos servidores.
- * @param {Object[]} list
+ * Renderiza os controles de paginação.
+ * @param {number} totalPages
  * @returns {void}
  */
 function renderPagination(totalPages) {
-  paginationContainer.replaceChildren();
+  paginationContainers.forEach((container) => container.replaceChildren());
 
   if (totalPages <= 1) return;
 
+  paginationContainers.forEach((paginationContainer) => {
   const pagination = createElement("ul", "pagination justify-content-center", null, {
     "aria-label": "Paginação dos servidores",
   });
@@ -167,13 +171,34 @@ function renderPagination(totalPages) {
 
   pagination.append(previousItem);
 
-  for (let page = 1; page <= totalPages; page += 1) {
+  const visiblePages = new Set([1, totalPages]);
+  for (
+    let page = Math.max(2, currentPage - 2);
+    page <= Math.min(totalPages - 1, currentPage + 2);
+    page += 1
+  ) {
+    visiblePages.add(page);
+  }
+
+  let previousPage = 0;
+  for (const page of [...visiblePages].sort((first, second) => first - second)) {
+    if (page - previousPage > 1) {
+      pagination.append(
+        createPaginationItem(
+          createElement("span", "page-link", "…", { "aria-hidden": "true" }),
+          "disabled",
+        ),
+      );
+    }
+
     const link = createPaginationLink(String(page), () => renderPage(page));
     const item = createPaginationItem(link, page === currentPage ? "active" : "");
 
+    link.setAttribute("aria-label", `Página ${page}`);
     if (page === currentPage) link.setAttribute("aria-current", "page");
 
     pagination.append(item);
+    previousPage = page;
   }
 
   const nextLink = createPaginationLink("Próxima", () => {
@@ -188,6 +213,7 @@ function renderPagination(totalPages) {
 
   pagination.append(nextItem);
   paginationContainer.append(pagination);
+  });
 }
 
 function renderPage(page) {
@@ -201,7 +227,7 @@ function renderPage(page) {
   if (visibleServers.length === 0) {
     const emptyState = createAlert("Nenhum servidor encontrado.", "warning");
     serversContainer.append(createElement("div", "col-12", null, {}, [emptyState]));
-    paginationContainer.replaceChildren();
+    paginationContainers.forEach((container) => container.replaceChildren());
     return;
   }
 
@@ -217,6 +243,11 @@ function renderPage(page) {
   serversContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+/**
+ * Renderiza a página atual dos servidores.
+ * @param {Object[]} list
+ * @returns {void}
+ */
 function renderCards(list) {
   currentList = Array.isArray(list) ? list : [];
   currentPage = 1;

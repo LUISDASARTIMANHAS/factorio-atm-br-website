@@ -37,14 +37,13 @@ const API_URL =
   "https://pingobras-factorio-server.onrender.com/api/multiplayer/factorio";
 
 /**
- * Busca dados JSON da API sem duplicar o tratamento de respostas HTTP.
+ * Busca uma resposta JSON e trata erros HTTP.
  *
  * @param {string} url
- * @param {Object} headers
  * @returns {Promise<Object>}
  */
-async function requestJson(url, headers = {}) {
-  const response = await fetch(url, { method: "GET", headers });
+async function requestJson(url) {
+  const response = await fetch(url, { method: "GET" });
 
   if (!response.ok) {
     throw new Error("Erro ao obter dados da API.");
@@ -54,36 +53,34 @@ async function requestJson(url, headers = {}) {
 }
 
 /**
- * Obtém IP, país e cidade aproximada pela geolocalização do IP.
+ * Obtém os dados de localização disponíveis no endpoint de headers.
  *
  * @returns {Promise<{ip: string, country: string, city: string}>}
  */
 async function fetchClientLocation() {
-  const geolocation = await requestJson("https://ipapi.co/json/");
-  const country = geolocation.country_code
-    ? new Intl.DisplayNames(["pt-BR"], { type: "region" }).of(geolocation.country_code)
-    : geolocation.country_name || "Indisponível";
+  const headers = await requestJson("https://pingobras-sg.onrender.com/headers");
+  const countryCode = headers["cf-ipcountry"] || "";
+  const country = countryCode
+    ? new Intl.DisplayNames(["pt-BR"], { type: "region" }).of(countryCode)
+    : "Indisponível";
 
   return {
-    ip: geolocation.ip || "Indisponível",
+    ip: headers["cf-connecting-ip"] || headers["true-client-ip"] || "Indisponível",
     country: country || "Indisponível",
-    city: geolocation.city || "Indisponível",
+    city: headers["cf-ipcity"] || "Indisponível",
   };
 }
-
 
 /**
  * Intervalo de atualização.
  * @type {number}
  */
 const REFRESH_INTERVAL_IN_MIN = 2;
-
 /**
  * Data da última atualização.
  * @type {Date|null}
  */
 let lastUpdate = null;
-
 
 /**
  * Busca a lista pública de servidores.
@@ -140,14 +137,14 @@ async function refreshServers() {
     document.body.classList.add("loading");
 
     const data = (await fetchServers()).map(normalizeServer);
-
     lastUpdate = new Date();
 
     ServerStore.all = data;
     ServerStore.filtered = data;
 
-    if (typeof updateStats === "function") updateStats();
     if (typeof updateFilters === "function") updateFilters();
+
+    if (typeof updateStats === "function") updateStats();
 
     if (typeof renderCards === "function") {
       renderCards(ServerStore.filtered);
